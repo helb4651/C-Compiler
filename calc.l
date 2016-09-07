@@ -23,11 +23,13 @@ int setTokenData(int tokenClass) {
 
 %%
 [ \t] ;
-\n    { lineno++; }
-[Tt]  { return setTokenData(TRUE); }
-true  { return setTokenData(TRUE); }
-[Ff]  { return setTokenData(FALSE); }
-quit  { return QUIT; } // return token class
-[\(\)\*\-]  { return yytext[0]; }
+\n              { lineno++; }
+[a-zA-Z]        { printf("%c\n", yytext[0]); }
+[0-9]           { printf("%d\n", yytext[0]); }
+[Tt]            { return setTokenData(TRUE); }
+true            { return setTokenData(TRUE); }
+[Ff]            { return setTokenData(FALSE); }
+quit            { return QUIT; } // return token class
+[\(\)\*\-]      { return yytext[0]; }
 .     { printf("ERROR(%d): bad character: '%c'\n", lineno, yytext[0]);}
 %%
