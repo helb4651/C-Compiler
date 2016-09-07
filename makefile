@@ -1,4 +1,4 @@
-BIN  = calc
+BIN  = c-
 CC   = g++
 CFLAGS = -DCPLUSPLUS -g  # for use with C++ if file ext is .c
 SRCS = $(BIN).y $(BIN).l
