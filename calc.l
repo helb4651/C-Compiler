@@ -22,14 +22,18 @@ int setTokenData(int tokenClass) {
 %option noyywrap
 
 %%
-[ \t] ;
-\n              { lineno++; }
-[a-zA-Z]        { printf("%c\n", yytext[0]); }
-[0-9]           { printf("%d\n", yytext[0]); }
-[Tt]            { return setTokenData(TRUE); }
-true            { return setTokenData(TRUE); }
-[Ff]            { return setTokenData(FALSE); }
-quit            { return QUIT; } // return token class
-[\(\)\*\-]      { return yytext[0]; }
-.     { printf("ERROR(%d): bad character: '%c'\n", lineno, yytext[0]);}
+\n                              { lineno++; }
+[ ]                             { printf("space-ln: %d\n", lineno); }
+[\t]                            { printf("tab-ln: %d\n", lineno);   }
+[\/\/].*                        { printf("comment: %s\n", yytext); }
+[a-zA-Z][a-zA-Z|0-9]*           { printf("ID: %c\n", yytext[0]);  }
+[0-9]+                          { printf("NUMCONST: %d\n", yytext[0]); }
+[\'a-zA-Z0-9\'|\\a-mo-zA-Z1-9]  { printf("CHARCONST: %c\n", yytext[0]); }
+
+[Tt]                            { return setTokenData(TRUE); }
+true                            { return setTokenData(TRUE); }
+[Ff]                            { return setTokenData(FALSE); }
+quit                            { return QUIT; } // return token class
+[\(\)\*\-]                      { return yytext[0]; }
+.                               { printf("ERROR(%d): bad character: '%c'\n", lineno, yytext[0]);}
 %%
