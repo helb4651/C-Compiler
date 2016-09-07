@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="6a1c2ddd-5c38-4aed-992b-88a5f476d032" name="wormulon" url="http://wormulon.cs.uidaho.edu">
+        <fileTransfer host="wormulon.cs.uidaho.edu" port="22" rootFolder="/home/helb4651" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
