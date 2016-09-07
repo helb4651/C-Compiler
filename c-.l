@@ -1,7 +1,7 @@
 %{
 #include <stdlib.h>
 #include "scanType.h"   // must be defined before tab.h
-#include "calc.tab.h"
+#include "c-.tab.h"
 
 static int lineno = 1;
 
@@ -10,11 +10,6 @@ int setTokenData(int tokenClass) {
     yylval.tokenData->tokenclass = tokenClass;
     yylval.tokenData->linenum = lineno;
     yylval.tokenData->tokenstring = strdup(yytext);  // make a copy
-    /*
-    if (tokenClass == TRUE) {
-       yylval.tokenData->bvalue = true;
-    }
-    */
     return tokenClass;
 }
 

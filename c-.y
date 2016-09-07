@@ -5,15 +5,17 @@
 
 extern int yylex();
 
-void yyerror(char *msg) {
+void yyerror(char const *msg) {
     printf("ERROR(): %s\n", msg);
 }
 
 %}
 
+
 %token <tokenData> ID
 %token <tokenData> NUMCONST
 %token <tokenData> CHARCONST
+%define parse.error verbose
 
 
 %union {
@@ -22,38 +24,18 @@ void yyerror(char *msg) {
 
 %%
 
-legal_tokens    : ID { printf("Line %d Token: %d Value: %s",
-                        $1->linenum,
-                        $1->tokenstring,
-                        $1->tokenclass); }
-                | NUMCONST
-                | CHARCONST { printf("Line %d Token: %d Value: %s Input: ",
-                        $1->linenum,
-                        $1->tokenstring,
-                        $1->tokenclass); };
 
-/*
-statementlist : statementlist statement
-              | statement
-              ;
-
-statement     : exp
-              | QUIT   { exit(0); }
-              ;
-
-exp           : '(' exp ')'
-              | TRUE   { printf("True (%d) on line %d typed as %s\n",
-                                $1->bvalue,
-                                $1->linenum,
-                                $1->tokenstring); }
-              | FALSE  { printf("False on line %d\n", $1->linenum); }
-              ;
-*/
+token       : token ID
+            | token NUMCONST
+            | token CHARCONST
+            | ID
+            | NUMCONST
+            | CHARCONST
+            ;
 %%
 
 int main()
 {
     yyparse();
-
     return 0;
 }
