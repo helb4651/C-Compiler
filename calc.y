@@ -11,15 +11,28 @@ void yyerror(char *msg) {
 
 %}
 
-%token QUIT
-%token <tokenData> TRUE
-%token <tokenData> FALSE
+%token <tokenData> ID
+%token <tokenData> NUMCONST
+%token <tokenData> CHARCONST
+
 
 %union {
     TokenData *tokenData;
 }
 
 %%
+
+legal_tokens    : ID { printf("Line %d Token: %d Value: %s",
+                        $1->linenum,
+                        $1->tokenstring,
+                        $1->tokenclass); }
+                | NUMCONST
+                | CHARCONST { printf("Line %d Token: %d Value: %s Input: ",
+                        $1->linenum,
+                        $1->tokenstring,
+                        $1->tokenclass); };
+
+/*
 statementlist : statementlist statement
               | statement
               ;
@@ -35,7 +48,7 @@ exp           : '(' exp ')'
                                 $1->tokenstring); }
               | FALSE  { printf("False on line %d\n", $1->linenum); }
               ;
-
+*/
 %%
 
 int main()
