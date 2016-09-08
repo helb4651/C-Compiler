@@ -48,9 +48,9 @@ tokens      : tokens token
 token       : ID { printf("Line %d Token: ID Value: %s\n",
                     $1->linenum,
                     $1->tokenstring); }
-            | NUMCONST  { printf("Line %d Token: NUMCONST Value: %s  Input: %s\n",
+            | NUMCONST  { printf("Line %d Token: NUMCONST Value: %d  Input: %s\n",
                     $1->linenum,
-                    $1->tokenstring,
+                    atoi($1->tokenstring),
                     $1->tokenstring); }
             | TRUE { printf("Line %d Token: BOOLCONST Value: %d  Input: %s\n",
                     $1->linenum,
