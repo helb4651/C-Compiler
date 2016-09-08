@@ -28,10 +28,21 @@ int setTokenData(int tokenClass) {
 \n                                              { lineno++; }
 [ ]                                             { /*printf("space-ln: %d\n", lineno);*/ }
 [\t]                                            { /*printf("tab-ln: %d\n", lineno);*/ }
-[\/\/].*                                        { /*printf("comment: %s\n", yytext);*/ }
+\/\/.*                                          { /*printf("comment: %s\n", yytext);*/ }
 true                                            { return setTokenData(TRUE); }
 false                                           { return setTokenData(FALSE); }
-record|static|int|bool|char|if|while|return|break|and|or|not|true|false|*|?|\/|(|)  {return setTokenData(KEYWORD); }
+record|static|int|bool|char|if|else|in|while|return|break|and|or|not|true|false|\*|\?|\/|\.  {return setTokenData(KEYWORD); }
+\!\=                                            { return setTokenData(NOTEQ); }
+\*\=                                            { return setTokenData(MULASS); }
+\+\+                                            { return setTokenData(INC); }
+\+\=                                            { return setTokenData(ADDASS); }
+\-\-                                            { return setTokenData(DEC); }
+\-\=                                            { return setTokenData(SUBASS); }
+\/\=                                            { return setTokenData(DIVASS); }
+\<\=                                            { return setTokenData(LESSEQ); }
+\=\=                                            { return setTokenData(EQ); }
+\>\=                                            { return setTokenData(GRTEQ); }
+\(|\)|\+|\,|\-|\:|\;|\<|\=|\>|\[|\]|\%|\{|\}    { return setTokenData(OPS); }
 [a-zA-Z][a-zA-Z|0-9]*                           { /*printf("ID: %s\n", yytext);*/           return setTokenData(ID); }
 [0-9]+                                          { /*printf("NUMCONST: %d\n", yytext[0]);*/  return setTokenData(NUMCONST); }
 '[a-zA-Z0-9"\\\']'|'\\[a-zA-Z0-9\\\'"]'         { /*printf("CHARCONST: %c\n", yytext[0]);*/ return setTokenData(CHARCONST); }

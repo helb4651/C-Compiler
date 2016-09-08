@@ -5,6 +5,7 @@ SRCS = $(BIN).y $(BIN).l
 OBJS = lex.yy.o $(BIN).tab.o
 LIBS = -lfl -lm
 LIBS = -lm
+FILES = $(shell ls)
 
 $(BIN): $(OBJS)
 	$(CC) $(CCFLAGS) $(OBJS) $(LIBS) -o $(BIN)
@@ -24,3 +25,4 @@ clean:
 
 tar:
 	tar -cvf $(BIN).tar $(SRCS) makefile
+

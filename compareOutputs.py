@@ -1,5 +1,4 @@
 
-
 fname = "scannerTest.out"
 
 with open(fname) as f:
@@ -11,6 +10,12 @@ with open("tfile") as f:
     test = f.readlines()
 f.close
 
+
+thefile = open("results.txt", "w")
 for entry in range(len(correct)):
-    if(correct[entry] != test[entry]):
-        print correct[entry] +""+test[entry] + "\n\n"
+    try:
+        if(correct[entry] != test[entry]):
+            print>>thefile, correct[entry] +""+test[entry] + "\n"
+    except:
+        print>>thefile, "Exception comparing outputs!"
+        break
