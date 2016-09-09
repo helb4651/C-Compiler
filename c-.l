@@ -31,7 +31,7 @@ int setTokenData(int tokenClass) {
 \/\/.*                                          { /*printf("comment: %s\n", yytext);*/ }
 true                                            { return setTokenData(TRUE); }
 false                                           { return setTokenData(FALSE); }
-record|static|int|bool|char|if|else|in|while|return|break|and|or|not|true|false|\*|\?|\/|\.  {return setTokenData(KEYWORD); }
+record|static|int|bool|char|if|else|while|return|break|and|or|not|true|false|\*|\?|\/|\.  {return setTokenData(KEYWORD); }
 \!\=                                            { return setTokenData(NOTEQ); }
 \*\=                                            { return setTokenData(MULASS); }
 \+\+                                            { return setTokenData(INC); }

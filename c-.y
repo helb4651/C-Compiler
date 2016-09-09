@@ -93,8 +93,10 @@ token       : ID { printf("Line %d Token: ID Value: %s\n",
             ;
 %%
 
-int main()
+int main(int argc, char **argv)
 {
+    extern FILE *yyin;
+    yyin = fopen(argv[1], "r");
     yyparse();
     return 0;
 }
@@ -114,6 +116,7 @@ char stripper(char* value){
 }
 
 char* toUppercaseString( char* str ){
+
     int i=0;
     while(str[i])
     {
