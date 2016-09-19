@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <getopt.h>
 
+
 extern int yylex();
 char stripper(char* value);
 char* toUppercaseString(char* str);
@@ -34,6 +35,7 @@ void yyerror(char const *msg) {
 %token <tokenData> GRTEQ
 %token <tokenData> OPS
 %define parse.error verbose
+
 
 
 %union {
@@ -115,14 +117,8 @@ int main(int argc, char **argv)
 	while ((c = getopt(argc, argv, "d"))	!= EOF)
 	   switch (c) {
 	   case	'd':
-	      if (bflg) {
-		    errflg++;
-		    printf("Someting\n");
-		    }
-	      else {
-	        printf("Something else\n");
-		    aflg++;
-		    }
+	      yydebug = 1;
+	      printf( "Monkey!\n" );
 	      break;
 	   case	'?':
 	      errflg++;
