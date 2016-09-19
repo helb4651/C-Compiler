@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "scanType.h"
 #include <ctype.h>
+#include <getopt.h>
 
 extern int yylex();
 char stripper(char* value);
@@ -98,7 +99,46 @@ int main(int argc, char **argv)
     extern FILE *yyin;
     yyin = fopen(argv[1], "r");
     yyparse();
+
+    // GET OPT
+
+    int c;
+    extern char *optarg;
+    extern int optind;
+    int aflg = 0;
+    int bflg = 0;
+    int errflg = 0;
+    char *ofile = NULL;
+
+
+
+	while ((c = getopt(argc, argv, "d"))	!= EOF)
+	   switch (c) {
+	   case	'd':
+	      if (bflg) {
+		    errflg++;
+		    printf("Someting\n");
+		    }
+	      else {
+	        printf("Something else\n");
+		    aflg++;
+		    }
+	      break;
+	   case	'?':
+	      errflg++;
+	   }
+	if (errflg) {
+	   (void)fprintf(stderr,
+	      "usage: cmd [-a|-b] [-o <filename>] files...\n");
+	   exit	(2);
+	    }
+	    for	( ; optind < argc; optind++)
+	  (void)printf("%s\n", argv[optind]);
+
+
     return 0;
+
+
 }
 
 char stripper(char* value){
