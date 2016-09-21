@@ -31,9 +31,44 @@ void yyerror(char const *msg) {
 %token <tokenData> SUBASS
 %token <tokenData> DIVASS
 %token <tokenData> LESSEQ
+%token <tokenData> LESS
 %token <tokenData> EQ
+%token <tokenData> EQEQ
 %token <tokenData> GRTEQ
+%token <tokenData> GRT
+%token <tokenData> STAR
+%token <tokenData> MINUS
+%token <tokenData> PLUS
+%token <tokenData> DIVIDE
+%token <tokenData> MOD
+%token <tokenData> QMARK
 %token <tokenData> OPS
+%token <tokenData> RECORD
+%token <tokenData> STATIC
+%token <tokenData> INT
+%token <tokenData> BOOL
+%token <tokenData> CHAR
+%token <tokenData> IF
+%token <tokenData> ELSE
+%token <tokenData> WHILE
+%token <tokenData> RETURN
+%token <tokenData> BREAK
+%token <tokenData> AND
+%token <tokenData> OR
+%token <tokenData> NOT
+%token <tokenData> LPAREN
+%token <tokenData> RPAREN
+%token <tokenData> SEMICOL
+%token <tokenData> NULCHAR
+%token <tokenData> EMPTSTR
+%token <tokenData> LCURLY
+%token <tokenData> RCURLY
+%token <tokenData> LBRACK
+%token <tokenData> RBRACK
+%token <tokenData> COLON
+%token <tokenData> COMMA
+%token <tokenData> DOT
+
 %define parse.error verbose
 
 
@@ -43,6 +78,232 @@ void yyerror(char const *msg) {
 }
 
 %%
+
+
+program             : declarationList
+                    ;
+
+declarationList     : declarationList declaration
+                    | declaration
+                    ;
+
+declaration         : varDeclaration
+                    | funDeclaration
+                    | recDeclaration
+                    ;
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+
+recDeclaration      : RECORD ID LCURLY localDeclarations RCURLY
+                    ;
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+varDeclaration      : typeSpecifier varDeclList SEMICOL
+                    ;
+
+scopedVarDeclaration: scopedTypeSpecifier varDeclList SEMICOL
+                    ;
+
+varDeclList         : varDeclList COMMA varDeclInitialize
+                    | varDeclInitialize
+                    ;
+
+varDecInitialize    : varDeclId
+                    | varDeclId COLON simpleExpression
+                    ;
+
+varDeclId           : ID | ID LBRACK NUMCONST RBRACK
+                    ;
+
+scopedTypeSpecifier : STATIC typeSpecifier
+                    | typeSpecifier
+                    ;
+
+/* TODO: What is RECTYPE supposed to be? */
+typeSpecifier       : returnTypeSpecifier
+                    | RECTYPE
+                    ;
+
+returnTypeSpecifier : INT
+                    | BOOL
+                    | CHAR
+                    ;
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+funDeclaration      : returnTypeSpecifier ID LPAREN params LPAREN statement
+                    | ID LPAREN params LPAREN statement
+                    ;
+
+params              : paramList
+                    | epsilon = empty string????
+                    ;
+
+paramList           : paramIdList SEMICOL paramTypeList
+                    | paramTypeList
+                    ;
+
+paramTypeList       : typeSpecifier paramIdList
+                    ;
+
+paramId             : ID
+                    | ID LBRACK RBRACK
+                    ;
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+statement           : expressionStmt
+                    | compoundStmt
+                    | selectionStmt
+                    | iterationStmt
+                    | returnStmt
+                    | breakStmt
+                    ;
+
+compoundStmt        : LCURLY localDeclarations statementList RCURLY
+                    ;
+
+localDeclarations   : localDeclarations scopedVarDeclaration
+                    | EMPTSTR
+                    ;
+
+
+
+statementList       : statementList statement
+                    | EMPTSTR
+                    ;
+
+expressionStmt      : expression SEMICOL
+                    | SEMICOL
+                    ;
+
+selectionStmt       : if LPAREN simpleExpression LPAREN statement
+                    ;
+
+iterationStmt       : while LPAREN simpleExpression LPAREN statement
+                    ;
+
+returnStmt          : return SEMICOL
+                    | return expression SEMICOL
+                    ;
+
+breakStmt           : break SEMICOL
+
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+
+expression          : mutable EQ  expression
+                    | mutable ADDASS expression
+                    | mutable SUBASS expression
+                    | mutable MULASS expression
+                    | mutable DIVASS expression
+                    | mutable INC expression
+                    | mutable DEC expression
+                    | simpleExpression
+                    ;
+
+simpleExpression    : simpleExpression OR andExpression
+                    | andExpression
+                    ;
+
+
+andExpression       : andExpression AND unaryRelExpression
+                    | unaryRelExpression
+                    ;
+
+
+unaryRelExpression  : NOT unaryRelExpression
+                    | relExpression
+                    ;
+
+relExpression       : sumExpression relop sumExpression
+                    | sumExpression
+                    ;
+
+relop               : LESSEQ
+                    | LESS
+                    | GRT
+                    | GRTEQ
+                    | EQEQ
+                    | NOTEQ
+                    ;
+
+sumExpression       : sumExpression sumop term
+                    | term
+                    ;
+
+sumop               : PLUS
+                    | MINUS
+                    ;
+
+term                : term mulop unaryExpression
+                    | unaryExpression
+                    ;
+
+mulop               : STAR
+                    | DIVIDE
+                    | MOD
+                    ;
+
+unaryExpression     : unaryop unaryExpression
+                    | factor
+                    ;
+
+unaryop             : MINUS
+                    | STAR
+                    | QMARK
+                    ;
+
+factor              : immutable
+                    | mutable
+                    ;
+
+mutable             : ID
+                    | ID LBRACK expression RBRACK
+                    | mutable DOT ID
+                    ;
+
+immutable           : LPAREN expression RPAREN
+                    | call
+                    | constant
+                    ;
+
+call                : ID LPAREN args RPAREN
+                    ;
+
+args                : argList
+                    | EMPTSTR
+                    ;
+
+argList             : argList COMMA expression
+                    | expression
+                    ;
+
+constant            : NUMCONSTANT
+                    | CHARCONST
+                    | TRUE
+                    | FALSE
+                    ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 tokens      : tokens token
             | token
