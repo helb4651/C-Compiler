@@ -44,8 +44,6 @@ or                                              { return setTokenData(OR); }
 not                                             { return setTokenData(NOT); }
 true                                            { return setTokenData(TRUE); }
 false                                           { return setTokenData(FALSE); }
-
-record|static|int|bool|char|if|else|while|return|break|and|or|not|true|false|\*|\?|\/|\.  {return setTokenData(KEYWORD); }
 \!\=                                            { return setTokenData(NOTEQ); }
 \*\=                                            { return setTokenData(MULASS); }
 \+\+                                            { return setTokenData(INC); }
@@ -76,11 +74,10 @@ record|static|int|bool|char|if|else|while|return|break|and|or|not|true|false|\*|
 \,                                              { return setTokenData(COMMA); }
 \.                                              { return setTokenData(DOT); }
 ‘\0’                                            { return setTokenData(NULCHAR); }
-\(|\)|\+|\,|\-|\:|\;|\<|\=|\>|\[|\]|\%|\{|\}    { return setTokenData(OPS); }
 [a-zA-Z][a-zA-Z|0-9]*                           { /*printf("ID: %s\n", yytext);*/           return setTokenData(ID); }
 [0-9]+                                          { /*printf("NUMCONST: %d\n", yytext[0]);*/  return setTokenData(NUMCONST); }
 '[a-zA-Z0-9"\\\']'|'\\[a-zA-Z0-9\\\'"]'         { /*printf("CHARCONST: %c\n", yytext[0]);*/ return setTokenData(CHARCONST); }
 
 ""/.                                            { return setTokenData(EMPTSTR); }
-.                               { printf("ERROR(%d): Invalid or misplaced input character: \"%c\"\n", lineno, yytext[0]);}
+.                                               { printf("ERROR(%d): Invalid or misplaced input character: \"%c\"\n", lineno, yytext[0]);}
 %%

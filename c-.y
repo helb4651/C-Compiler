@@ -68,6 +68,7 @@ void yyerror(char const *msg) {
 %token <tokenData> COLON
 %token <tokenData> COMMA
 %token <tokenData> DOT
+%token <tokenData> RECTYPE
 
 %define parse.error verbose
 
@@ -110,7 +111,7 @@ varDeclList         : varDeclList COMMA varDeclInitialize
                     | varDeclInitialize
                     ;
 
-varDecInitialize    : varDeclId
+varDeclInitialize    : varDeclId
                     | varDeclId COLON simpleExpression
                     ;
 
@@ -138,15 +139,21 @@ funDeclaration      : returnTypeSpecifier ID LPAREN params LPAREN statement
                     ;
 
 params              : paramList
-                    | epsilon = empty string????
+                    | EMPTSTR
                     ;
 
-paramList           : paramIdList SEMICOL paramTypeList
+paramList           : paramList SEMICOL paramTypeList
                     | paramTypeList
                     ;
 
 paramTypeList       : typeSpecifier paramIdList
                     ;
+
+
+paramIdList         : paramIdList COMMA paramId
+                    | paramId
+                    ;
+
 
 paramId             : ID
                     | ID LBRACK RBRACK
@@ -179,17 +186,17 @@ expressionStmt      : expression SEMICOL
                     | SEMICOL
                     ;
 
-selectionStmt       : if LPAREN simpleExpression LPAREN statement
+selectionStmt       : IF LPAREN simpleExpression LPAREN statement
                     ;
 
-iterationStmt       : while LPAREN simpleExpression LPAREN statement
+iterationStmt       : WHILE LPAREN simpleExpression LPAREN statement
                     ;
 
-returnStmt          : return SEMICOL
-                    | return expression SEMICOL
+returnStmt          : RETURN SEMICOL
+                    | RETURN expression SEMICOL
                     ;
 
-breakStmt           : break SEMICOL
+breakStmt           : BREAK SEMICOL
 
 
 /* ------------------------------------------------------------------------------------------------------------------ */
@@ -282,7 +289,7 @@ argList             : argList COMMA expression
                     | expression
                     ;
 
-constant            : NUMCONSTANT
+constant            : NUMCONST
                     | CHARCONST
                     | TRUE
                     | FALSE
@@ -291,20 +298,7 @@ constant            : NUMCONSTANT
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* -------------------------------- Old Stuff -----------------------------------------------------------
 tokens      : tokens token
             | token
             ;
@@ -355,6 +349,8 @@ token       : ID { printf("Line %d Token: ID Value: %s\n",
                     $1->linenum,
                     $1->tokenstring); }
             ;
+
+-------------------------------------------------------------------------------------------------------- */
 %%
 
 int main(int argc, char **argv)
