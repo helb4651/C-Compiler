@@ -1,6 +1,6 @@
 BIN  = c-
 CC   = g++
-CFLAGS = -DCPLUSPLUS -g  # for use with C++ if file ext is .c
+CFLAGS = -DCPLUSPLUS -g  -x c++ # for use with C++ if file ext is .c
 SRCS = $(BIN).y $(BIN).l
 OBJS = lex.yy.o $(BIN).tab.o
 LIBS = -lfl -lm

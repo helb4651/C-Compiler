@@ -4,6 +4,7 @@
 #include "scanType.h"
 #include <ctype.h>
 #include <getopt.h>
+#define YYDEBUG 1
 
 
 extern int yylex();
@@ -80,87 +81,101 @@ void yyerror(char const *msg) {
 
 %%
 
-
-program             : declarationList
+/* 1 */
+program             : declarationList { printf("1\n"); }
                     ;
-
-declarationList     : declarationList declaration
-                    | declaration
+/* 2 */
+declarationList     : declarationList declaration  { printf("2a\n"); }
+                    | declaration                  { printf("2b\n"); }
                     ;
-
-declaration         : varDeclaration
-                    | funDeclaration
-                    | recDeclaration
-                    ;
-
-/* ------------------------------------------------------------------------------------------------------------------ */
-
-
-recDeclaration      : RECORD ID LCURLY localDeclarations RCURLY
+/* 3 */
+declaration         : varDeclaration { printf("3a\n"); }
+                    | funDeclaration { printf("3b\n"); }
+                    | recDeclaration { printf("3c\n"); }
                     ;
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
-varDeclaration      : typeSpecifier varDeclList SEMICOL
-                    ;
-
-scopedVarDeclaration: scopedTypeSpecifier varDeclList SEMICOL
-                    ;
-
-varDeclList         : varDeclList COMMA varDeclInitialize
-                    | varDeclInitialize
-                    ;
-
-varDeclInitialize    : varDeclId
-                    | varDeclId COLON simpleExpression
-                    ;
-
-varDeclId           : ID | ID LBRACK NUMCONST RBRACK
-                    ;
-
-scopedTypeSpecifier : STATIC typeSpecifier
-                    | typeSpecifier
-                    ;
-
-/* TODO: What is RECTYPE supposed to be? */
-typeSpecifier       : returnTypeSpecifier
-                    | RECTYPE
-                    ;
-
-returnTypeSpecifier : INT
-                    | BOOL
-                    | CHAR
+/* 4 */
+recDeclaration      : RECORD ID LCURLY localDeclarations RCURLY { printf("4\n"); }
                     ;
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
-funDeclaration      : returnTypeSpecifier ID LPAREN params LPAREN statement
-                    | ID LPAREN params LPAREN statement
+/* 5 */
+varDeclaration      : typeSpecifier varDeclList SEMICOL { printf("5\n"); }
                     ;
 
-params              : paramList
-                    | EMPTSTR
+/* 6 */
+scopedVarDeclaration: scopedTypeSpecifier varDeclList SEMICOL  { printf("6\n"); }
                     ;
 
+/* 7 */
+varDeclList         : varDeclList COMMA varDeclInitialize { printf("7a\n"); }
+                    | varDeclInitialize { printf("7b\n"); }
+                    ;
+
+/* 8 */
+varDeclInitialize   : varDeclId                        { printf("8a\n"); }
+                    | varDeclId COLON simpleExpression { printf("8b\n"); }
+                    ;
+
+/* 9 */
+varDeclId           : ID                         { printf("9a\n"); }
+                    | ID LBRACK NUMCONST RBRACK  { printf("9b\n"); }
+                    ;
+
+/* 10 */
+scopedTypeSpecifier : STATIC typeSpecifier  { printf("10a\n"); }
+                    | typeSpecifier         { printf("10b\n"); }
+                    ;
+
+/* 11 TODO: What is RECTYPE supposed to be? */
+
+typeSpecifier       : returnTypeSpecifier   { printf("11a\n"); }
+                    | RECTYPE               { printf("11b\n"); }
+                    ;
+
+/* 12 */
+returnTypeSpecifier : INT                   { printf("12a\n"); }
+                    | BOOL                  { printf("12b\n"); }
+                    | CHAR                  { printf("12c\n"); }
+                    ;
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+/* 13 */
+funDeclaration      : typeSpecifier ID LPAREN params RPAREN statement   { printf("13a\n"); }
+                    | ID LPAREN params RPAREN statement                 { printf("13b\n"); }
+                    ;
+
+/* 14 */
+params              : paramList     { printf("14a\n"); }
+                    | /* EMPTSTR */       { printf("14b\n"); }
+                    ;
+
+/* 15 */
 paramList           : paramList SEMICOL paramTypeList
                     | paramTypeList
                     ;
 
+/* 16 */
 paramTypeList       : typeSpecifier paramIdList
                     ;
 
-
+/* 17 */
 paramIdList         : paramIdList COMMA paramId
                     | paramId
                     ;
 
-
+/* 18 */
 paramId             : ID
                     | ID LBRACK RBRACK
                     ;
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
+/* 19 */
 statement           : expressionStmt
                     | compoundStmt
                     | selectionStmt
@@ -169,39 +184,48 @@ statement           : expressionStmt
                     | breakStmt
                     ;
 
+/* 20 */
 compoundStmt        : LCURLY localDeclarations statementList RCURLY
                     ;
 
+/* 21 */
 localDeclarations   : localDeclarations scopedVarDeclaration
-                    | EMPTSTR
+                    | /* EMPTSTR */
                     ;
 
 
-
+/* 22 */
 statementList       : statementList statement
-                    | EMPTSTR
+                    | /* EMPTSTR */
                     ;
 
+/* 23 */
 expressionStmt      : expression SEMICOL
                     | SEMICOL
                     ;
 
-selectionStmt       : IF LPAREN simpleExpression LPAREN statement
+/* 24 */
+selectionStmt       : IF LPAREN simpleExpression RPAREN statement
+                    | IF LPAREN simpleExpression RPAREN statement ELSE statement
                     ;
 
-iterationStmt       : WHILE LPAREN simpleExpression LPAREN statement
+/* 25 */
+iterationStmt       : WHILE LPAREN simpleExpression RPAREN statement
                     ;
 
+
+/* 26 */
 returnStmt          : RETURN SEMICOL
                     | RETURN expression SEMICOL
                     ;
 
+/* 27 */
 breakStmt           : BREAK SEMICOL
 
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
-
+/* 28 */
 expression          : mutable EQ  expression
                     | mutable ADDASS expression
                     | mutable SUBASS expression
@@ -212,24 +236,29 @@ expression          : mutable EQ  expression
                     | simpleExpression
                     ;
 
+/* 29 */
 simpleExpression    : simpleExpression OR andExpression
                     | andExpression
                     ;
 
 
+/* 30 */
 andExpression       : andExpression AND unaryRelExpression
                     | unaryRelExpression
                     ;
 
 
+/* 31 */
 unaryRelExpression  : NOT unaryRelExpression
                     | relExpression
                     ;
 
+/* 32 */
 relExpression       : sumExpression relop sumExpression
                     | sumExpression
                     ;
 
+/* 33 */
 relop               : LESSEQ
                     | LESS
                     | GRT
@@ -238,57 +267,70 @@ relop               : LESSEQ
                     | NOTEQ
                     ;
 
+/* 34 */
 sumExpression       : sumExpression sumop term
                     | term
                     ;
 
+/* 35 */
 sumop               : PLUS
                     | MINUS
                     ;
 
+/* 36 */
 term                : term mulop unaryExpression
                     | unaryExpression
                     ;
 
+/* 37 */
 mulop               : STAR
                     | DIVIDE
                     | MOD
                     ;
 
+/* 38 */
 unaryExpression     : unaryop unaryExpression
                     | factor
                     ;
 
+/* 39 */
 unaryop             : MINUS
                     | STAR
                     | QMARK
                     ;
 
+/* 40 */
 factor              : immutable
                     | mutable
                     ;
 
+/* 41 */
 mutable             : ID
-                    | ID LBRACK expression RBRACK
+                    | mutable LBRACK expression RBRACK
                     | mutable DOT ID
                     ;
 
+/* 42 */
 immutable           : LPAREN expression RPAREN
                     | call
                     | constant
                     ;
 
+/* 43 */
 call                : ID LPAREN args RPAREN
                     ;
 
+/* 44 */
 args                : argList
-                    | EMPTSTR
+                    | /* EMPTSTR */
                     ;
 
+/* 45 */
 argList             : argList COMMA expression
                     | expression
                     ;
 
+/* 46 */
 constant            : NUMCONST
                     | CHARCONST
                     | TRUE
@@ -375,7 +417,7 @@ int main(int argc, char **argv)
 	   switch (c) {
 	   case	'd':
 	      yydebug = 1;
-	      printf( "Monkey!\n" );
+	      printf( "YYDEBUG Enabled!\n" );
 	      break;
 	   case	'?':
 	      errflg++;
