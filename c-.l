@@ -73,6 +73,7 @@ false                                           { printf("--- %s\n", yytext); re
 \:                                              { printf("--- %s\n", yytext); return setTokenData(COLON); }
 \,                                              { printf("--- %s\n", yytext); return setTokenData(COMMA); }
 \.                                              { printf("--- %s\n", yytext); return setTokenData(DOT); }
+\(|\)|\+|\,|\-|\:|\;|\<|\=|\>|\[|\]|\%|\{|\}    { printf("STUFF: %s\n", yytext); return yytext; }
 ‘\0’                                            { printf("--- %s\n", yytext); return setTokenData(NULCHAR); }
 [a-zA-Z][a-zA-Z|0-9]*                           { printf("ID: %s\n", yytext); return setTokenData(ID); }
 [0-9]+                                          { /*printf("NUMCONST: %d\n", yytext[0]);*/  printf("--- %s\n", yytext); return setTokenData(NUMCONST); }
