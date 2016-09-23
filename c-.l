@@ -63,17 +63,7 @@ false                                           { printf("--- %s\n", yytext); re
 \+                                              { printf("--- %s\n", yytext); return setTokenData(PLUS); }
 \%                                              { printf("--- %s\n", yytext); return setTokenData(MOD); }
 \?                                              { printf("--- %s\n", yytext); return setTokenData(QMARK); }
-\(                                              { printf("--- %s\n", yytext); return setTokenData(LPAREN); }
-\)                                              { printf("--- %s\n", yytext); return setTokenData(RPAREN); }
-\;                                              { printf("--- %s\n", yytext); return setTokenData(SEMICOL); }
-\{                                              { printf("--- %s\n", yytext); return setTokenData(LCURLY); }
-\}                                              { printf("--- %s\n", yytext); return setTokenData(RCURLY); }
-\[                                              { printf("--- %s\n", yytext); return setTokenData(LBRACK); }
-\]                                              { printf("--- %s\n", yytext); return setTokenData(RBRACK); }
-\:                                              { printf("--- %s\n", yytext); return setTokenData(COLON); }
-\,                                              { printf("--- %s\n", yytext); return setTokenData(COMMA); }
-\.                                              { printf("--- %s\n", yytext); return setTokenData(DOT); }
-\(|\)|\+|\,|\-|\:|\;|\<|\=|\>|\[|\]|\%|\{|\}    { printf("STUFF: %s\n", yytext); return yytext; }
+\(|\)|\:|\;|\[|\]|\{|\}|\,|\.                   { printf("STUFF: %s\n", yytext); return yytext[0]; }
 ‘\0’                                            { printf("--- %s\n", yytext); return setTokenData(NULCHAR); }
 [a-zA-Z][a-zA-Z|0-9]*                           { printf("ID: %s\n", yytext); return setTokenData(ID); }
 [0-9]+                                          { /*printf("NUMCONST: %d\n", yytext[0]);*/  printf("--- %s\n", yytext); return setTokenData(NUMCONST); }

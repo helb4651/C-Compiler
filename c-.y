@@ -57,18 +57,8 @@ void yyerror(char const *msg) {
 %token <tokenData> AND
 %token <tokenData> OR
 %token <tokenData> NOT
-%token <tokenData> LPAREN
-%token <tokenData> RPAREN
-%token <tokenData> SEMICOL
 %token <tokenData> NULCHAR
 %token <tokenData> EMPTSTR
-%token <tokenData> LCURLY
-%token <tokenData> RCURLY
-%token <tokenData> LBRACK
-%token <tokenData> RBRACK
-%token <tokenData> COLON
-%token <tokenData> COMMA
-%token <tokenData> DOT
 %token <tokenData> RECTYPE
 
 %define parse.error verbose
@@ -97,32 +87,32 @@ declaration         : varDeclaration { printf("3a\n"); }
 /* ------------------------------------------------------------------------------------------------------------------ */
 
 /* 4 */
-recDeclaration      : RECORD ID LCURLY localDeclarations RCURLY { printf("4\n"); }
+recDeclaration      : RECORD ID '{' localDeclarations '}' { printf("4\n"); }
                     ;
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
 /* 5 */
-varDeclaration      : typeSpecifier varDeclList SEMICOL { printf("5\n"); }
+varDeclaration      : typeSpecifier varDeclList ';' { printf("5\n"); }
                     ;
 
 /* 6 */
-scopedVarDeclaration: scopedTypeSpecifier varDeclList SEMICOL  { printf("6\n"); }
+scopedVarDeclaration: scopedTypeSpecifier varDeclList ';'  { printf("6\n"); }
                     ;
 
 /* 7 */
-varDeclList         : varDeclList COMMA varDeclInitialize { printf("7a\n"); }
+varDeclList         : varDeclList ',' varDeclInitialize { printf("7a\n"); }
                     | varDeclInitialize { printf("7b\n"); }
                     ;
 
 /* 8 */
 varDeclInitialize   : varDeclId                        { printf("8a\n"); }
-                    | varDeclId COLON simpleExpression { printf("8b\n"); }
+                    | varDeclId ':' simpleExpression { printf("8b\n"); }
                     ;
 
 /* 9 */
 varDeclId           : ID                         { printf("9a\n"); }
-                    | ID LBRACK NUMCONST RBRACK  { printf("9b\n"); }
+                    | ID '[' NUMCONST ']'  { printf("9b\n"); }
                     ;
 
 /* 10 */
@@ -131,6 +121,10 @@ scopedTypeSpecifier : STATIC typeSpecifier  { printf("10a\n"); }
                     ;
 
 /* 11 TODO: What is RECTYPE supposed to be? */
+/* Look in everything06 for the record Point {....}
+   Put a if statement lookup in the scanner
+   Bison will ask the scanner if it's a rectype or ID
+*/
 
 typeSpecifier       : returnTypeSpecifier   { printf("11a\n"); }
                     | RECTYPE               { printf("11b\n"); }
@@ -145,8 +139,8 @@ returnTypeSpecifier : INT                   { printf("12a\n"); }
 /* ------------------------------------------------------------------------------------------------------------------ */
 
 /* 13 */
-funDeclaration      : typeSpecifier ID LPAREN params RPAREN statement   { printf("13a\n"); }
-                    | ID LPAREN params RPAREN statement                 { printf("13b\n"); }
+funDeclaration      : typeSpecifier ID '(' params ')' statement   { printf("13a\n"); }
+                    | ID '(' params ')' statement                 { printf("13b\n"); }
                     ;
 
 /* 14 */
@@ -155,7 +149,7 @@ params              : paramList     { printf("14a\n"); }
                     ;
 
 /* 15 */
-paramList           : paramList SEMICOL paramTypeList
+paramList           : paramList ';' paramTypeList
                     | paramTypeList
                     ;
 
@@ -164,18 +158,19 @@ paramTypeList       : typeSpecifier paramIdList
                     ;
 
 /* 17 */
-paramIdList         : paramIdList COMMA paramId
+paramIdList         : paramIdList ',' paramId
                     | paramId
                     ;
 
 /* 18 */
 paramId             : ID
-                    | ID LBRACK RBRACK
+                    | ID '[' ']'
                     ;
 
 /* ------------------------------------------------------------------------------------------------------------------ */
 
 /* 19 */
+/*
 statement           : expressionStmt
                     | compoundStmt
                     | selectionStmt
@@ -183,9 +178,34 @@ statement           : expressionStmt
                     | returnStmt
                     | breakStmt
                     ;
+*/
+
+statement           : unmatched
+                    | matched
+                    ;
+
+matched             : matched_selection
+                    | expressionStmt
+                    | compoundStmt
+                    | matched_iteration
+                    | returnStmt
+                    | breakStmt
+                    ;
+
+unmatched           : unmatched_selection
+                    | unmatched_iteration
+                    ;
+
+
+matched_iteration   : WHILE '(' simpleExpression ')' matched
+                    ;
+
+unmatched_iteration : WHILE '(' simpleExpression ')' unmatched
+                    ;
+
 
 /* 20 */
-compoundStmt        : LCURLY localDeclarations statementList RCURLY
+compoundStmt        : '{' localDeclarations statementList '}'
                     ;
 
 /* 21 */
@@ -200,27 +220,38 @@ statementList       : statementList statement
                     ;
 
 /* 23 */
-expressionStmt      : expression SEMICOL
-                    | SEMICOL
+expressionStmt      : expression ';'
+                    | ';'
                     ;
 
 /* 24 */
-selectionStmt       : IF LPAREN simpleExpression RPAREN statement
-                    | IF LPAREN simpleExpression RPAREN statement ELSE statement
+/*
+selectionStmt       : IF '(' simpleExpression ')' statement
+                    | IF '(' simpleExpression ')' statement ELSE statement
                     ;
+*/
+
+matched_selection   : IF '(' simpleExpression ')' matched ELSE matched
+                    ;
+
+unmatched_selection : IF '(' simpleExpression ')' matched ELSE unmatched
+                    | IF '(' simpleExpression ')' statement
+                    ;
+
 
 /* 25 */
-iterationStmt       : WHILE LPAREN simpleExpression RPAREN statement
+/*
+iterationStmt       : WHILE '(' simpleExpression ')' statement
                     ;
-
+*/
 
 /* 26 */
-returnStmt          : RETURN SEMICOL
-                    | RETURN expression SEMICOL
+returnStmt          : RETURN ';'
+                    | RETURN expression ';'
                     ;
 
 /* 27 */
-breakStmt           : BREAK SEMICOL
+breakStmt           : BREAK ';'
 
 
 /* ------------------------------------------------------------------------------------------------------------------ */
@@ -306,18 +337,18 @@ factor              : immutable
 
 /* 41 */
 mutable             : ID
-                    | mutable LBRACK expression RBRACK
-                    | mutable DOT ID
+                    | mutable '[' expression ']'
+                    | mutable '.' ID
                     ;
 
 /* 42 */
-immutable           : LPAREN expression RPAREN
+immutable           : '(' expression ')'
                     | call
                     | constant
                     ;
 
 /* 43 */
-call                : ID LPAREN args RPAREN
+call                : ID '(' args ')'
                     ;
 
 /* 44 */
@@ -326,7 +357,7 @@ args                : argList
                     ;
 
 /* 45 */
-argList             : argList COMMA expression
+argList             : argList ',' expression
                     | expression
                     ;
 
