@@ -95,18 +95,20 @@ void printTree(TreeNode *tree, int sibCount) {
                     break;
                 case VarK:
                     if(t -> isArray == true) {
-                        printf("Var %s is array of ", t -> attr.name);
+                        printf("Var %s is array of ", t -> attr.name); // TODO:
                     } else {
                         printf("Var %s of ", t -> attr.name);
                     }
                     break;
                 case ParamK:
                     if(t -> isArray == true) {
-                        printf("Param %s is array of ", t -> attr.name);
+                        printf("Param %s is array of ", t -> attr.name); // TODO:
                     } else {
                         printf("Param %s of ", t -> attr.name);
                     }
                     break;
+                case RecordK:
+                      printf("Record %s  ", t -> attr.name);
                 default:
                     break;
             }
@@ -122,6 +124,9 @@ void printTree(TreeNode *tree, int sibCount) {
                     break;
                 case Char:
                     printf("type char ");
+                    break;
+                case Record:
+                    printf("type record ");
                     break;
                 default:
                     break;

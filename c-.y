@@ -140,10 +140,13 @@ declaration         : varDeclaration { $$ = $1; }
 
 /* 4 */
 recDeclaration      : RECORD ID '{' localDeclarations '}' {
-              // printf("Print symbol table.\n");
-              st.insert( $2.rtxt, (char *)"record");
-              // st.insert("bravo", (char *)"bat");
-              //st.print(pointerPrintStr);
+                     st.insert( $2.rtxt, (char *)"record"); // add to record symbol table
+
+                     $$ = newDeclNode(RecordK);
+                     $$->declType = Record;
+                     $$->attr.name = $2.value.sval;
+                     $$->child[0] = $4;
+                     $$->lineno = $3.lineno;
 
                       }
                     ;

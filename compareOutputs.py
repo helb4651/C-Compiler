@@ -1,5 +1,5 @@
 
-fname = "TestFiles/a2/whileif.out"
+fname = "TestFiles/a2/everything06.out"
 
 with open(fname) as f:
     correct = f.readlines()

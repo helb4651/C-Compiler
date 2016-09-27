@@ -20,7 +20,7 @@ extern SymbolTable st;
 
 typedef int TokenType;
 typedef enum {DeclK, StmtK, ExprK} NodeKind;
-typedef enum {FuncK, VarK, ParamK} DeclKind;
+typedef enum {FuncK, VarK, ParamK, RecordK} DeclKind;
 typedef enum {IfK, ForK, WhileK, CompK, ReturnK, BreakK} StmtKind;
 typedef enum {ConstK, IdK, OpK, AssignK, SimpK, CallK} ExprKind;
 
