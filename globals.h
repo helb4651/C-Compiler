@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include "symbolTable.h"
 
 
 
@@ -13,6 +14,9 @@
 #define MAXRESERVED 8
 
 extern int yylineno;
+
+extern SymbolTable st;
+
 
 typedef int TokenType;
 typedef enum {DeclK, StmtK, ExprK} NodeKind;

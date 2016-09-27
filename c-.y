@@ -14,7 +14,8 @@
 extern int yylex();
 extern FILE *yyin;
 static TreeNode *syntaxTree;
-static SymbolTable st;
+SymbolTable st;
+// static Scope st("global");
 
 void yyerror(char const *msg) {
     printf("ERROR(): %s\n", msg);
@@ -140,27 +141,10 @@ declaration         : varDeclaration { $$ = $1; }
 /* 4 */
 recDeclaration      : RECORD ID '{' localDeclarations '}' {
               // printf("Print symbol table.\n");
-              // st.insert( $2.rtxt, (char *)"record");
+              st.insert( $2.rtxt, (char *)"record");
               // st.insert("bravo", (char *)"bat");
-              // st.print(pointerPrintStr);
+              //st.print(pointerPrintStr);
 
-
-
-
-              // printf("Print symbol table.\n");
-              // st.print(pointerPrintStr);
-              st.insert("alfa", (char *)"ant");
-              // st.insert("bravo", (char *)"bat");
-              // st.insert("charlie", (char *)"cob");
-              //
-              // st.enter("First");
-              // st.insert("charlie", (char *)"cow");
-              // st.enter((std::string )"Second");
-              // st.insert("delta", (char *)"dog");
-              // st.insertGlobal("echo", (char *)"elk");
-              //
-              // printf("Print symbol table.\n");
-              // st.print(pointerPrintStr);
                       }
                     ;
 

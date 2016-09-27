@@ -12,13 +12,13 @@ c-.l CS445 Cody Helbling
 #include "c-.tab.h"
 #include <string.h>
 
-SymbolTable st;
+
 
 
 void init() {
   yylval.token.lineno = yylineno;
   yylval.token.rtxt = strdup(yytext);
-  printf("FLEX: %s\n", yytext);
+  //printf("FLEX: %s\n", yytext);
 }
 
 void init(char* sval) {
@@ -129,8 +129,29 @@ false                                           { init(0);              return B
 \(|\)|\:|\;|\[|\]|\{|\}|\,|\.|\'                { init(yytext[0]); return yytext[0]; }
 ‘\0’                                            { init(strdup(yytext)); return NULCHAR; }
 [a-zA-Z][a-zA-Z|0-9]*                           { init(strdup(yytext));
-  st.print(pointerPrintStr);
-                                                  return ID; }
+
+                                                std::string words[] = {strdup(yytext)};
+                                                int wordsLen = 1;
+                                                //printf("\nGeneral Lookup FLEX\n");
+                                                for (int i=0; i<wordsLen; i++) {
+                                                    void *data;
+
+                                                    if ((data = st.lookup(words[i]))==NULL){
+                                                      //printf("%s: %s\n", words[i].c_str(), (char *)"NULL");
+                                                      return ID;
+                                                    }
+                                                    else{
+                                                      return RECTYPE;
+                                                       //printf("%s: %s\n", words[i].c_str(), (char *)data);
+                                                      }
+                                                }
+
+printf("\n\n\n");
+
+
+                                                    if ((st.lookup(strdup(yytext))==NULL)) return ID;
+                                                    else return RECORD;
+                                                }
 [0-9]+                                          { init(atoi(yytext)); return NUMCONST; }
 '((\\\')|[^\'\n])*\'                            { init(escstr(yytext)[0]); return CHARCONST; }
 .                                               { printf("ERROR(%d): Invalid or misplaced input character: \"%c\"\n", lineno, yytext[0]);}

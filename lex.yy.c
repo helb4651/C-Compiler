@@ -559,13 +559,13 @@ c-.l CS445 Cody Helbling
 #include "c-.tab.h"
 #include <string.h>
 
-SymbolTable st;
+
 
 
 void init() {
   yylval.token.lineno = yylineno;
   yylval.token.rtxt = strdup(yytext);
-  printf("FLEX: %s\n", yytext);
+  //printf("FLEX: %s\n", yytext);
 }
 
 void init(char* sval) {
@@ -1111,30 +1111,51 @@ case 41:
 YY_RULE_SETUP
 #line 131 "c-.l"
 { init(strdup(yytext));
-  st.print(pointerPrintStr);
-                                                  return ID; }
+
+                                                std::string words[] = {strdup(yytext)};
+                                                int wordsLen = 1;
+                                                //printf("\nGeneral Lookup FLEX\n");
+                                                for (int i=0; i<wordsLen; i++) {
+                                                    void *data;
+
+                                                    if ((data = st.lookup(words[i]))==NULL){
+                                                      //printf("%s: %s\n", words[i].c_str(), (char *)"NULL");
+                                                      return ID;
+                                                    }
+                                                    else{
+                                                      return RECTYPE;
+                                                       //printf("%s: %s\n", words[i].c_str(), (char *)data);
+                                                      }
+                                                }
+
+printf("\n\n\n");
+
+
+                                                    if ((st.lookup(strdup(yytext))==NULL)) return ID;
+                                                    else return RECORD;
+                                                }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 134 "c-.l"
+#line 155 "c-.l"
 { init(atoi(yytext)); return NUMCONST; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 135 "c-.l"
+#line 156 "c-.l"
 { init(escstr(yytext)[0]); return CHARCONST; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 136 "c-.l"
+#line 157 "c-.l"
 { printf("ERROR(%d): Invalid or misplaced input character: \"%c\"\n", lineno, yytext[0]);}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 137 "c-.l"
+#line 158 "c-.l"
 ECHO;
 	YY_BREAK
-#line 1138 "lex.yy.c"
+#line 1159 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2143,7 +2164,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 137 "c-.l"
+#line 158 "c-.l"
 
 
 
