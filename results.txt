@@ -1,0 +1,1392 @@
+Func main returns type int [line: 2]
+FLEX: int
+
+
+!   Child: 1  Compound [line: 3]
+FLEX: gromit
+
+
+!   !   Child: 0  Var x of type int [line: 4]
+FLEX: ,
+
+
+!   !   Sibling: 0  Var y of type int [line: 5]
+FLEX: shaun
+
+
+!   !   Sibling: 1  Var z of type int [line: 6]
+FLEX: [
+
+
+!   !   Sibling: 2  Var a of type bool [line: 7]
+FLEX: 77
+
+
+!   !   Sibling: 3  Var b of type bool [line: 7]
+FLEX: ]
+
+
+!   !   Sibling: 4  Var c of type bool [line: 7]
+FLEX: ;
+
+
+!   !   Sibling: 5  Var d of type bool [line: 7]
+FLEX: wallace
+
+
+!   !   Sibling: 6  Var e of type bool [line: 7]
+FLEX: (
+
+
+!   !   Child: 1  If [line: 9]
+FLEX: int
+
+
+!   !   !   Child: 0  Op: > [line: 9]
+FLEX: wrong
+
+
+!   !   !   !   Child: 0  Id: x [line: 9]
+FLEX: ,
+
+
+!   !   !   !   Child: 1  Const: 2 [line: 9]
+FLEX: trousers
+
+
+!   !   Sibling: 0  While [line: 10]
+FLEX: ,
+
+
+!   !   !   Child: 0  Id: b [line: 10]
+FLEX: sheep
+
+
+!   !   Sibling: 1  If [line: 12]
+FLEX: )
+
+
+!   !   !   Child: 0  Op: > [line: 12]
+FLEX: {
+
+
+!   !   !   !   Child: 0  Id: x [line: 12]
+FLEX: bool
+
+
+!   !   !   !   Child: 1  Const: 1 [line: 12]
+FLEX: close
+
+
+!   !   !   Child: 1  Assign: = [line: 12]
+FLEX: :
+
+
+!   !   !   !   Child: 0  Id: z [line: 12]
+FLEX: true
+
+
+!   !   !   !   Child: 1  Const: 1 [line: 12]
+FLEX: ,
+
+
+!   !   Sibling: 2  If [line: 13]
+FLEX: shave
+
+
+!   !   !   Child: 0  Op: > [line: 13]
+FLEX: :
+
+
+!   !   !   !   Child: 0  Id: x [line: 13]
+FLEX: false
+
+
+!   !   !   !   Child: 1  Const: 2 [line: 13]
+FLEX: ;
+
+
+!   !   !   Child: 1  Assign: = [line: 13]
+FLEX: 1729
+
+
+!   !   !   !   Child: 0  Id: z [line: 13]
+FLEX: ;
+
+
+!   !   !   !   Child: 1  Const: 1 [line: 13]
+FLEX: close
+
+
+!   !   !   Child: 2  Assign: = [line: 13]
+FLEX: ;
+
+
+!   !   !   !   Child: 0  Id: z [line: 13]
+FLEX: 11
+
+
+!   !   !   !   Child: 1  Const: 2 [line: 13]
+FLEX: *
+
+
+!   !   Sibling: 3  If [line: 14]
+FLEX: 22
+
+
+!   !   !   Child: 0  Op: > [line: 14]
+FLEX: +
+
+
+!   !   !   !   Child: 0  Id: x [line: 14]
+FLEX: 33
+
+
+!   !   !   !   Child: 1  Const: 3 [line: 14]
+FLEX: *
+
+
+!   !   !   Child: 1  If [line: 14]
+FLEX: 44
+
+
+!   !   !   !   Child: 0  Op: > [line: 14]
+FLEX: ;
+
+
+!   !   !   !   !   Child: 0  Id: y [line: 14]
+FLEX: close
+
+
+!   !   !   !   !   Child: 1  Const: 4 [line: 14]
+FLEX: =
+
+
+!   !   !   !   Child: 1  Assign: = [line: 14]
+FLEX: shave
+
+
+!   !   !   !   !   Child: 0  Id: z [line: 14]
+FLEX: ;
+
+
+!   !   !   !   !   Child: 1  Const: 3 [line: 14]
+FLEX: wrong
+
+
+!   !   Sibling: 4  If [line: 15]
+FLEX: =
+
+
+!   !   !   Child: 0  Op: > [line: 15]
+FLEX: trousers
+
+
+!   !   !   !   Child: 0  Id: x [line: 15]
+FLEX: %
+
+
+!   !   !   !   Child: 1  Const: 5 [line: 15]
+FLEX: (
+
+
+!   !   !   Child: 1  If [line: 15]
+FLEX: 666
+
+
+!   !   !   !   Child: 0  Op: > [line: 15]
+FLEX: /
+
+
+!   !   !   !   !   Child: 0  Id: y [line: 15]
+FLEX: wrong
+
+
+!   !   !   !   !   Child: 1  Const: 6 [line: 15]
+FLEX: )
+
+
+!   !   !   !   Child: 1  Assign: = [line: 15]
+FLEX: ;
+
+
+!   !   !   !   !   Child: 0  Id: z [line: 15]
+FLEX: wrong
+
+
+!   !   !   !   !   Child: 1  Const: 4 [line: 15]
+FLEX: =
+
+
+!   !   !   !   Child: 2  Assign: = [line: 15]
+FLEX: trousers
+
+
+!   !   !   !   !   Child: 0  Id: z [line: 15]
+FLEX: %
+
+
+!   !   !   !   !   Child: 1  Const: 5 [line: 15]
+FLEX: 666
+
+
+!   !   Sibling: 5  If [line: 16]
+FLEX: /
+
+
+!   !   !   Child: 0  Op: > [line: 16]
+FLEX: wrong
+
+
+!   !   !   !   Child: 0  Id: x [line: 16]
+FLEX: ;
+
+
+!   !   !   !   Child: 1  Const: 7 [line: 16]
+FLEX: gromit
+
+
+!   !   !   Child: 1  If [line: 16]
+FLEX: =
+
+
+!   !   !   !   Child: 0  Op: > [line: 16]
+FLEX: wrong
+
+
+!   !   !   !   !   Child: 0  Id: y [line: 16]
+FLEX: *
+
+
+!   !   !   !   !   Child: 1  Const: 8 [line: 16]
+FLEX: trousers
+
+
+!   !   !   !   Child: 1  Assign: = [line: 16]
+FLEX: -
+
+
+!   !   !   !   !   Child: 0  Id: z [line: 16]
+FLEX: gromit
+
+
+!   !   !   !   !   Child: 1  Const: 6 [line: 16]
+FLEX: +
+
+
+!   !   !   !   Child: 2  Assign: = [line: 16]
+FLEX: -
+
+
+!   !   !   !   !   Child: 0  Id: z [line: 16]
+FLEX: 42
+
+
+!   !   !   !   !   Child: 1  Const: 7 [line: 16]
+FLEX: ;
+
+
+!   !   !   Child: 2  Assign: = [line: 16]
+FLEX: gromit
+
+
+!   !   !   !   Child: 0  Id: z [line: 16]
+FLEX: +=
+
+
+!   !   !   !   Child: 1  Const: 8 [line: 16]
+FLEX: 27182818
+
+
+!   !   Sibling: 6  If [line: 17]
+FLEX: ;
+
+
+!   !   !   Child: 0  Op: < [line: 17]
+FLEX: gromit
+
+
+!   !   !   !   Child: 0  Id: x [line: 17]
+FLEX: -=
+
+
+!   !   !   !   Child: 1  Const: 9 [line: 17]
+FLEX: -
+
+
+!   !   !   Child: 1  While [line: 17]
+FLEX: 31415927
+
+
+!   !   !   !   Child: 0  Op: > [line: 17]
+FLEX: ;
+
+
+!   !   !   !   !   Child: 0  Id: y [line: 17]
+FLEX: gromit
+
+
+!   !   !   !   !   Child: 1  Const: 10 [line: 17]
+FLEX: /=
+
+
+!   !   !   !   Child: 1  Const: 9 [line: 17]
+FLEX: (
+
+
+!   !   Sibling: 7  While [line: 18]
+FLEX: wrong
+
+
+!   !   !   Child: 0  Op: > [line: 18]
+FLEX: *=
+
+
+!   !   !   !   Child: 0  Id: y [line: 18]
+FLEX: 42
+
+
+!   !   !   !   Child: 1  Const: 10 [line: 18]
+FLEX: )
+
+
+!   !   !   Child: 1  If [line: 18]
+FLEX: ;
+
+
+!   !   !   !   Child: 0  Op: < [line: 18]
+FLEX: close
+
+
+!   !   !   !   !   Child: 0  Id: x [line: 18]
+FLEX: =
+
+
+!   !   !   !   !   Child: 1  Const: 3 [line: 18]
+FLEX: wrong
+
+
+!   !   !   !   Child: 1  Const: 3 [line: 18]
+FLEX: <
+
+
+!   !   Sibling: 8  While [line: 19]
+FLEX: trousers
+
+
+!   !   !   Child: 0  Op: > [line: 19]
+FLEX: and
+
+
+!   !   !   !   Child: 0  Id: y [line: 19]
+FLEX: trousers
+
+
+!   !   !   !   Child: 1  Const: 10 [line: 19]
+FLEX: <=
+
+
+!   !   !   Child: 1  If [line: 19]
+FLEX: gromit
+
+
+!   !   !   !   Child: 0  Op: < [line: 19]
+FLEX: ;
+
+
+!   !   !   !   !   Child: 0  Id: x [line: 19]
+FLEX: shave
+
+
+!   !   !   !   !   Child: 1  Const: 3 [line: 19]
+FLEX: =
+
+
+!   !   !   !   Child: 1  Const: 3 [line: 19]
+FLEX: wrong
+
+
+!   !   !   !   Child: 2  Const: 9 [line: 19]
+FLEX: >
+
+
+!   !   Sibling: 9  If [line: 20]
+FLEX: trousers
+
+
+!   !   !   Child: 0  Op: < [line: 20]
+FLEX: and
+
+
+!   !   !   !   Child: 0  Id: x [line: 20]
+FLEX: trousers
+
+
+!   !   !   !   Child: 1  Const: 9 [line: 20]
+FLEX: >=
+
+
+!   !   !   Child: 1  While [line: 20]
+FLEX: gromit
+
+
+!   !   !   !   Child: 0  Op: > [line: 20]
+FLEX: ;
+
+
+!   !   !   !   !   Child: 0  Id: y [line: 20]
+FLEX: shaun
+
+
+!   !   !   !   !   Child: 1  Const: 10 [line: 20]
+FLEX: [
+
+
+!   !   !   !   Child: 1  If [line: 20]
+FLEX: 66
+
+
+!   !   !   !   !   Child: 0  Op: < [line: 20]
+FLEX: ]
+
+
+!   !   !   !   !   !   Child: 0  Id: x [line: 20]
+FLEX: =
+
+
+!   !   !   !   !   !   Child: 1  Const: 3 [line: 20]
+FLEX: sheep
+
+
+!   !   !   !   !   Child: 1  Const: 3 [line: 20]
+FLEX: ;
+
+
+!   !   !   !   !   Child: 2  Const: 9 [line: 20]
+FLEX: {
+
+
+!   !   Sibling: 10  While [line: 21]
+FLEX: int
+
+
+!   !   !   Child: 0  Op: < [line: 21]
+FLEX: a
+
+
+!   !   !   !   Child: 0  Id: y [line: 21]
+FLEX: ,
+
+
+!   !   !   !   Child: 1  Const: 11 [line: 21]
+FLEX: grand
+
+
+!   !   !   Child: 1  If [line: 21]
+FLEX: :
+
+
+!   !   !   !   Child: 0  Op: < [line: 21]
+FLEX: 1
+
+
+!   !   !   !   !   Child: 0  Id: x [line: 21]
+FLEX: /
+
+
+!   !   !   !   !   Child: 1  Const: 12 [line: 21]
+FLEX: 2
+
+
+!   !   !   !   Child: 1  While [line: 21]
+FLEX: ,
+
+
+!   !   !   !   !   Child: 0  Op: > [line: 21]
+FLEX: day
+
+
+!   !   !   !   !   !   Child: 0  Id: y [line: 21]
+FLEX: :
+
+
+!   !   !   !   !   !   Child: 1  Const: 13 [line: 21]
+FLEX: 3
+
+
+!   !   !   !   !   Child: 1  Const: 10 [line: 21]
+FLEX: *
+
+
+!   !   Sibling: 11  If [line: 22]
+FLEX: 4
+
+
+!   !   !   Child: 0  Op: < [line: 22]
+FLEX: ,
+
+
+!   !   !   !   Child: 0  Id: x [line: 22]
+FLEX: out
+
+
+!   !   !   !   Child: 1  Const: 13 [line: 22]
+FLEX: :
+
+
+!   !   !   Child: 1  While [line: 22]
+FLEX: -
+
+
+!   !   !   !   Child: 0  Op: > [line: 22]
+FLEX: 9
+
+
+!   !   !   !   !   Child: 0  Id: y [line: 22]
+FLEX: ;
+
+
+!   !   !   !   !   Child: 1  Const: 14 [line: 22]
+FLEX: a
+
+
+!   !   !   !   Child: 1  Const: 20 [line: 22]
+FLEX: =
+
+
+!   !   !   Child: 2  Const: 21 [line: 22]
+FLEX: grand
+
+
+!   !   Sibling: 12  While [line: 23]
+FLEX: +=
+
+
+!   !   !   Child: 0  Op: > [line: 23]
+FLEX: day
+
+
+!   !   !   !   Child: 0  Id: y [line: 23]
+FLEX: -=
+
+
+!   !   !   !   Child: 1  Const: 15 [line: 23]
+FLEX: out
+
+
+!   !   !   Child: 1  If [line: 23]
+FLEX: ;
+
+
+!   !   !   !   Child: 0  Op: < [line: 23]
+FLEX: }
+
+
+!   !   !   !   !   Child: 0  Id: x [line: 23]
+FLEX: close
+
+
+!   !   !   !   !   Child: 1  Const: 16 [line: 23]
+FLEX: =
+
+
+!   !   !   !   Child: 1  Const: 22 [line: 23]
+FLEX: -
+
+
+!   !   !   !   Child: 2  Const: 23 [line: 23]
+FLEX: 1
+
+
+!   !   Sibling: 13  While [line: 24]
+FLEX: *
+
+
+!   !   !   Child: 0  Op: > [line: 24]
+FLEX: 2
+
+
+!   !   !   !   Child: 0  Id: y [line: 24]
+FLEX: +
+
+
+!   !   !   !   Child: 1  Const: 15 [line: 24]
+FLEX: 3
+
+
+!   !   !   Child: 1  If [line: 24]
+FLEX: <
+
+
+!   !   !   !   Child: 0  Op: < [line: 24]
+FLEX: 4
+
+
+!   !   !   !   !   Child: 0  Id: x [line: 24]
+FLEX: *
+
+
+!   !   !   !   !   Child: 1  Const: 16 [line: 24]
+FLEX: 5
+
+
+!   !   !   !   Child: 1  While [line: 24]
+FLEX: and
+
+
+!   !   !   !   !   Child: 0  Op: < [line: 24]
+FLEX: 6
+
+
+!   !   !   !   !   !   Child: 0  Id: y [line: 24]
+FLEX: +
+
+
+!   !   !   !   !   !   Child: 1  Const: 3 [line: 24]
+FLEX: 7
+
+
+!   !   !   !   !   Child: 1  Const: 9 [line: 24]
+FLEX: >
+
+
+!   !   !   !   Child: 2  Const: 23 [line: 24]
+FLEX: -
+
+
+!   !   Sibling: 14  While [line: 25]
+FLEX: 3
+
+
+!   !   !   Child: 0  Op: > [line: 25]
+FLEX: ;
+
+
+!   !   !   !   Child: 0  Id: y [line: 25]
+FLEX: shave
+
+
+!   !   !   !   Child: 1  Const: 15 [line: 25]
+FLEX: =
+
+
+!   !   !   Child: 1  If [line: 25]
+FLEX: true
+
+
+!   !   !   !   Child: 0  Op: < [line: 25]
+FLEX: or
+
+
+!   !   !   !   !   Child: 0  Id: x [line: 25]
+FLEX: (
+
+
+!   !   !   !   !   Child: 1  Const: 16 [line: 25]
+FLEX: (
+
+
+!   !   !   !   Child: 1  While [line: 25]
+FLEX: -
+
+
+!   !   !   !   !   Child: 0  Op: < [line: 25]
+FLEX: (
+
+
+!   !   !   !   !   !   Child: 0  Id: y [line: 25]
+FLEX: 1
+
+
+!   !   !   !   !   !   Child: 1  Const: 3 [line: 25]
+FLEX: *
+
+
+!   !   !   !   !   Child: 1  Const: 9 [line: 25]
+FLEX: (
+
+
+!   !   !   !   Child: 2  While [line: 25]
+FLEX: (
+
+
+!   !   !   !   !   Child: 0  Op: > [line: 25]
+FLEX: 2
+
+
+!   !   !   !   !   !   Child: 0  Id: y [line: 25]
+FLEX: +
+
+
+!   !   !   !   !   !   Child: 1  Const: 3 [line: 25]
+FLEX: 3
+
+
+!   !   !   !   !   Child: 1  Const: 23 [line: 25]
+FLEX: )
+
+
+!   !   Sibling: 15  While [line: 26]
+FLEX: )
+
+
+!   !   !   Child: 0  Op: > [line: 26]
+FLEX: )
+
+
+!   !   !   !   Child: 0  Id: y [line: 26]
+FLEX: )
+
+
+!   !   !   !   Child: 1  Const: 15 [line: 26]
+FLEX: <
+
+
+!   !   !   Child: 1  If [line: 26]
+FLEX: (
+
+
+!   !   !   !   Child: 0  Op: < [line: 26]
+FLEX: 4
+
+
+!   !   !   !   !   Child: 0  Id: x [line: 26]
+FLEX: *
+
+
+!   !   !   !   !   Child: 1  Const: 16 [line: 26]
+FLEX: 5
+
+
+!   !   !   !   Child: 1  While [line: 26]
+FLEX: )
+
+
+!   !   !   !   !   Child: 0  Op: < [line: 26]
+FLEX: and
+
+
+!   !   !   !   !   !   Child: 0  Id: y [line: 26]
+FLEX: (
+
+
+!   !   !   !   !   !   Child: 1  Const: 3 [line: 26]
+FLEX: (
+
+
+!   !   !   !   !   Child: 1  If [line: 26]
+FLEX: 6
+
+
+!   !   !   !   !   !   Child: 0  Id: b [line: 26]
+FLEX: +
+
+
+!   !   !   !   !   !   Child: 1  Const: 34 [line: 26]
+FLEX: 7
+
+
+!   !   !   !   !   !   Child: 2  Const: 34 [line: 26]
+FLEX: )
+
+
+!   !   !   !   Child: 2  While [line: 26]
+FLEX: >
+
+
+!   !   !   !   !   Child: 0  Op: > [line: 26]
+FLEX: (
+
+
+!   !   !   !   !   !   Child: 0  Id: y [line: 26]
+FLEX: -
+
+
+!   !   !   !   !   !   Child: 1  Const: 3 [line: 26]
+FLEX: 3
+
+
+!   !   !   !   !   Child: 1  Const: 23 [line: 26]
+FLEX: )
+
+
+!   !   Sibling: 16  While [line: 27]
+FLEX: )
+
+
+!   !   !   Child: 0  Op: > [line: 27]
+FLEX: )
+
+
+!   !   !   !   Child: 0  Id: y [line: 27]
+FLEX: ;
+
+
+!   !   !   !   Child: 1  Const: 15 [line: 27]
+FLEX: if
+
+
+!   !   !   Child: 1  If [line: 27]
+FLEX: (
+
+
+!   !   !   !   Child: 0  Op: < [line: 27]
+FLEX: shave
+
+
+!   !   !   !   !   Child: 0  Id: x [line: 27]
+FLEX: !=
+
+
+!   !   !   !   !   Child: 1  Const: 16 [line: 27]
+FLEX: close
+
+
+!   !   !   !   Child: 1  Compound [line: 27]
+FLEX: )
+
+
+!   !   !   !   !   Child: 1  While [line: 27]
+FLEX: shave
+
+
+!   !   !   !   !   !   Child: 0  Op: < [line: 27]
+FLEX: =
+
+
+!   !   !   !   !   !   !   Child: 0  Id: y [line: 27]
+FLEX: not
+
+
+!   !   !   !   !   !   !   Child: 1  Const: 3 [line: 27]
+FLEX: close
+
+
+!   !   !   !   !   !   Child: 1  If [line: 27]
+FLEX: ;
+
+
+!   !   !   !   !   !   !   Child: 0  Id: b [line: 27]
+FLEX: if
+
+
+!   !   !   !   !   !   !   Child: 1  Const: 34 [line: 27]
+FLEX: (
+
+
+!   !   !   !   Child: 2  While [line: 27]
+FLEX: not
+
+
+!   !   !   !   !   Child: 0  Op: > [line: 27]
+FLEX: (
+
+
+!   !   !   !   !   !   Child: 0  Id: y [line: 27]
+FLEX: shave
+
+
+!   !   !   !   !   !   Child: 1  Const: 3 [line: 27]
+FLEX: ==
+
+
+!   !   !   !   !   Child: 1  Const: 23 [line: 27]
+FLEX: close
+
+
+!   !   Sibling: 17  While [line: 29]
+FLEX: )
+
+
+!   !   !   Child: 0  Id: b [line: 29]
+FLEX: or
+
+
+!   !   !   Child: 1  While [line: 29]
+FLEX: not
+
+
+!   !   !   !   Child: 0  Id: b [line: 29]
+FLEX: close
+
+
+!   !   !   !   Child: 1  If [line: 29]
+FLEX: )
+
+
+!   !   !   !   !   Child: 0  Id: b [line: 29]
+FLEX: shave
+
+
+!   !   !   !   !   Child: 1  Id: x [line: 29]
+FLEX: =
+
+
+!   !   !   !   !   Child: 2  Id: y [line: 29]
+FLEX: true
+
+
+!   !   Sibling: 18  While [line: 30]
+FLEX: ;
+
+
+!   !   !   Child: 0  Id: b [line: 30]
+FLEX: else
+
+
+!   !   !   Child: 1  While [line: 30]
+FLEX: close
+
+
+!   !   !   !   Child: 0  Id: b [line: 30]
+FLEX: =
+
+
+!   !   !   !   Child: 1  If [line: 30]
+FLEX: false
+
+
+!   !   !   !   !   Child: 0  Id: b [line: 30]
+FLEX: ;
+
+
+!   !   !   !   !   Child: 1  Id: x [line: 30]
+FLEX: while
+
+
+!   !   Sibling: 19  If [line: 30]
+FLEX: (
+
+
+!   !   !   Child: 0  Id: b [line: 30]
+FLEX: shave
+
+
+!   !   !   Child: 1  Id: y [line: 30]
+FLEX: )
+
+
+!   !   !   Child: 2  Id: z [line: 30]
+FLEX: {
+
+
+!   !   Sibling: 20  While [line: 32]
+FLEX: static
+
+
+!   !   !   Child: 0  Id: b [line: 32]
+FLEX: int
+
+
+!   !   !   Child: 1  While [line: 32]
+FLEX: were
+
+
+!   !   !   !   Child: 0  Id: b [line: 32]
+FLEX: ,
+
+
+!   !   !   !   Child: 1  If [line: 32]
+FLEX: rabbit
+
+
+!   !   !   !   !   Child: 0  Id: b [line: 32]
+FLEX: ;
+
+
+!   !   !   !   !   Child: 1  Id: x [line: 32]
+FLEX: static
+
+
+!   !   Sibling: 21  While [line: 33]
+FLEX: int
+
+
+!   !   !   Child: 0  Id: b [line: 33]
+FLEX: sheep
+
+
+!   !   !   Child: 1  While [line: 33]
+FLEX: [
+
+
+!   !   !   !   Child: 0  Id: b [line: 33]
+FLEX: 10
+
+
+!   !   !   !   Child: 1  If [line: 33]
+FLEX: ]
+
+
+!   !   !   !   !   Child: 0  Id: b [line: 33]
+FLEX: ;
+
+
+!   !   !   !   !   Child: 1  Id: x [line: 33]
+FLEX: sheep
+
+
+!   !   Sibling: 22  If [line: 33]
+FLEX: [
+
+
+!   !   !   Child: 0  Id: b [line: 33]
+FLEX: 2
+
+
+!   !   !   Child: 1  Id: y [line: 33]
+FLEX: ]
+
+
+!   !   Sibling: 23  While [line: 35]
+FLEX: =
+
+
+!   !   !   Child: 0  Id: b [line: 35]
+FLEX: 1618
+
+
+!   !   !   Child: 1  If [line: 35]
+FLEX: ;
+
+
+!   !   !   !   Child: 0  Id: c [line: 35]
+FLEX: if
+
+
+!   !   !   !   Child: 1  While [line: 35]
+FLEX: (
+
+
+!   !   !   !   !   Child: 0  Id: b [line: 35]
+FLEX: sheep
+
+
+!   !   !   !   !   Child: 1  If [line: 35]
+FLEX: [
+
+
+!   !   !   !   !   !   Child: 0  Id: b [line: 35]
+FLEX: 2
+
+
+!   !   !   !   !   !   Child: 1  Id: x [line: 35]
+FLEX: ]
+
+
+!   !   !   !   !   !   Child: 2  Id: y [line: 35]
+FLEX: <
+
+
+!   !   Sibling: 24  While [line: 36]
+FLEX: 496
+
+
+!   !   !   Child: 0  Id: b [line: 36]
+FLEX: )
+
+
+!   !   !   Child: 1  If [line: 36]
+FLEX: break
+
+
+!   !   !   !   Child: 0  Id: c [line: 36]
+FLEX: ;
+
+
+!   !   !   !   Child: 1  While [line: 36]
+FLEX: wallace
+
+
+!   !   !   !   !   Child: 0  Id: b [line: 36]
+FLEX: (
+
+
+!   !   !   !   !   Child: 1  If [line: 36]
+FLEX: gromit
+
+
+!   !   !   !   !   !   Child: 0  Id: b [line: 36]
+FLEX: --
+
+
+!   !   !   !   !   !   Child: 1  Id: x [line: 36]
+FLEX: ,
+
+
+!   !   Sibling: 25  If [line: 36]
+FLEX: were
+
+
+!   !   !   Child: 0  Id: b [line: 36]
+FLEX: -
+
+
+!   !   !   Child: 1  Id: y [line: 36]
+FLEX: rabbit
+
+
+!   !   !   Child: 2  Id: z [line: 36]
+FLEX: )
+
+
+!   !   Sibling: 26  If [line: 38]
+FLEX: ;
+
+
+!   !   !   Child: 0  Id: c [line: 38]
+FLEX: {
+
+
+!   !   !   Child: 1  While [line: 38]
+FLEX: int
+
+
+!   !   !   !   Child: 0  Id: b [line: 38]
+FLEX: the
+
+
+!   !   !   !   Child: 1  While [line: 38]
+FLEX: ,
+
+
+!   !   !   !   !   Child: 0  Id: b [line: 38]
+FLEX: wrong
+
+
+!   !   !   !   !   Child: 1  If [line: 38]
+FLEX: ,
+
+
+!   !   !   !   !   !   Child: 0  Id: b [line: 38]
+FLEX: trousers
+
+
+!   !   !   !   !   !   Child: 1  Id: x [line: 38]
+FLEX: ;
+
+
+!   !   !   !   !   !   Child: 2  Id: y [line: 38]
+FLEX: the
+
+
+!   !   Sibling: 27  If [line: 39]
+FLEX: =
+
+
+!   !   !   Child: 0  Id: c [line: 39]
+FLEX: wrong
+
+
+!   !   !   Child: 1  While [line: 39]
+FLEX: +=
+
+
+!   !   !   !   Child: 0  Id: b [line: 39]
+FLEX: trousers
+
+
+!   !   !   !   Child: 1  While [line: 39]
+FLEX: ++
+
+
+!   !   !   !   !   Child: 0  Id: b [line: 39]
+FLEX: ;
+
+
+!   !   !   !   !   Child: 1  If [line: 39]
+FLEX: if
+
+
+!   !   !   !   !   !   Child: 0  Id: b [line: 39]
+FLEX: (
+
+
+!   !   !   !   !   !   Child: 1  Id: x [line: 39]
+FLEX: were
+
+
+!   !   Sibling: 28  If [line: 39]
+FLEX: ==
+
+
+!   !   !   Child: 0  Id: b [line: 39]
+FLEX: rabbit
+
+
+!   !   !   Child: 1  Id: y [line: 39]
+FLEX: )
+
+
+!   !   !   Child: 2  Id: z [line: 39]
+FLEX: were
+
+
+!   !   Sibling: 29  If [line: 41]
+FLEX: =
+
+
+!   !   !   Child: 0  Id: c [line: 41]
+FLEX: wrong
+
+
+!   !   !   Child: 1  While [line: 41]
+FLEX: --
+
+
+!   !   !   !   Child: 0  Id: b [line: 41]
+FLEX: ;
+
+
+!   !   !   !   Child: 1  While [line: 41]
+FLEX: }
+
+
+!   !   !   !   !   Child: 0  Id: b [line: 41]
+FLEX: }
+
+
+!   !   !   !   !   Child: 1  If [line: 41]
+FLEX: return
+
+
+!   !   !   !   !   !   Child: 0  Id: b [line: 41]
+FLEX: ;
+
+
+!   !   !   !   !   !   Child: 1  Id: x [line: 41]
+FLEX: }
+
+
+!   !   !   !   !   !   Child: 2  Id: y [line: 41]
+FLEX: bool
+
+
+!   !   !   Child: 2  Id: z [line: 41]
+FLEX: penguin
+
+
+!   !   Sibling: 30  While [line: 43]
+FLEX: (
+
+
+!   !   !   Child: 0  Id: a [line: 43]
+FLEX: char
+
+
+!   !   !   Child: 1  While [line: 43]
+FLEX: Feathers
+
+
+!   !   !   !   Child: 0  Id: b [line: 43]
+FLEX: ,
+
+
+!   !   !   !   Child: 1  While [line: 43]
+FLEX: McGraw
+
+
+!   !   !   !   !   Child: 0  Id: c [line: 43]
+FLEX: [
+
+
+!   !   !   !   !   Child: 1  While [line: 43]
+FLEX: ]
+
+
+!   !   !   !   !   !   Child: 0  Id: d [line: 43]
+FLEX: ;
+
+
+!   !   !   !   !   !   Child: 1  Id: e [line: 43]
+FLEX: bool
+
+
+!   !   Sibling: 31  If [line: 44]
+FLEX: moon
+
+
+!   !   !   Child: 0  Id: a [line: 44]
+FLEX: ,
+
+
+!   !   !   Child: 1  If [line: 44]
+FLEX: cheese
+
+
+!   !   !   !   Child: 0  Id: b [line: 44]
+FLEX: ;
+
+
+!   !   !   !   Child: 1  If [line: 44]
+FLEX: int
+
+
+!   !   !   !   !   Child: 0  Id: c [line: 44]
+FLEX: launch
+
+
+!   !   !   !   !   Child: 1  If [line: 44]
+FLEX: )
+
+
+!   !   !   !   !   !   Child: 0  Id: d [line: 44]
+FLEX: {
+
+
+!   !   !   !   !   !   Child: 1  Id: e [line: 44]
+FLEX: static
+
+
+!   !   Sibling: 32  If [line: 45]
+FLEX: char
+
+
+!   !   !   Child: 0  Id: a [line: 45]
+FLEX: tottington
+
+
+!   !   !   Child: 2  If [line: 45]
+FLEX: :
+
+
+!   !   !   !   Child: 0  Id: b [line: 45]
+FLEX: 'x'
+
+
+!   !   !   !   Child: 2  If [line: 45]
+FLEX: ;
+
+
+!   !   !   !   !   Child: 0  Id: c [line: 45]
+FLEX: char
+
+
+!   !   !   !   !   Child: 2  If [line: 45]
+FLEX: Wensleydale
+
+
+!   !   !   !   !   !   Child: 0  Id: d [line: 45]
+FLEX: [
+
+
+!   !   !   !   !   !   Child: 2  Id: e [line: 45]
+FLEX: 17
+
+
+!   !   Sibling: 33  Return [line: 47]
+FLEX: ]
+
+
+!   !   !   Child: 0  Const: 1184 [line: 47]
+FLEX: ;
+
+
+Number of warnings: 0
+FLEX: char
+
+
+Number of errors: 0
+FLEX: c
+
+

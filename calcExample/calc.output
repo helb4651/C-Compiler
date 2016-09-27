@@ -1,0 +1,139 @@
+Grammar
+
+    0 $accept: statementlist $end
+
+    1 statementlist: statementlist statement
+    2              | statement
+
+    3 statement: exp
+    4          | QUIT
+
+    5 exp: '(' exp ')'
+    6    | TRUE
+    7    | FALSE
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+'(' (40) 5
+')' (41) 5
+error (256)
+QUIT (258) 4
+TRUE (259) 6
+FALSE (260) 7
+
+
+Nonterminals, with rules where they appear
+
+$accept (8)
+    on left: 0
+statementlist (9)
+    on left: 1 2, on right: 0 1
+statement (10)
+    on left: 3 4, on right: 1 2
+exp (11)
+    on left: 5 6 7, on right: 3 5
+
+
+State 0
+
+    0 $accept: . statementlist $end
+
+    QUIT   shift, and go to state 1
+    TRUE   shift, and go to state 2
+    FALSE  shift, and go to state 3
+    '('    shift, and go to state 4
+
+    statementlist  go to state 5
+    statement      go to state 6
+    exp            go to state 7
+
+
+State 1
+
+    4 statement: QUIT .
+
+    $default  reduce using rule 4 (statement)
+
+
+State 2
+
+    6 exp: TRUE .
+
+    $default  reduce using rule 6 (exp)
+
+
+State 3
+
+    7 exp: FALSE .
+
+    $default  reduce using rule 7 (exp)
+
+
+State 4
+
+    5 exp: '(' . exp ')'
+
+    TRUE   shift, and go to state 2
+    FALSE  shift, and go to state 3
+    '('    shift, and go to state 4
+
+    exp  go to state 8
+
+
+State 5
+
+    0 $accept: statementlist . $end
+    1 statementlist: statementlist . statement
+
+    $end   shift, and go to state 9
+    QUIT   shift, and go to state 1
+    TRUE   shift, and go to state 2
+    FALSE  shift, and go to state 3
+    '('    shift, and go to state 4
+
+    statement  go to state 10
+    exp        go to state 7
+
+
+State 6
+
+    2 statementlist: statement .
+
+    $default  reduce using rule 2 (statementlist)
+
+
+State 7
+
+    3 statement: exp .
+
+    $default  reduce using rule 3 (statement)
+
+
+State 8
+
+    5 exp: '(' exp . ')'
+
+    ')'  shift, and go to state 11
+
+
+State 9
+
+    0 $accept: statementlist $end .
+
+    $default  accept
+
+
+State 10
+
+    1 statementlist: statementlist statement .
+
+    $default  reduce using rule 1 (statementlist)
+
+
+State 11
+
+    5 exp: '(' exp ')' .
+
+    $default  reduce using rule 5 (exp)

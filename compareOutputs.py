@@ -1,5 +1,5 @@
 
-fname = "scannerTest.out"
+fname = "TestFiles/a2/whileif.out"
 
 with open(fname) as f:
     correct = f.readlines()
