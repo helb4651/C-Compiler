@@ -32,6 +32,8 @@ void charerror(const char *rtxt) {
     }
 }
 
+
+
 %}
 
 %union {
@@ -147,8 +149,8 @@ recDeclaration      : RECORD ID '{' localDeclarations '}' {
                      $$->attr.name = $2.value.sval;
                      $$->child[0] = $4;
                      $$->lineno = $3.lineno;
-
-                      }
+                     $$->isRecord=true;
+              }
                     ;
 
 /* ------------------------------------------------------------------------------------------------------------------ */

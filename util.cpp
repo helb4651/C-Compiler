@@ -126,7 +126,9 @@ void printTree(TreeNode *tree, int sibCount) {
                     printf("type char ");
                     break;
                 case Record:
-                    printf("type record ");
+                    if(t->isRecord!=true){
+                      printf("type record ");
+                    }
                     break;
                 default:
                     break;
@@ -154,6 +156,9 @@ void printSpaces() {
         }
     }
 }
+
+
+
 
 TreeNode *newStmtNode(StmtKind kind) {
     TreeNode *t = (TreeNode *) malloc(sizeof(TreeNode));

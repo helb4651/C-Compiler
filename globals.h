@@ -54,6 +54,7 @@ typedef struct treeNode {
     // TODO: RECORDS!!!!
     bool isArray;                          // is this an array
     int arrayLen;
+    bool isRecord;
     // even more semantic stuff will go here in later assignments.
 } TreeNode;
 #endif

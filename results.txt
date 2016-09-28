@@ -1,8 +1,0 @@
-Sibling: 19  Record Point  [line: 115]
-Sibling: 19  Record Point  type record [line: 115]
-
-
-Sibling: 20  Record Line  [line: 120]
-Sibling: 20  Record Line  type record [line: 120]
-
-

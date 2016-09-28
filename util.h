@@ -9,6 +9,7 @@
 
 void printToken(TokenType, const char *);
 
+
 void printTree(TreeNode *tree, int);
 void printSpaces();
 TreeNode *newStmtNode(StmtKind);
