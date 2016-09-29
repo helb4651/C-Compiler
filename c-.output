@@ -67,16 +67,16 @@ Grammar
    35 matched: matched_selection
    36        | expressionStmt
    37        | compoundStmt
-   38        | matched_iteration
+   38        | matchedIteration
    39        | returnStmt
    40        | breakStmt
 
    41 unmatched: unmatched_selection
-   42          | unmatched_iteration
+   42          | unmatchedIteration
 
-   43 matched_iteration: WHILE '(' simpleExpression ')' matched
+   43 matchedIteration: WHILE '(' simpleExpression ')' matched
 
-   44 unmatched_iteration: WHILE '(' simpleExpression ')' unmatched
+   44 unmatchedIteration: WHILE '(' simpleExpression ')' unmatched
 
    45 compoundStmt: '{' localDeclarations statementList '}'
 
@@ -276,9 +276,9 @@ matched (75)
     on left: 35 36 37 38 39 40, on right: 34 43 52 53
 unmatched (76)
     on left: 41 42, on right: 33 44 53
-matched_iteration (77)
+matchedIteration (77)
     on left: 43, on right: 38
-unmatched_iteration (78)
+unmatchedIteration (78)
     on left: 44, on right: 42
 compoundStmt (79)
     on left: 45, on right: 37
@@ -708,8 +708,8 @@ State 35
     statement            go to state 72
     matched              go to state 73
     unmatched            go to state 74
-    matched_iteration    go to state 75
-    unmatched_iteration  go to state 76
+    matchedIteration     go to state 75
+    unmatchedIteration   go to state 76
     compoundStmt         go to state 77
     expressionStmt       go to state 78
     matched_selection    go to state 79
@@ -1106,8 +1106,8 @@ State 68
 
 State 69
 
-   43 matched_iteration: WHILE . '(' simpleExpression ')' matched
-   44 unmatched_iteration: WHILE . '(' simpleExpression ')' unmatched
+   43 matchedIteration: WHILE . '(' simpleExpression ')' matched
+   44 unmatchedIteration: WHILE . '(' simpleExpression ')' unmatched
 
     '('  shift, and go to state 122
 
@@ -1151,14 +1151,14 @@ State 74
 
 State 75
 
-   38 matched: matched_iteration .
+   38 matched: matchedIteration .
 
     $default  reduce using rule 38 (matched)
 
 
 State 76
 
-   42 unmatched: unmatched_iteration .
+   42 unmatched: unmatchedIteration .
 
     $default  reduce using rule 42 (unmatched)
 
@@ -1322,8 +1322,8 @@ State 92
     statement            go to state 134
     matched              go to state 73
     unmatched            go to state 74
-    matched_iteration    go to state 75
-    unmatched_iteration  go to state 76
+    matchedIteration     go to state 75
+    unmatchedIteration   go to state 76
     compoundStmt         go to state 77
     expressionStmt       go to state 78
     matched_selection    go to state 79
@@ -1716,8 +1716,8 @@ State 121
 
 State 122
 
-   43 matched_iteration: WHILE '(' . simpleExpression ')' matched
-   44 unmatched_iteration: WHILE '(' . simpleExpression ')' unmatched
+   43 matchedIteration: WHILE '(' . simpleExpression ')' matched
+   44 unmatchedIteration: WHILE '(' . simpleExpression ')' unmatched
 
     ID         shift, and go to state 42
     NUMCONST   shift, and go to state 43
@@ -2080,8 +2080,8 @@ State 148
 
 State 149
 
-   43 matched_iteration: WHILE '(' simpleExpression . ')' matched
-   44 unmatched_iteration: WHILE '(' simpleExpression . ')' unmatched
+   43 matchedIteration: WHILE '(' simpleExpression . ')' matched
+   44 unmatchedIteration: WHILE '(' simpleExpression . ')' unmatched
    66 simpleExpression: simpleExpression . OR andExpression
 
     OR   shift, and go to state 97
@@ -2113,8 +2113,8 @@ State 150
     statement            go to state 163
     matched              go to state 73
     unmatched            go to state 74
-    matched_iteration    go to state 75
-    unmatched_iteration  go to state 76
+    matchedIteration     go to state 75
+    unmatchedIteration   go to state 76
     compoundStmt         go to state 77
     expressionStmt       go to state 78
     matched_selection    go to state 79
@@ -2248,8 +2248,8 @@ State 160
     statement            go to state 165
     matched              go to state 166
     unmatched            go to state 74
-    matched_iteration    go to state 75
-    unmatched_iteration  go to state 76
+    matchedIteration     go to state 75
+    unmatchedIteration   go to state 76
     compoundStmt         go to state 77
     expressionStmt       go to state 78
     matched_selection    go to state 79
@@ -2274,8 +2274,8 @@ State 160
 
 State 161
 
-   43 matched_iteration: WHILE '(' simpleExpression ')' . matched
-   44 unmatched_iteration: WHILE '(' simpleExpression ')' . unmatched
+   43 matchedIteration: WHILE '(' simpleExpression ')' . matched
+   44 unmatchedIteration: WHILE '(' simpleExpression ')' . unmatched
 
     ID         shift, and go to state 42
     NUMCONST   shift, and go to state 43
@@ -2295,8 +2295,8 @@ State 161
 
     matched              go to state 167
     unmatched            go to state 168
-    matched_iteration    go to state 75
-    unmatched_iteration  go to state 76
+    matchedIteration     go to state 75
+    unmatchedIteration   go to state 76
     compoundStmt         go to state 77
     expressionStmt       go to state 78
     matched_selection    go to state 79
@@ -2360,16 +2360,16 @@ State 166
 
 State 167
 
-   43 matched_iteration: WHILE '(' simpleExpression ')' matched .
+   43 matchedIteration: WHILE '(' simpleExpression ')' matched .
 
-    $default  reduce using rule 43 (matched_iteration)
+    $default  reduce using rule 43 (matchedIteration)
 
 
 State 168
 
-   44 unmatched_iteration: WHILE '(' simpleExpression ')' unmatched .
+   44 unmatchedIteration: WHILE '(' simpleExpression ')' unmatched .
 
-    $default  reduce using rule 44 (unmatched_iteration)
+    $default  reduce using rule 44 (unmatchedIteration)
 
 
 State 169
@@ -2395,8 +2395,8 @@ State 169
 
     matched              go to state 170
     unmatched            go to state 171
-    matched_iteration    go to state 75
-    unmatched_iteration  go to state 76
+    matchedIteration     go to state 75
+    unmatchedIteration   go to state 76
     compoundStmt         go to state 77
     expressionStmt       go to state 78
     matched_selection    go to state 79

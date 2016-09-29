@@ -1,4 +1,11 @@
 %{
+/****************************************************/
+/* File: c.y                                        */
+/* Bison specification for c-                       */
+/* CS445                                            */
+/* University of Idaho                              */
+/****************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "scanType.h"
@@ -21,20 +28,8 @@ void yyerror(char const *msg) {
     printf("ERROR(): %s\n", msg);
 }
 
-// Check length of specific chars in the most brutal way possible.
-void charerror(const char *rtxt) {
-    int len = strlen(rtxt);
-    if(len == 4 && rtxt[1] == '\\') {
-        len -= 1;
-    }
-    if(len - 2 != 1) {
-        printf("ERROR(%u): character is %u characters and not a single character: %s\n", yylineno, (unsigned)strlen(rtxt) - 2, rtxt);
-    }
-}
-
-
-
 %}
+
 
 %union {
     Token token;
@@ -69,9 +64,9 @@ void charerror(const char *rtxt) {
                         matched_selection
                         expressionStmt
                         compoundStmt
-                        matched_iteration
+                        matchedIteration
                         unmatched_selection
-                        unmatched_iteration
+                        unmatchedIteration
                         expression
                         returnStmt
                         breakStmt
@@ -121,10 +116,10 @@ program             : declarationList { syntaxTree = $1; }
                     ;
 
 declarationList     : declarationList declaration {
-                               TreeNode *trav = $1;
-                               if(trav != NULL) {
-                                   while (trav->sibling != NULL) trav = trav->sibling;
-                                   trav->sibling = $2;
+                               TreeNode *node = $1;
+                               if(node != NULL) {
+                                   while (node->sibling != NULL) node = node->sibling;
+                                   node->sibling = $2;
                                    $$ = $1;
                                } else {
                                    $$ = $2;
@@ -142,13 +137,13 @@ declaration         : varDeclaration { $$ = $1; }
 
 /* 4 */
 recDeclaration      : RECORD ID '{' localDeclarations '}' {
-                     st.insert( $2.rtxt, (char *)"record"); // add to record symbol table
+                     st.insert( $2.tokenstring, (char *)"record"); // add to record symbol table
 
                      $$ = newDeclNode(RecordK);
                      $$->declType = Record;
-                     $$->attr.name = $2.value.sval;
+                     $$->attr.name = $2.sval;
                      $$->child[0] = $4;
-                     $$->lineno = $3.lineno;
+                     $$->linenum = $3.linenum;
                      $$->isRecord=true;
               }
                     ;
@@ -189,10 +184,10 @@ scopedVarDeclaration: scopedTypeSpecifier varDeclList ';'  {
 
 /* 7 */
 varDeclList         : varDeclList ',' varDeclInitialize {
-                               TreeNode *trav = $1;
-                               if(trav != NULL) {
-                                    while(trav->sibling != NULL) trav = trav->sibling;
-                                    trav->sibling = $3;
+                               TreeNode *node = $1;
+                               if(node != NULL) {
+                                    while(node->sibling != NULL) node = node->sibling;
+                                    node->sibling = $3;
                                     $$ = $1;
                                 } else {
                                     $$ = $3;
@@ -212,15 +207,15 @@ varDeclInitialize   : varDeclId                        { $$ = $1; }
 /* 9 */
 varDeclId           : ID    {
                                 $$ = newDeclNode(VarK);
-                                $$->attr.name = $1.value.sval;
-                                $$->lineno = $1.lineno;
+                                $$->attr.name = $1.sval;
+                                $$->linenum = $1.linenum;
                             }
                     | ID '[' NUMCONST ']'  {
                             $$ = newDeclNode(VarK);
-                            $$->attr.name = $1.value.sval;
+                            $$->attr.name = $1.sval;
                             $$->isArray = true;
-                            $$->arrayLen = $3.value.ival;
-                            $$->lineno = $1.lineno;
+                            $$->arrayLen = $3.ival;
+                            $$->linenum = $1.linenum;
                         }
                     ;
 
@@ -266,18 +261,18 @@ typeSpecifier       : INT             { $$ = Int; }
 funDeclaration      : typeSpecifier ID '(' params ')' statement {
                                 $$ = newDeclNode(FuncK);
                                 $$->declType = $1;
-                                $$->attr.name = $2.value.sval;
+                                $$->attr.name = $2.sval;
                                 $$->child[0] = $4;
                                 $$->child[1] = $6;
-                                $$->lineno = $3.lineno; // Allows for correct line no
+                                $$->linenum = $3.linenum; // Allows for correct line no
                             }
                     | ID '(' params ')' statement {
                            $$ = newDeclNode(FuncK);
                            $$->declType = Void;
-                           $$->attr.name = $1.value.sval;
+                           $$->attr.name = $1.sval;
                            $$->child[0] = $3;
                            $$->child[1] = $5;
-                           $$->lineno = $2.lineno;
+                           $$->linenum = $2.linenum;
                         }
                     ;
 
@@ -288,10 +283,10 @@ params              : paramList     { $$ = $1; }
 
 /* 15 */
 paramList           : paramList ';' paramTypeList {
-                                TreeNode *trav = $1;
-                                if(trav != NULL) {
-                                    while(trav->sibling != NULL) trav = trav->sibling;
-                                    trav->sibling = $3;
+                                TreeNode *node = $1;
+                                if(node != NULL) {
+                                    while(node->sibling != NULL) node = node->sibling;
+                                    node->sibling = $3;
                                     $$ = $1;
                                 } else {
                                     $$ = $3;
@@ -317,10 +312,10 @@ paramTypeList       : typeSpecifier paramIdList {
 
 /* 17 */
 paramIdList         : paramIdList ',' paramId {
-                               TreeNode *trav = $1;
-                               if(trav != NULL) {
-                                   while(trav->sibling != NULL) trav = trav->sibling;
-                                   trav->sibling = $3;
+                               TreeNode *node = $1;
+                               if(node != NULL) {
+                                   while(node->sibling != NULL) node = node->sibling;
+                                   node->sibling = $3;
                                    $$ = $1;
                                } else {
                                    $$ = $3;
@@ -332,11 +327,11 @@ paramIdList         : paramIdList ',' paramId {
 /* 18 */
 paramId             : ID    {
                                $$ = newDeclNode(ParamK);
-                               $$->attr.name = $1.value.sval;
+                               $$->attr.name = $1.sval;
                             }
                     | ID '[' ']' {
                                 $$ = newDeclNode(ParamK);
-                                $$->attr.name = $1.value.sval;
+                                $$->attr.name = $1.sval;
                                 $$->isArray = true;
                               }
                     ;
@@ -362,31 +357,31 @@ statement           : unmatched { $$ = $1; }
 matched             : matched_selection { $$ = $1; }
                     | expressionStmt { $$ = $1; }
                     | compoundStmt { $$ = $1; }
-                    | matched_iteration { $$ = $1; }
+                    | matchedIteration { $$ = $1; }
                     | returnStmt { $$ = $1; }
                     | breakStmt { $$ = $1; }
                     ;
 
 unmatched           : unmatched_selection { $$ = $1; }
-                    | unmatched_iteration { $$ = $1; }
+                    | unmatchedIteration { $$ = $1; }
                     ;
 
 
-matched_iteration   : WHILE '(' simpleExpression ')' matched {
+matchedIteration   : WHILE '(' simpleExpression ')' matched {
                                 $$ = newStmtNode(WhileK);
-                                $$->attr.name = $1.rtxt;
+                                $$->attr.name = $1.tokenstring;
                                 $$->child[0] = $3;
                                 $$->child[1] = $5;
-                                $$->lineno = $1.lineno;
+                                $$->linenum = $1.linenum;
                             }
                     ;
 
-unmatched_iteration : WHILE '(' simpleExpression ')' unmatched {
+unmatchedIteration : WHILE '(' simpleExpression ')' unmatched {
                                 $$ = newStmtNode(WhileK);
-                                $$->attr.name = $1.rtxt;
+                                $$->attr.name = $1.tokenstring;
                                 $$->child[0] = $3;
                                 $$->child[1] = $5;
-                                $$->lineno = $1.lineno;
+                                $$->linenum = $1.linenum;
                             }
                     ;
 
@@ -396,16 +391,16 @@ compoundStmt        : '{' localDeclarations statementList '}' {
                                $$ = newStmtNode(CompK);
                                $$->child[0] = $2;
                                $$->child[1] = $3;
-                               $$->lineno = $1.lineno;
+                               $$->linenum = $1.linenum;
                             }
                     ;
 
 /* 21 */
 localDeclarations   : localDeclarations scopedVarDeclaration {
-                                TreeNode *trav = $1;
-                                if(trav != NULL) {
-                                    while(trav->sibling != NULL) trav = trav->sibling;
-                                    trav->sibling = $2;
+                                TreeNode *node = $1;
+                                if(node != NULL) {
+                                    while(node->sibling != NULL) node = node->sibling;
+                                    node->sibling = $2;
                                     $$ = $1;
                                 } else {
                                     $$ = $2;
@@ -417,10 +412,10 @@ localDeclarations   : localDeclarations scopedVarDeclaration {
 
 /* 22 */
 statementList       : statementList statement {
-                                TreeNode *trav = $1;
-                                if(trav != NULL) {
-                                    while(trav->sibling != NULL) trav = trav->sibling;
-                                    trav->sibling = $2;
+                                TreeNode *node = $1;
+                                if(node != NULL) {
+                                    while(node->sibling != NULL) node = node->sibling;
+                                    node->sibling = $2;
                                     $$ = $1;
                                 } else {
                                     $$ = $2;
@@ -443,28 +438,28 @@ selectionStmt       : IF '(' simpleExpression ')' statement
 
 matched_selection   : IF '(' simpleExpression ')' matched ELSE matched {
                                 $$ = newStmtNode(IfK);
-                                $$->attr.name = $1.rtxt;
+                                $$->attr.name = $1.tokenstring;
                                 $$->child[0] = $3;
                                 $$->child[1] = $5;
                                 $$->child[2] = $7;
-                                $$->lineno = $1.lineno;
+                                $$->linenum = $1.linenum;
                             }
                     ;
 
 unmatched_selection : IF '(' simpleExpression ')' matched ELSE unmatched {
                                 $$ = newStmtNode(IfK);
-                                $$->attr.name = $1.rtxt;
+                                $$->attr.name = $1.tokenstring;
                                 $$->child[0] = $3;
                                 $$->child[1] = $5;
                                 $$->child[2] = $7;
-                                $$->lineno = $1.lineno;
+                                $$->linenum = $1.linenum;
                             }
                     | IF '(' simpleExpression ')' statement {
                             $$ = newStmtNode(IfK);
-                            $$->attr.name = $1.rtxt;
+                            $$->attr.name = $1.tokenstring;
                             $$->child[0] = $3;
                             $$->child[1] = $5;
-                            $$->lineno = $1.lineno;
+                            $$->linenum = $1.linenum;
                         }
                     ;
 
@@ -478,21 +473,21 @@ iterationStmt       : WHILE '(' simpleExpression ')' statement
 /* 26 */
 returnStmt          : RETURN ';' {
                                 $$ = newStmtNode(ReturnK);
-                                $$->attr.name = $1.rtxt;
-                                $$->lineno = $1.lineno;
+                                $$->attr.name = $1.tokenstring;
+                                $$->linenum = $1.linenum;
                             }
                     | RETURN expression ';' {
                             $$ = newStmtNode(ReturnK);
-                            $$->attr.name = $1.rtxt;
+                            $$->attr.name = $1.tokenstring;
                             $$->child[0] = $2;
-                            $$->lineno = $1.lineno;
+                            $$->linenum = $1.linenum;
                         }
                     ;
 
 /* 27 */
 breakStmt           : BREAK ';' {
                                 $$ = newStmtNode(BreakK);
-                                $$->attr.name = $1.rtxt;
+                                $$->attr.name = $1.tokenstring;
                             }
 
 
@@ -501,52 +496,52 @@ breakStmt           : BREAK ';' {
 /* 28 */
 expression          : mutable EQ  expression {
                                 $$ = newExprNode(AssignK);
-                                $$->attr.name = $2.rtxt;
+                                $$->attr.name = $2.tokenstring;
                                 $$->child[0] = $1;
                                 $$->child[1] = $3;
-                                $$->lineno = $2.lineno;
+                                $$->linenum = $2.linenum;
                             }
                     | mutable ADDASS expression {
                             $$ = newExprNode(AssignK);
-                            $$->attr.name = $2.rtxt;
+                            $$->attr.name = $2.tokenstring;
                             $$->child[0] = $1;
                             $$->child[1] = $3;
-                            $$->lineno = $2.lineno;
+                            $$->linenum = $2.linenum;
                         }
                     | mutable SUBASS expression {
                             $$ = newExprNode(AssignK);
-                            $$->attr.name = $2.rtxt;
+                            $$->attr.name = $2.tokenstring;
                             $$->child[0] = $1;
                             $$->child[1] = $3;
-                            $$->lineno = $2.lineno;
+                            $$->linenum = $2.linenum;
                         }
                     | mutable MULASS expression {
                             $$ = newExprNode(AssignK);
-                            $$->attr.name = $2.rtxt;
+                            $$->attr.name = $2.tokenstring;
                             $$->child[0] = $1;
                             $$->child[1] = $3;
-                            $$->lineno = $2.lineno;
+                            $$->linenum = $2.linenum;
                         }
                     | mutable DIVASS expression {
                             $$ = newExprNode(AssignK);
-                            $$->attr.name = $2.rtxt;
+                            $$->attr.name = $2.tokenstring;
                             $$->child[0] = $1;
                             $$->child[1] = $3;
-                            $$->lineno = $2.lineno;
+                            $$->linenum = $2.linenum;
                         }
                     | mutable INC {
                             $$ = newExprNode(AssignK);
-                            $$->attr.name = $2.rtxt;
+                            $$->attr.name = $2.tokenstring;
                             $$->child[0] = $1;
                             //$$->child[1] = $3;
-                            $$->lineno = $2.lineno;
+                            $$->linenum = $2.linenum;
                         }
                     | mutable DEC{
                             $$ = newExprNode(AssignK);
-                            $$->attr.name = $2.rtxt;
+                            $$->attr.name = $2.tokenstring;
                             $$->child[0] = $1;
                             //$$->child[1] = $3;
-                            $$->lineno = $2.lineno;
+                            $$->linenum = $2.linenum;
                         }
                     | simpleExpression { $$ = $1; }
                     ;
@@ -554,7 +549,7 @@ expression          : mutable EQ  expression {
 /* 29 */
 simpleExpression    : simpleExpression OR andExpression {
                                 $$ = newExprNode(OpK);
-                                $$->attr.name = $2.rtxt;
+                                $$->attr.name = $2.tokenstring;
                                 $$->child[0] = $1;
                                 $$->child[1] = $3;
                             }
@@ -565,7 +560,7 @@ simpleExpression    : simpleExpression OR andExpression {
 /* 30 */
 andExpression       : andExpression AND unaryRelExpression {
                                 $$ = newExprNode(OpK);
-                                $$->attr.name = $2.rtxt;
+                                $$->attr.name = $2.tokenstring;
                                 $$->child[0] = $1;
                                 $$->child[1] = $3;
                             }
@@ -576,7 +571,7 @@ andExpression       : andExpression AND unaryRelExpression {
 /* 31 */
 unaryRelExpression  : NOT unaryRelExpression {
                                 $$ = newExprNode(OpK);
-                                $$->attr.name = $1.rtxt;
+                                $$->attr.name = $1.tokenstring;
                                 $$->child[0] = $2;
                             }
                     | relExpression { $$ = $1; }
@@ -585,7 +580,7 @@ unaryRelExpression  : NOT unaryRelExpression {
 /* 32 */
 relExpression       : sumExpression relop sumExpression {
                                $$ = newExprNode(OpK);
-                               $$->attr.name = $2.rtxt;
+                               $$->attr.name = $2.tokenstring;
                                $$->child[0] = $1;
                                $$->child[1] = $3;
                             }
@@ -604,7 +599,7 @@ relop               : LESSEQ { $$ = $1; }
 /* 34 */
 sumExpression       : sumExpression sumop term {
                                 $$ = newExprNode(OpK);
-                                $$->attr.name = $2.rtxt;
+                                $$->attr.name = $2.tokenstring;
                                 $$->child[0] = $1;
                                 $$->child[1] = $3;
                             }
@@ -619,10 +614,10 @@ sumop               : PLUS { $$ = $1; }
 /* 36 */
 term                : term mulop unaryExpression {
                                 $$ = newExprNode(OpK);
-                                $$->attr.name = $2.rtxt;
+                                $$->attr.name = $2.tokenstring;
                                 $$->child[0] = $1;
                                 $$->child[1] = $3;
-                                $$->lineno = $2.lineno;
+                                $$->linenum = $2.linenum;
                             }
                     | unaryExpression { $$ = $1; }
                     ;
@@ -636,7 +631,7 @@ mulop               : STAR { $$ = $1; }
 /* 38 */
 unaryExpression     : unaryop unaryExpression {
                                 $$ = newExprNode(OpK);
-                                $$->attr.name = $1.rtxt;
+                                $$->attr.name = $1.tokenstring;
                                 $$->child[0] = $2;
                             }
                     | factor { $$ = $1; }
@@ -657,24 +652,24 @@ factor              : immutable { $$ = $1; }
 
 mutable             : ID {
                                $$ = newExprNode(IdK);
-                               $$->attr.name = $1.value.sval;
+                               $$->attr.name = $1.sval;
                             }
                     | mutable '[' expression ']' {
                            $$ = newExprNode(OpK);
-                           $$->attr.name = $2.rtxt;
+                           $$->attr.name = $2.tokenstring;
                            $$->child[0] = $1;
                            $$->child[1] = $3;
                         }
                     | mutable '.' monkey {
                             $$ = newExprNode(OpK);
-                            $$->attr.name = $2.rtxt;
+                            $$->attr.name = $2.tokenstring;
                             $$->child[0] = $1;
                             $$->child[1] = $3;
                                     }
                     ;
 monkey              : ID {
                             $$ = newExprNode(IdK);
-                            $$->attr.name = $1.value.sval;
+                            $$->attr.name = $1.sval;
                           }
 
 /* 42 */
@@ -686,7 +681,7 @@ immutable           : '(' expression ')' { $$ = $2; }
 /* 43 */
 call                : ID '(' args ')' {
                                $$ = newExprNode(CallK);
-                               $$->attr.name = $1.value.sval;
+                               $$->attr.name = $1.sval;
                                $$->child[0] = $3;
                             }
                     ;
@@ -698,10 +693,10 @@ args                : argList { $$ = $1; }
 
 /* 45 */
 argList             : argList ',' expression {
-                                TreeNode *trav = $1;
-                                if(trav != NULL) {
-                                    while(trav->sibling != NULL) trav = trav->sibling;
-                                    trav->sibling = $3;
+                                TreeNode *node = $1;
+                                if(node != NULL) {
+                                    while(node->sibling != NULL) node = node->sibling;
+                                    node->sibling = $3;
                                     $$ = $1;
                                 } else {
                                     $$ = $3;
@@ -713,17 +708,17 @@ argList             : argList ',' expression {
 /* 46 */
 constant            : NUMCONST {
                                 $$ = newExprNode(ConstK);
-                                $$->attr.ivalue = $1.value.ival;
+                                $$->attr.value = $1.ival;
                                 $$->declType = Int;
                             }
                     | CHARCONST {
                             $$ = newExprNode(ConstK);
-                            $$->attr.cvalue = $1.value.cval;
+                            $$->attr.cvalue = $1.cval;
                             $$->declType = Char;
                         }
                     | BOOLCONST {
                             $$ = newExprNode(ConstK);
-                            $$->attr.ivalue = $1.value.ival;
+                            $$->attr.value = $1.ival;
                             $$->declType = Bool;
                         }
                     ;
@@ -731,37 +726,8 @@ constant            : NUMCONST {
 
 %%
 int main(int argc, char** argv) {
-    // Get cmd line option arguments if they exist
-    int opt;
-    while((opt = getopt(argc, argv, "d")) != EOF) {
-        switch(opt) { //in case we add more options
-            default:
-                abort();
-                break;
-            case 'd':
-                yydebug = 1;
-                break;
-        }
-    }
-
-    // If there's a trailing argument, it must be the filename.
-    if(argc > 1) {
-        FILE *iFile;
-        iFile = fopen(argv[argc - 1], "r");
-        if(!iFile) {
-            printf("File not found: %s\n", argv[argc - 1]);
-            exit(-1);
-        }
-        yyin = iFile;
-    }
-
-    // Start the scanner now that our options and yyin have been changed (or not).
-    do {
-        yyparse();
-    } while(!feof(yyin));
-
-    printTree(syntaxTree, -1);
-    printf("Number of warnings: %i\n", 0);
-    printf("Number of errors: %i\n", 0);
-    return 0;
+  extern FILE *yyin;
+  yyin = fopen(argv[1], "r");
+  yyparse();
+  return 0;
 }

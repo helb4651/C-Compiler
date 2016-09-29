@@ -1,11 +1,12 @@
 %{
-
-/*
-c-.l CS445 Cody Helbling
-*/
+/****************************************************/
+/* File: c.l                                        */
+/* Flex specification for c-                        */
+/* CS445                                            */
+/* University of Idaho                              */
+/****************************************************/
 
 #include <stdlib.h>
-#include <cstdio>
 #include "scanType.h"   // must be defined before tab.h
 #include "util.h"
 #include "symbolTable.h"
@@ -13,86 +14,59 @@ c-.l CS445 Cody Helbling
 #include <string.h>
 
 
+char stripper(char* value){
 
+    if(value[2] == '0'){
+        return 0; }
+    else if( value[2] == 'n' ){
+        return 10;
+     }
+    else if( value[1] == '\\'){
+        return value[2]; }
+    else {
+        return value[1];
+    }
+}
 
 void init() {
-  yylval.token.lineno = yylineno;
-  yylval.token.rtxt = strdup(yytext);
-  //printf("FLEX: %s\n", yytext);
+  yylval.token.linenum = yylineno;
+  yylval.token.tokenstring = strdup(yytext);
+  printf("FLEX: %s\n", yytext);
 }
+
 
 void init(char* sval) {
   init();
-  yylval.token.value.sval = sval;
+  yylval.token.sval = sval;
 }
+
 
 void init(char cval) {
   init();
-  yylval.token.value.cval = cval;
+  yylval.token.cval = cval;
 }
+
 
 void init(int ival) {
   init();
-  yylval.token.value.ival = ival;
+  yylval.token.ival = ival;
 }
 
 
-// TODO: UPDATE THIS!!!
-// Take in yytext containing "\0", "\n", "\." and return a string with '\0', '\n', '.'.
-char* escstr(char* str) {
-    int j = 0;
-    char* esced = (char*)malloc(strlen(str) * sizeof(char));
-    for(int i = 1; i < strlen(str) - 1; i++) {
-        if(str[i] == '\\') {
-            char eschar = str[i + 1];
-            switch(eschar) {
-                default : esced[j] = str[i + 1]; break;
-                case 'n': esced[j] = '\n'; break;
-                case '0': esced[j] = '\0'; break;
-            }
-            i++;
-        } else {
-            esced[j] = str[i];
-        }
-        j++;
-    }
-    char* resize = (char*)malloc(j * sizeof(char));
-    strncpy(resize, esced, j);
-    free(esced);
-    yylval.token.slen = j;
-    return resize;
-}
 
 
-static int lineno = 1;
-/*
-int setTokenData(int tokenClass) {
-    yylval.tokenData = new TokenData;
-    yylval.tokenData->tokenclass = tokenClass;
-    yylval.tokenData->linenum = lineno;
-    yylval.tokenData->tokenstring = strdup(yytext);  // make a copy
-    if (tokenClass == TRUE) {
-       yylval.tokenData->bvalue = 1;
-    }
-    if (tokenClass == FALSE) {
-       yylval.tokenData->bvalue = 0;
-    }
-    return tokenClass;
-}
-*/
+
 %}
 
 %option noyywrap
 %option yylineno
 
 %%
-\n                                              { lineno++; }
-[ ]                                             { /*printf("space-ln: %d\n", lineno);*/ }
-[\t]                                            { /*printf("tab-ln: %d\n", lineno);*/ }
+\n                                              { /*linenum++;*/ }
+[ ]                                             { /*printf("space-ln: %d\n", linenum);*/ }
+[\t]                                            { /*printf("tab-ln: %d\n", linenum);*/ }
 \/\/.*                                          { /*printf("comment: %s\n", yytext);*/ }
-record                                          { init(strdup(yytext));
-                                                  return RECORD;
-                                                }
+record                                          { init(strdup(yytext)); return RECORD; }
 static                                          { init(strdup(yytext)); return STATIC; }
 int                                             { init(strdup(yytext)); return INT; }
 bool                                            { init(strdup(yytext)); return BOOL; }
@@ -135,7 +109,6 @@ false                                           { init(0);              return B
                                                 //printf("\nGeneral Lookup FLEX\n");
                                                 for (int i=0; i<wordsLen; i++) {
                                                     void *data;
-
                                                     if ((data = st.lookup(words[i]))==NULL){
                                                       //printf("%s: %s\n", words[i].c_str(), (char *)"NULL");
                                                       return ID;
@@ -146,13 +119,11 @@ false                                           { init(0);              return B
                                                       }
                                                 }
 
-printf("\n\n\n");
-
 
                                                     if ((st.lookup(strdup(yytext))==NULL)) return ID;
                                                     else return RECORD;
                                                 }
 [0-9]+                                          { init(atoi(yytext)); return NUMCONST; }
-'((\\\')|[^\'\n])*\'                            { init(escstr(yytext)[0]); return CHARCONST; }
-.                                               { printf("ERROR(%d): Invalid or misplaced input character: \"%c\"\n", lineno, yytext[0]);}
+'((\\\')|[^\'\n])*\'                            { init(stripper(yytext)); return CHARCONST; }
+.                                               { printf("ERROR(%d): Invalid or misplaced input character: \"%c\"\n", yylineno, yytext[0]);}
 %%

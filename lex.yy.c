@@ -546,13 +546,14 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "c-.l"
 #line 2 "c-.l"
-
-/*
-c-.l CS445 Cody Helbling
-*/
+/****************************************************/
+/* File: c.l                                        */
+/* Flex specification for c-                        */
+/* CS445                                            */
+/* University of Idaho                              */
+/****************************************************/
 
 #include <stdlib.h>
-#include <cstdio>
 #include "scanType.h"   // must be defined before tab.h
 #include "util.h"
 #include "symbolTable.h"
@@ -560,74 +561,49 @@ c-.l CS445 Cody Helbling
 #include <string.h>
 
 
+char stripper(char* value){
 
+    if(value[2] == '0'){
+        return 0; }
+    else if( value[2] == 'n' ){
+        return 10;
+     }
+    else if( value[1] == '\\'){
+        return value[2]; }
+    else {
+        return value[1];
+    }
+}
 
 void init() {
-  yylval.token.lineno = yylineno;
-  yylval.token.rtxt = strdup(yytext);
-  //printf("FLEX: %s\n", yytext);
+  yylval.token.linenum = yylineno;
+  yylval.token.tokenstring = strdup(yytext);
+  printf("FLEX: %s\n", yytext);
 }
+
 
 void init(char* sval) {
   init();
-  yylval.token.value.sval = sval;
+  yylval.token.sval = sval;
 }
+
 
 void init(char cval) {
   init();
-  yylval.token.value.cval = cval;
+  yylval.token.cval = cval;
 }
+
 
 void init(int ival) {
   init();
-  yylval.token.value.ival = ival;
+  yylval.token.ival = ival;
 }
 
 
-// TODO: UPDATE THIS!!!
-// Take in yytext containing "\0", "\n", "\." and return a string with '\0', '\n', '.'.
-char* escstr(char* str) {
-    int j = 0;
-    char* esced = (char*)malloc(strlen(str) * sizeof(char));
-    for(int i = 1; i < strlen(str) - 1; i++) {
-        if(str[i] == '\\') {
-            char eschar = str[i + 1];
-            switch(eschar) {
-                default : esced[j] = str[i + 1]; break;
-                case 'n': esced[j] = '\n'; break;
-                case '0': esced[j] = '\0'; break;
-            }
-            i++;
-        } else {
-            esced[j] = str[i];
-        }
-        j++;
-    }
-    char* resize = (char*)malloc(j * sizeof(char));
-    strncpy(resize, esced, j);
-    free(esced);
-    yylval.token.slen = j;
-    return resize;
-}
 
 
-static int lineno = 1;
-/*
-int setTokenData(int tokenClass) {
-    yylval.tokenData = new TokenData;
-    yylval.tokenData->tokenclass = tokenClass;
-    yylval.tokenData->linenum = lineno;
-    yylval.tokenData->tokenstring = strdup(yytext);  // make a copy
-    if (tokenClass == TRUE) {
-       yylval.tokenData->bvalue = 1;
-    }
-    if (tokenClass == FALSE) {
-       yylval.tokenData->bvalue = 0;
-    }
-    return tokenClass;
-}
-*/
-#line 631 "lex.yy.c"
+
+#line 607 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -809,9 +785,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 88 "c-.l"
+#line 64 "c-.l"
 
-#line 815 "lex.yy.c"
+#line 791 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -907,209 +883,207 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 89 "c-.l"
-{ lineno++; }
+#line 65 "c-.l"
+{ /*linenum++;*/ }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 90 "c-.l"
-{ /*printf("space-ln: %d\n", lineno);*/ }
+#line 66 "c-.l"
+{ /*printf("space-ln: %d\n", linenum);*/ }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 91 "c-.l"
-{ /*printf("tab-ln: %d\n", lineno);*/ }
+#line 67 "c-.l"
+{ /*printf("tab-ln: %d\n", linenum);*/ }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 92 "c-.l"
+#line 68 "c-.l"
 { /*printf("comment: %s\n", yytext);*/ }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 93 "c-.l"
-{ init(strdup(yytext));
-                                                  return RECORD;
-                                                }
+#line 69 "c-.l"
+{ init(strdup(yytext)); return RECORD; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 96 "c-.l"
+#line 70 "c-.l"
 { init(strdup(yytext)); return STATIC; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 97 "c-.l"
+#line 71 "c-.l"
 { init(strdup(yytext)); return INT; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 98 "c-.l"
+#line 72 "c-.l"
 { init(strdup(yytext)); return BOOL; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 99 "c-.l"
+#line 73 "c-.l"
 { init(strdup(yytext)); return CHAR; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 100 "c-.l"
+#line 74 "c-.l"
 { init(strdup(yytext)); return IF; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 101 "c-.l"
+#line 75 "c-.l"
 { init(strdup(yytext)); return ELSE; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 102 "c-.l"
+#line 76 "c-.l"
 { init(strdup(yytext)); return WHILE; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 103 "c-.l"
+#line 77 "c-.l"
 { init(strdup(yytext)); return RETURN; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 104 "c-.l"
+#line 78 "c-.l"
 { init(strdup(yytext)); return BREAK; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 105 "c-.l"
+#line 79 "c-.l"
 { init(strdup(yytext)); return AND; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 106 "c-.l"
+#line 80 "c-.l"
 { init(strdup(yytext)); return OR; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 107 "c-.l"
+#line 81 "c-.l"
 { init(strdup(yytext)); return NOT; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 108 "c-.l"
+#line 82 "c-.l"
 { init(1);              return BOOLCONST; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 109 "c-.l"
+#line 83 "c-.l"
 { init(0);              return BOOLCONST; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 110 "c-.l"
+#line 84 "c-.l"
 { init(strdup(yytext)); return NOTEQ; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 111 "c-.l"
+#line 85 "c-.l"
 { init(strdup(yytext)); return MULASS; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 112 "c-.l"
+#line 86 "c-.l"
 { init(strdup(yytext)); return INC; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 113 "c-.l"
+#line 87 "c-.l"
 { init(strdup(yytext)); return ADDASS; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 114 "c-.l"
+#line 88 "c-.l"
 { init(strdup(yytext)); return DEC; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 115 "c-.l"
+#line 89 "c-.l"
 { init(strdup(yytext)); return SUBASS; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 116 "c-.l"
+#line 90 "c-.l"
 { init(strdup(yytext)); return DIVASS; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 117 "c-.l"
+#line 91 "c-.l"
 { init(strdup(yytext)); return LESSEQ; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 118 "c-.l"
+#line 92 "c-.l"
 { init(strdup(yytext)); return EQ; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 119 "c-.l"
+#line 93 "c-.l"
 { init(strdup(yytext)); return EQEQ; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 120 "c-.l"
+#line 94 "c-.l"
 { init(strdup(yytext)); return GRTEQ; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 121 "c-.l"
+#line 95 "c-.l"
 { init(strdup(yytext)); return GRT; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 122 "c-.l"
+#line 96 "c-.l"
 { init(strdup(yytext)); return LESS; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 123 "c-.l"
+#line 97 "c-.l"
 { init(strdup(yytext)); return STAR; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 124 "c-.l"
+#line 98 "c-.l"
 { init(strdup(yytext)); return DIVIDE; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 125 "c-.l"
+#line 99 "c-.l"
 { init(strdup(yytext)); return MINUS; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 126 "c-.l"
+#line 100 "c-.l"
 { init(strdup(yytext)); return PLUS; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 127 "c-.l"
+#line 101 "c-.l"
 { init(strdup(yytext)); return MOD; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 128 "c-.l"
+#line 102 "c-.l"
 { init(strdup(yytext)); return QMARK; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 129 "c-.l"
+#line 103 "c-.l"
 { init(yytext[0]); return yytext[0]; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 130 "c-.l"
+#line 104 "c-.l"
 { init(strdup(yytext)); return NULCHAR; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 131 "c-.l"
+#line 105 "c-.l"
 { init(strdup(yytext));
 
                                                 std::string words[] = {strdup(yytext)};
@@ -1117,7 +1091,6 @@ YY_RULE_SETUP
                                                 //printf("\nGeneral Lookup FLEX\n");
                                                 for (int i=0; i<wordsLen; i++) {
                                                     void *data;
-
                                                     if ((data = st.lookup(words[i]))==NULL){
                                                       //printf("%s: %s\n", words[i].c_str(), (char *)"NULL");
                                                       return ID;
@@ -1128,8 +1101,6 @@ YY_RULE_SETUP
                                                       }
                                                 }
 
-printf("\n\n\n");
-
 
                                                     if ((st.lookup(strdup(yytext))==NULL)) return ID;
                                                     else return RECORD;
@@ -1137,25 +1108,25 @@ printf("\n\n\n");
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 155 "c-.l"
+#line 126 "c-.l"
 { init(atoi(yytext)); return NUMCONST; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 156 "c-.l"
-{ init(escstr(yytext)[0]); return CHARCONST; }
+#line 127 "c-.l"
+{ init(stripper(yytext)); return CHARCONST; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 157 "c-.l"
-{ printf("ERROR(%d): Invalid or misplaced input character: \"%c\"\n", lineno, yytext[0]);}
+#line 128 "c-.l"
+{ printf("ERROR(%d): Invalid or misplaced input character: \"%c\"\n", yylineno, yytext[0]);}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 158 "c-.l"
+#line 129 "c-.l"
 ECHO;
 	YY_BREAK
-#line 1159 "lex.yy.c"
+#line 1130 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2164,7 +2135,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 158 "c-.l"
+#line 129 "c-.l"
 
 
 

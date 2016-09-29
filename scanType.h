@@ -1,19 +1,18 @@
 #ifndef SCANTYPEH
 #define SCANTYPEH
 typedef struct token {
-  union Value {
-    int ival;
-    char cval;
-    char* sval;
-  } value;
-    char* rtxt;
-    int slen;
-    int lineno;
+        int linenum;
+        char *tokenstring;
 
-    int tokenclass;
-    int linenum;
-    char *tokenstring;
-    bool bvalue;
+        union type {
+                int intVal;
+                char charVal;
+                char* strVal;
+        } Type;
+
+        int ival;
+        char cval;
+        char* sval;
 } Token;
 
 #endif

@@ -5,12 +5,7 @@
 #include "globals.h"
 //#include "util.h"
 
-
-
-void printToken(TokenType, const char *);
-
-
-void printTree(TreeNode *tree, int);
+void printTree(TreeNode *tree, int numOfSibs);
 void printSpaces();
 TreeNode *newStmtNode(StmtKind);
 TreeNode *newExprNode(ExprKind);

@@ -1,15 +1,18 @@
-// globals.h as per the Tiny compiler dictates
+/****************************************************/
+/* File: globals.h                                  */
+/* Modified from Tiny Compiler                      */
+/* must come before other include files             */
+/* Compiler Construction: Principles and Practice   */
+/* Kenneth C. Louden                                */
+/****************************************************/
 
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-#include <cstdio>
+
 #include <cstdlib>
 #include <cstring>
 #include "symbolTable.h"
-
-
-
 
 #define MAXRESERVED 8
 
@@ -17,44 +20,39 @@ extern int yylineno;
 
 extern SymbolTable st;
 
-
 typedef int TokenType;
 typedef enum {DeclK, StmtK, ExprK} NodeKind;
 typedef enum {FuncK, VarK, ParamK, RecordK} DeclKind;
-typedef enum {IfK, ForK, WhileK, CompK, ReturnK, BreakK} StmtKind;
-typedef enum {ConstK, IdK, OpK, AssignK, SimpK, CallK} ExprKind;
-
+typedef enum {IfK, WhileK, CompK, ReturnK, BreakK} StmtKind;
+typedef enum {ConstK, IdK, OpK, AssignK, CallK} ExprKind;
 typedef enum {Void, Int, Bool, Char, String, Record} DeclType;
+
 
 #define MAXCHILDREN 3
 
 typedef struct treeNode {
-    // connectivity in the tree
-    struct treeNode *child[MAXCHILDREN];   // children of the node
-    struct treeNode *sibling;              // siblings for the node
+        struct treeNode *child[MAXCHILDREN];
+        struct treeNode *sibling;
+        int linenum;
+        NodeKind nodekind;
 
-    // what kind of node
-    int lineno;                            // linenum relevant to this node
-    NodeKind nodekind;                     // type of node
-    union {                                // subtype of type
-        DeclKind decl;                     // used when DeclK
-        StmtKind stmt;                     // used when StmtK
-        ExprKind expr;                       // used when ExpK
-    } kind;
+        union {
+                DeclKind decl;
+                StmtKind stmt;
+                ExprKind expr;
+        } kind;
 
-    // extra properties about the node depending on type of the node
-    union {                                // relevant data to type -> attr
-        int ivalue;                         // used when an integer constant or boolean
-        unsigned char cvalue;              // used when a character
-        char *svalue;                      // used when a string constant
-        char *name;                         // used when IdK
-    } attr;
-    DeclType declType;                       // used when ExpK for type checking
-    bool isStatic;                         // is staticly allocated?
-    // TODO: RECORDS!!!!
-    bool isArray;                          // is this an array
-    int arrayLen;
-    bool isRecord;
-    // even more semantic stuff will go here in later assignments.
+        union {
+                int value;
+                unsigned char cvalue;
+                char *string;
+                char *name;
+        } attr;
+
+        DeclType declType;
+        bool isStatic;
+        bool isArray;
+        int arrayLen;
+        bool isRecord;
 } TreeNode;
 #endif
