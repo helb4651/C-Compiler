@@ -1,6 +1,5 @@
 BIN  = c-
 CC   = g++
-CFLAGS = -DCPLUSPLUS -g  -x c # for use with C++ if file ext is .c
 SRCS = $(BIN).y $(BIN).l scanType.h globals.h util.h util.cpp symbolTable.h symbolTable.cpp
 OBJS = lex.yy.o $(BIN).tab.o util.o symbolTable.o
 LIBS = -lm
@@ -17,7 +16,7 @@ lex.yy.c: $(BIN).l $(BIN).tab.h
 util.o: util.cpp util.h globals.h
 	$(CC) $(CFLAGS) -c util.cpp
 
-symbolTable.o: symbolTable.cpp symbolTable.h
+symbolTable.o: symbolTable.h symbolTable.cpp
 	$(CC) $(CFLAGS) -c symbolTable.cpp
 
 all:
@@ -27,5 +26,15 @@ all:
 clean:
 	rm -f $(OBJS) $(BIN) $(BIN).output lex.yy.c $(BIN).tab.h $(BIN).tab.c $(BIN).tar *~
 
+pdf:
+	c-.y c-.l makefile
+	mktex c-.y
+	mv c-.pdf c--y.pdf
+	mktex c-.l
+	mv c-.pdf c--l.pdf
+	mktex makefile
+	save c--l.pdf c--y.pdf makefile.pdf
+	rm *.tex
+
 tar:
-	tar -cvf helbling.tar $(SRCS) makefile
+	tar -cvf $(BIN).tar $(SRCS) makefile

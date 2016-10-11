@@ -31,7 +31,7 @@ char stripper(char* value){
 void init() {
   yylval.token.linenum = yylineno;
   yylval.token.tokenstring = strdup(yytext);
-  printf("FLEX: %s\n", yytext);
+  // printf("FLEX: %s\n", yytext);
 }
 
 

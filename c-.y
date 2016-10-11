@@ -14,7 +14,6 @@
 #include "util.h"
 #include <ctype.h>
 #include <getopt.h>
-#define YYDEBUG 1
 #define YYERROR_VERBOSE
 
 
@@ -726,8 +725,23 @@ constant            : NUMCONST {
 
 %%
 int main(int argc, char** argv) {
+  int c;
+  while((c = getopt(argc, argv, "d")) != EOF) {
+      switch(c) {
+          default:
+              abort();
+              break;
+          case 'd':
+              yydebug = 1;
+              break;
+      }
+  }
+
   extern FILE *yyin;
   yyin = fopen(argv[1], "r");
   yyparse();
+  printTree(syntaxTree, -1);
+  printf("Number of warnings: 0\n");
+  printf("Number of errors: 0\n");
   return 0;
 }

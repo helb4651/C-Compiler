@@ -11,26 +11,7 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="590abc02-347a-430b-9aef-664f663a1496" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/lex.yy.o" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-" afterPath="$PROJECT_DIR$/c-" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-.tab.o" afterPath="$PROJECT_DIR$/c-.tab.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/helbling" afterPath="$PROJECT_DIR$/helbling" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util.o" afterPath="$PROJECT_DIR$/util.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-.l" afterPath="$PROJECT_DIR$/c-.l" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-.output" afterPath="$PROJECT_DIR$/c-.output" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-.tab.c" afterPath="$PROJECT_DIR$/c-.tab.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-.tab.h" afterPath="$PROJECT_DIR$/c-.tab.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-.y" afterPath="$PROJECT_DIR$/c-.y" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compareOutputs.py" afterPath="$PROJECT_DIR$/compareOutputs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/globals.h" afterPath="$PROJECT_DIR$/globals.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lex.yy.c" afterPath="$PROJECT_DIR$/lex.yy.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/makefile" afterPath="$PROJECT_DIR$/makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scanType.h" afterPath="$PROJECT_DIR$/scanType.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util.cpp" afterPath="$PROJECT_DIR$/util.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util.h" afterPath="$PROJECT_DIR$/util.h" />
-    </list>
+    <list default="true" id="590abc02-347a-430b-9aef-664f663a1496" name="Default" comment="" />
     <ignored path="Compiler.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -233,11 +214,11 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="SearchEverywhereHistoryKey" value="font&#9;ACTION&#9;EditorDecreaseFontSize&#10;zoom&#9;null&#9;null&#10;ter&#9;ACTION&#9;ActivateTerminalToolWindow" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/CS445-677c927a028935ce57247db886e735171d738643" />
+    <property name="last_opened_file_path" value="/usr/bin/git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -451,6 +432,7 @@
       <workItem from="1474746798430" duration="14941000" />
       <workItem from="1475111680450" duration="1232000" />
       <workItem from="1475113156162" duration="96000" />
+      <workItem from="1476226001121" duration="157000" />
     </task>
     <task id="LOCAL-00001" summary="Added some test code.">
       <created>1473213501269</created>
@@ -484,26 +466,26 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39641000" />
+    <option name="totallyTimeSpent" value="39798000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="815" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15362932" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15362932" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780084" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23226951" sideWeight="0.504" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49100968" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17150761" sideWeight="0.496" order="7" side_tool="false" content_ui="tabs" x="0" y="307" width="1033" height="244" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17150761" sideWeight="0.496" order="7" side_tool="false" content_ui="tabs" x="0" y="307" width="1033" height="244" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49100968" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19509704" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -857,6 +839,6 @@
     </states>
   </component>
   <component name="webServersAuthStorage">
-    <data>AAAAsKM17zum43l647E6jFr+29UqBgibvh3koQzopU0n0tdS7aXELIIhn6tGL6Run2ZRu59Pk4xigka0D2Y/3iVQv+ut0b4VKFYuNfUYY6EfLaIb21VQZ+N6rDzxYFEL/fOljnOWq2q4MXZtwxX/MhwHqCESeFz3IyIms1z0iEB0I97kM6Vu8eQkd8lpPDDHaII+AC1bo86B8nDl46oh6aFULnPyA0dMazCNSj5TqdRAg1DbpMh3/U1DeRdPQvFMZWnIBg==</data>
+    <data>AAAAsOatwVaXtdK8EfjDcXDfDBKh2gaZuaELE6Nv151NDwRi+csZTYZ1jwjEtdy0liGUFDbbAhD44e0UsG6IRWEsIdGmPrfN1qTHiSpfSHT/rMMMcDpfEi3xCEWcFMXkn8QAwidIYgM3M+bwNsPnM2R0/mqFMXZitDvMVFDwd2mqGa+P+3flROrfjW2PdOLFj5jz64I+s5hU5XaueeFSnXYu+HI+DL6oeM1u6xkcFm3wwPYvBMspJQpuYPcFH57Jezyd7g==</data>
   </component>
 </project>

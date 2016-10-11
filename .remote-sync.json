@@ -1,0 +1,15 @@
+{
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "wormulon.cs.uidaho.edu",
+  "port": "22",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "helb4651",
+  "password": "tangoYANKEElima16",
+  "watch": [],
+  "transport": "scp"
+}
