@@ -1,7 +1,7 @@
-BIN  = c-
+úÙ¯ËÅÁBIN  = c-
 CC   = g++
-SRCS = $(BIN).y $(BIN).l scanType.h globals.h semantic.h semantic.cpp symbolTable.h symbolTable.cpp printtree.cpp printtree.h
-OBJS = lex.yy.o $(BIN).tab.o semantic.o symbolTable.o printtree.o
+SRCS = $(BIN).y $(BIN).l scanType.h globals.h util.h util.cpp symbolTable.h symbolTable.cpp printtree.cpp printtree.h
+OBJS = lex.yy.o $(BIN).tab.o util.o symbolTable.o
 LIBS = -lm
 
 $(BIN): $(OBJS)
@@ -13,8 +13,8 @@ $(BIN).tab.h $(BIN).tab.c: $(BIN).y
 lex.yy.c: $(BIN).l $(BIN).tab.h
 	flex $(BIN).l  # -d debug
 
-semantic.o: semantic.cpp semantic.h globals.h
-	$(CC) $(CFLAGS) -c semantic.cpp
+util.o: util.cpp util.h globals.h
+	$(CC) $(CFLAGS) -c util.cpp
 
 printtree.o: printtree.cpp printtree.h globals.h
 	$(CC) $(CFLAGS) -c printtree.cpp

@@ -11,7 +11,8 @@
 #include "scanType.h"
 #include "globals.h"
 #include "symbolTable.h"
-#include "util.h"
+#include "semantic.h"
+#include "printtree.h"
 #include <ctype.h>
 #include <getopt.h>
 #define YYERROR_VERBOSE
@@ -740,7 +741,8 @@ int main(int argc, char** argv) {
   extern FILE *yyin;
   yyin = fopen(argv[1], "r");
   yyparse();
-  printTree(syntaxTree, -1);
+  /*printTree(syntaxTree, -1);*/
+  scopeAndType(syntaxTree, -1);
   printf("Number of warnings: 0\n");
   printf("Number of errors: 0\n");
   return 0;

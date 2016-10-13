@@ -1,12 +1,10 @@
 
-#ifndef UTIL_H
-#define UTIL_H
+#ifndef PRINTTREE_H
+#define PRINTTREE_H
 
 #include "globals.h"
-//#include "util.h"
 
 void printTree(TreeNode *tree, int numOfSibs);
-void printSpaces();
 TreeNode *newStmtNode(StmtKind);
 TreeNode *newExprNode(ExprKind);
 TreeNode *newDeclNode(DeclKind);

@@ -8,11 +8,14 @@
 
 #include <stdlib.h>
 #include "scanType.h"   // must be defined before tab.h
-#include "util.h"
+#include "printtree.h"
+#include "semantic.h"
 #include "symbolTable.h"
 #include "c-.tab.h"
 #include <string.h>
 
+
+int scope=0;
 
 char stripper(char* value){
 
@@ -100,7 +103,7 @@ false                                           { init(0);              return B
 \+                                              { init(strdup(yytext)); return PLUS; }
 \%                                              { init(strdup(yytext)); return MOD; }
 \?                                              { init(strdup(yytext)); return QMARK; }
-\(|\)|\:|\;|\[|\]|\{|\}|\,|\.|\'                { init(yytext[0]); return yytext[0]; }
+\(|\)|\:|\;|\[|\]|\{|\}|\,|\.|\'|\{|\}          { init(yytext[0]); return yytext[0]; }
 ‘\0’                                            { init(strdup(yytext)); return NULCHAR; }
 [a-zA-Z][a-zA-Z|0-9]*                           { init(strdup(yytext));
 
