@@ -18,6 +18,10 @@
 #define YYERROR_VERBOSE
 
 
+
+
+
+
 extern int yylex();
 extern FILE *yyin;
 static TreeNode *syntaxTree;
@@ -27,6 +31,10 @@ SymbolTable st;
 void yyerror(char const *msg) {
     printf("ERROR(): %s\n", msg);
 }
+
+
+
+
 
 %}
 
@@ -738,11 +746,40 @@ int main(int argc, char** argv) {
       }
   }
 
+
+  vector<string> or_map_left_types;
+  or_map_left_types.push_back("type bool");
+
+  vector<string> or_map_right_types;
+  or_map_right_types.push_back("type bool");
+
+  vector<string> or_map_result_types;
+  or_map_result_types.push_back("type bool");
+
+  map<string, vector<string> > or_map;
+  or_map["left"] = or_map_left_types;
+  or_map["right"] = or_map_right_types;
+  or_map["result"] = or_map_result_types;
+
+
+  map<string, map<string, vector<string> > > types_map;
+  types_map["or"] = or_map;
+
+  vector<string> vec = types_map["or"]["left"];
+
+  /*if ( find(vec.begin(), vec.end(), "Boolean") != vec.end() )
+          printf("Exists\n");
+  else
+          printf("Doesn't Exist\n");*/
+
+
+
+
   extern FILE *yyin;
   yyin = fopen(argv[1], "r");
   yyparse();
   /*printTree(syntaxTree, -1);*/
-  scopeAndType(syntaxTree, -1);
+  scopeAndType(syntaxTree, -1, types_map);
   printf("Number of warnings: 0\n");
   printf("Number of errors: 0\n");
   return 0;

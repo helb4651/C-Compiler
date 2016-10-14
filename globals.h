@@ -27,7 +27,6 @@ typedef enum {IfK, WhileK, CompK, ReturnK, BreakK} StmtKind;
 typedef enum {ConstK, IdK, OpK, AssignK, CallK} ExprKind;
 typedef enum {Void, Int, Bool, Char, String, Record} DeclType;
 
-
 #define MAXCHILDREN 3
 
 typedef struct treeNode {
