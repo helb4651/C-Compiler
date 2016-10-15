@@ -4,7 +4,6 @@
 #include <stdio.h>
 
 
-
 static int spaces = 0;
 static int chiIndex = 0;
 static int sibIndex = 0;
@@ -30,62 +29,35 @@ const char *Types[] = {"type void", "type int", "type bool", "type char", "type 
 
 
 bool is_in_vector(vector<string> vec, string str){
-  // cout << str << endl;
-  if ( find(vec.begin(), vec.end(), str) != vec.end() ){
-          printf("Exists\n");
-          return true;
-      }
-  else{
-          printf("Doesn't Exist\n");
-          return false;
+        // cout << str << endl;
+        if ( find(vec.begin(), vec.end(), str) != vec.end() ) {
+                // printf("Exists\n");
+                return true;
+        }
+        else{
+                // printf("Doesn't Exist\n");
+                return false;
         }
 }
 
 vector<string> getUnaryOps(){
-  cout << "Getting Unary Ops" << endl;
-  vector<string> UnaryOps;
-  UnaryOps.push_back("+");
-  UnaryOps.push_back("<");
-  UnaryOps.push_back(">");
-  UnaryOps.push_back("==");
-  UnaryOps.push_back("*");
-  UnaryOps.push_back("not");
-  UnaryOps.push_back("-");
-  UnaryOps.push_back("[");
-  UnaryOps.push_back("or");
-  UnaryOps.push_back("and");
-  return UnaryOps;
+        // cout << "Getting Unary Ops" << endl;
+        vector<string> UnaryOps;
+        UnaryOps.push_back("+");
+        UnaryOps.push_back("<");
+        UnaryOps.push_back(">");
+        UnaryOps.push_back("==");
+        UnaryOps.push_back("*");
+        UnaryOps.push_back("not");
+        UnaryOps.push_back("-");
+        UnaryOps.push_back("[");
+        UnaryOps.push_back("or");
+        UnaryOps.push_back("and");
+        return UnaryOps;
 }
 
 
-void scopeAndType(TreeNode *tree, int numOfSibs, map<string, map<string, vector<string> > > types) {
-
-        // vector<string> or_map_left_types;
-        // or_map_left_types.push_back("Boolean");
-        //
-        // vector<string> or_map_right_types;
-        // or_map_right_types.push_back("Boolean");
-        //
-        // vector<string> or_map_result_types;
-        // or_map_right_types.push_back("Boolean");
-        //
-        // map<string, vector<string> > or_map;
-        // or_map["left"] = or_map_left_types;
-        // or_map["right"] = or_map_right_types;
-        // or_map["result"] = or_map_result_types;
-        //
-        //
-        // map<string, map<string, vector<string> > > types_map;
-        // types_map["or"] = or_map;
-        //
-        // vector<string> vec = types_map["or"]["left"];
-        //
-        // if ( find(vec.begin(), vec.end(), "Boolean") != vec.end() )
-        //         printf("Exists\n");
-        // else
-        //         printf("Doesn't Exist\n");
-
-
+void scopeAndType(TreeNode *tree, int numOfSibs, map<string, map<string, vector<string> > > & types, bool FuncKRecurse) {
 
         bool recursivePrint = false;
         if(numOfSibs == -1) {
@@ -117,7 +89,7 @@ void scopeAndType(TreeNode *tree, int numOfSibs, map<string, map<string, vector<
                         //TODO: Put recurse through children into function
                         for(int i = 0; i < MAXCHILDREN; i++) {
                                 chiIndex = i;
-                                scopeAndType(t->child[i], 0, types);
+                                scopeAndType(t->child[i], 0, types, true);
                                 chiIndex = 0;
                         }
                         if(t->kind.decl==FuncK) { semanticsSymbolTable.leave(); }
@@ -126,17 +98,18 @@ void scopeAndType(TreeNode *tree, int numOfSibs, map<string, map<string, vector<
                 // Scope Statements
                 else if(t->nodekind == StmtK && t->kind.stmt == CompK) {
                         if(DEBUG==true) { printf("Compound Statement: Adding Scope\n"); }
-                        semanticsSymbolTable.enter("Compound");
+                        if(FuncKRecurse==false) {semanticsSymbolTable.enter("Compound"); }
                         for(int i = 0; i < MAXCHILDREN; i++) {
                                 chiIndex = i;
-                                scopeAndType(t->child[i], 0, types);
+                                scopeAndType(t->child[i], 0, types, false);
                                 chiIndex = 0;
                         }
-                        if(semanticsSymbolTable.depth() > 1) {
+                        if(FuncKRecurse==false) {
                                 semanticsSymbolTable.leave();
                                 if(DEBUG==true) { printf("Leaving Scope\n"); }
                         }
                 }
+
                 // Scope Expressions
                 else if(t->nodekind == ExprK && t->kind.expr==CallK) {
                         if(DEBUG==true) { printf("Expression Statement: Function Call\n"); }
@@ -144,7 +117,7 @@ void scopeAndType(TreeNode *tree, int numOfSibs, map<string, map<string, vector<
                         if(node==NULL) { printf("ERROR(%d): Symbol '%s' is not defined.\n", t->linenum, t->attr.name); }
                         for(int i = 0; i < MAXCHILDREN; i++) {
                                 chiIndex = i;
-                                scopeAndType(t->child[i], 0, types);
+                                scopeAndType(t->child[i], 0, types, false);
                                 chiIndex = 0;
                         }
                 }
@@ -154,35 +127,73 @@ void scopeAndType(TreeNode *tree, int numOfSibs, map<string, map<string, vector<
                         if(node==NULL) { printf("ERROR(%d): Symbol '%s' is not defined.\n", t->linenum, t->attr.name); }
                         for(int i = 0; i < MAXCHILDREN; i++) {
                                 chiIndex = i;
-                                scopeAndType(t->child[i], 0, types);
+                                scopeAndType(t->child[i], 0, types, false);
                                 chiIndex = 0;
                         }
                 }
                 else if(t->nodekind == ExprK && t->kind.expr==OpK)
                 {
-                        printf("Op: %s \n", t->attr.name);
-                        if(is_in_vector(getUnaryOps(), t->attr.name)==false){
-                          printf("Op2: %s \n", t->attr.name);
-                            // printf("IDK what this is %s.\n", t->child[1]->attr.name);
-                            TreeNode* node = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)t->child[1]->attr.name));
-                            // printf("Type? %u\n", node->declType );
-                            // if(node->declType != Bool) {printf("ERROR(%d): '%s' requires operands of %s but lhs is of %s.\n", node->linenum, "jhgf", Types[2], Types[node->declType]); }
-                            if(is_in_vector(types[t->attr.name]["result"], Types[node->declType])==false){
-                              printf("ERROR(%d): '%s' requires operands of %s but lhs is of %s.\n", t->linenum, t->attr.name, types[t->attr.name]["result"].front().c_str(), Types[node->declType]);
-                            }
+                        // printf("Op: %s \n", t->attr.name);
+                        if(is_in_vector(getUnaryOps(), t->attr.name)==false) {
+                                // printf("Op2: %s \n", t->attr.name);
+                                // printf("IDK what this is %s.\n", t->child[1]->attr.name);
+                                TreeNode* node = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)t->child[1]->attr.name));
+                                // printf("Type? %u\n", node->declType );
+                                // if(node->declType != Bool) {printf("ERROR(%d): '%s' requires operands of %s but lhs is of %s.\n", node->linenum, "jhgf", Types[2], Types[node->declType]); }
+                                if(is_in_vector(types[t->attr.name]["result"], Types[node->declType])==false) {
+                                        printf("ERROR(%d): '%s' requires operands of %s but lhs is of %s.\n", t->linenum, t->attr.name, types[t->attr.name]["result"].front().c_str(), Types[node->declType]);
+                                }
 
-                            TreeNode* node2 = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)t->child[0]->attr.name));
-                            // printf("Type? %u\n", node->declType );
-                            // if(node->declType != Bool) {printf("ERROR(%d): '%s' requires operands of %s but lhs is of %s.\n", node->linenum, "jhgf", Types[2], Types[node->declType]); }
-                            if(is_in_vector(types[t->attr.name]["result"], Types[node2->declType])==false){
-                              printf("ERROR(%d): '%s' requires operands of %s but rhs is of %s.\n", t->linenum, t->attr.name, types[t->attr.name]["result"].front().c_str(), Types[node2->declType]);
-                            }
+                                TreeNode* node2 = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)t->child[0]->attr.name));
+                                // printf("Type? %u\n", node->declType );
+                                // if(node->declType != Bool) {printf("ERROR(%d): '%s' requires operands of %s but lhs is of %s.\n", node->linenum, "jhgf", Types[2], Types[node->declType]); }
+                                if(is_in_vector(types[t->attr.name]["result"], Types[node2->declType])==false) {
+                                        printf("ERROR(%d): '%s' requires operands of %s but rhs is of %s.\n", t->linenum, t->attr.name, types[t->attr.name]["result"].front().c_str(), Types[node2->declType]);
+                                }
                         }
+                }
+                else if(t->nodekind == ExprK && t->kind.expr==AssignK) {
+                        // printf("ExprK1: %s\n", t->attr.name);
+                        if(strcmp(t->attr.name,"=")==0) {
+                                // printf("ExprK2: %s, line: %d\n", t->attr.name, t->linenum);
+                                TreeNode* nodex = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)t->child[1]->attr.name));
+                                // printf("child[1]: %s, line: %d\n", nodex->attr.name, t->linenum);
+                                bool insertion = semanticsSymbolTable.insert((char *)t->attr.name, t);
+                                // printf("insertion %u\n", insertion);
+                                if(insertion==1) {
+                                        TreeNode* node = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)t->child[1]->attr.name));
+                                        if(node->kind.decl==FuncK) {
+                                                printf("ERROR(%d): Cannot use function '%s' as a variable.\n", t->linenum, node->attr.name);
+                                        }
+                                }
+
+
+                        }
+                        if(strcmp(t->attr.name, "=")==0) {
+                                TreeNode* node_right = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)t->child[1]->attr.name));
+                                // printf("nodey->declType: %s\n", Types[node_right->declType]);
+                                TreeNode* node_left = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)t->child[0]->attr.name));
+                                // printf("nodey->declType: %s\n", Types[node_left->declType]);
+                                if(node_left->declType != node_right->declType) {
+                                        printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, Types[node_left->declType], Types[node_right->declType]);
+                                }
+                        }
+                        else if(strcmp(t->attr.name, "+=")==0 || strcmp(t->attr.name, "-=")==0) {
+                                TreeNode* node_right = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)t->child[1]->attr.name));
+                                // printf("nodey->declType: %s\n", Types[node_right->declType]);
+                                TreeNode* node_left = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)t->child[0]->attr.name));
+                                // printf("nodey->declType: %s\n", Types[node_left->declType]);
+                                if(node_left->declType != node_right->declType) {
+                                        printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, Types[node_left->declType], Types[node_right->declType]);
+                                }
+                        }
+
+
                 }
                 else{
                         for(int i = 0; i < MAXCHILDREN; i++) {
                                 chiIndex = i;
-                                scopeAndType(t->child[i], 0, types);
+                                scopeAndType(t->child[i], 0, types, false);
                                 chiIndex = 0;
                         }
                 }
@@ -297,7 +308,7 @@ void scopeAndType(TreeNode *tree, int numOfSibs, map<string, map<string, vector<
                 // printf("[line: %d]", t->linenum);
                 // for(int i = 0; i < MAXCHILDREN; i++) {
                 //         chiIndex = i;
-                //         scopeAndType(t->child[i], 0, types);
+                //         scopeAndType(t->child[i], 0, types, false);
                 //         chiIndex = 0;
                 // }
                 // if(semanticsSymbolTable.depth() > 1) {

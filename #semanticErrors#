@@ -1,7 +1,7 @@
 "ERROR(%d): '%s' is a simple variable and cannot be called.\n"
 + "ERROR(%d): '%s' requires operands of %s but lhs is of %s.\n"
 + "ERROR(%d): '%s' requires operands of %s but rhs is of %s.\n"
-"ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n"
++ "ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n"
 "ERROR(%d): Array '%s' should be indexed by type int but got %s.\n"
 "ERROR(%d): Array index is the unindexed array '%s'.\n"
 "ERROR(%d): Cannot index nonarray '%s'.\n"

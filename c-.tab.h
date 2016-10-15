@@ -96,7 +96,7 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 42 "c-.y" /* yacc.c:1915  */
+#line 43 "c-.y" /* yacc.c:1915  */
 
     Token token;
     TreeNode *treeNode;

@@ -1,7 +1,7 @@
 BIN  = c-
 CC   = g++
-SRCS = $(BIN).y $(BIN).l scanType.h globals.h semantic.h semantic.cpp symbolTable.h symbolTable.cpp printtree.cpp printtree.h
-OBJS = lex.yy.o $(BIN).tab.o semantic.o symbolTable.o printtree.o
+SRCS = $(BIN).y $(BIN).l scanType.h globals.h semantic.h semantic.cpp symbolTable.h symbolTable.cpp printtree.cpp printtree.h typeingHelpers.h typeingHelpers.cpp
+OBJS = lex.yy.o $(BIN).tab.o semantic.o symbolTable.o printtree.o typingHelpers.o
 LIBS = -lm
 
 $(BIN): $(OBJS)
@@ -21,6 +21,9 @@ printtree.o: printtree.cpp printtree.h globals.h
 
 symbolTable.o: symbolTable.h symbolTable.cpp
 	$(CC) $(CFLAGS) -c symbolTable.cpp
+
+typingHelpers.o: typingHelpers.h typingHelpers.cpp
+	$(CC) $(CFLAGS) -c typingHelpers.cpp
 
 all:
 	touch $(SRCS)

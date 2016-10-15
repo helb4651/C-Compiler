@@ -13,6 +13,7 @@
 #include "symbolTable.h"
 #include "semantic.h"
 #include "printtree.h"
+#include "typingHelpers.h"
 #include <ctype.h>
 #include <getopt.h>
 #define YYERROR_VERBOSE
@@ -746,31 +747,32 @@ int main(int argc, char** argv) {
       }
   }
 
+  // Left Operands
+  vector<string> or_map_left_types; or_map_left_types.push_back("type bool");
+  vector<string> add_ass_left_types; add_ass_left_types.push_back("type int");
 
-  vector<string> or_map_left_types;
-  or_map_left_types.push_back("type bool");
+  // Right Operands
+  vector<string> or_map_right_types; or_map_right_types.push_back("type bool");
+  vector<string> add_ass_right_types; add_ass_right_types.push_back("type int");
 
-  vector<string> or_map_right_types;
-  or_map_right_types.push_back("type bool");
+  // Result Types
+  vector<string> or_map_result_types; or_map_result_types.push_back("type bool");
+  vector<string> add_ass_result_types; add_ass_result_types.push_back("type int");
 
-  vector<string> or_map_result_types;
-  or_map_result_types.push_back("type bool");
-
-  map<string, vector<string> > or_map;
-  or_map["left"] = or_map_left_types;
-  or_map["right"] = or_map_right_types;
-  or_map["result"] = or_map_result_types;
-
+  // Operator Maps
+  map<string, vector<string> > or_map; or_map["left"] = or_map_left_types; or_map["right"] = or_map_right_types; or_map["result"] = or_map_result_types;
+  map<string, vector<string> > add_ass_map; add_ass_map["left"] = add_ass_left_types; add_ass_map["right"] = add_ass_right_types; add_ass_map["result"] = add_ass_result_types;
 
   map<string, map<string, vector<string> > > types_map;
   types_map["or"] = or_map;
+  types_map["+="] = add_ass_map;
+
+  map<string, map<string, vector<string> > > & types_map2 = getTypesDataStructure();
+  /*cout << "AAAAAAA: " << types_map2["+="]["left"].front() << endl;*/
+
 
   vector<string> vec = types_map["or"]["left"];
 
-  /*if ( find(vec.begin(), vec.end(), "Boolean") != vec.end() )
-          printf("Exists\n");
-  else
-          printf("Doesn't Exist\n");*/
 
 
 
@@ -779,7 +781,7 @@ int main(int argc, char** argv) {
   yyin = fopen(argv[1], "r");
   yyparse();
   /*printTree(syntaxTree, -1);*/
-  scopeAndType(syntaxTree, -1, types_map);
+  scopeAndType(syntaxTree, -1, types_map2, false);
   printf("Number of warnings: 0\n");
   printf("Number of errors: 0\n");
   return 0;
