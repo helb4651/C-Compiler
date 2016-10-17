@@ -12,7 +12,7 @@
 using namespace std;
 
 
-static map<string, map<string, vector<string> > > types_map;
+map<string, map<string, vector<string> > > types_map;
 
 map<string, map<string, vector<string> > > & getTypesDataStructure(){
         string line;
@@ -41,48 +41,61 @@ map<string, map<string, vector<string> > > & getTypesDataStructure(){
                         getline(istr1, bar_cell, '|');
                         istringstream istr2(bar_cell);
 //            cout << "Operator: " << bar_cell << endl;
+                        while (istr2.peek() == ' ') // skip spaces
+                                istr2.get();
                         while (getline(istr2, comma_cell, ',')) {
                                 if(comma_cell != " ") {
-                                        // cout << "Operator: " << comma_cell << endl;
+                                        cout << "Operator: " << comma_cell << endl;
                                         Operator = comma_cell;
                                 }
                         };
-
+                        while (istr2.peek() == ' ') // skip spaces
+                                istr2.get();
 
                         // Left
                         getline(istr1, bar_cell, '|');
                         istringstream istr3(bar_cell);
 //            cout << "Left: " << bar_cell << endl;
+                        while (istr3.peek() == ' ') // skip spaces
+                                istr3.get();
                         while (getline(istr3, comma_cell, ',')) {
                                 if(comma_cell != " ") {
 //                    cout << "left type: " << comma_cell << endl;
                                         left_Operands.push_back(comma_cell);
                                 }
                         };
-
+                        while (istr3.peek() == ' ') // skip spaces
+                                istr3.get();
 
                         // Right
                         getline(istr1, bar_cell, '|');
                         istringstream istr4(bar_cell);
                         // cout << "Right: " << bar_cell << endl;
+                        while (istr4.peek() == ' ') // skip spaces
+                                istr4.get();
                         while (getline(istr4, comma_cell, ',')) {
                                 if(comma_cell != " ") {
 //                    cout << "right type: " << comma_cell << endl;
                                         right_Operands.push_back(comma_cell);
                                 }
                         };
-
+                        while (istr4.peek() == ' ') // skip spaces
+                                istr4.get();
 
                         // Result
                         getline(istr1, bar_cell, '|');
                         istringstream istr5(bar_cell);
                         // cout << "Result: " << bar_cell << endl;
+                        while (istr5.peek() == ' ') // skip spaces
+                                istr5.get();
                         while (getline(istr5, comma_cell, ',')) {
                                 if(comma_cell != " ") {
 //                    cout << "result type: " << comma_cell << endl;
                                         result_Operands.push_back(comma_cell);
                                 }
                         };
+                        while (istr5.peek() == ' ') // skip spaces
+                                istr5.get();
 
                         // Add operator operand types to Operator_Map
                         Operator_Map["left"]=left_Operands;
@@ -106,7 +119,7 @@ map<string, map<string, vector<string> > > & getTypesDataStructure(){
         map<string, map<string, vector<string> > >& types = types_map;
         // cout << "ZZZZZZZ: " << types_map["+="]["left"].front() << endl;
         types = types_map;
-        // cout << "XXXXXXX: " << types["+="]["left"].front() << endl;
+        cout << "XXXXXXX: " << types["not"]["left"].front() << endl;
 
         return types;
 }

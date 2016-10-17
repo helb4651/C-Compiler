@@ -747,7 +747,7 @@ int main(int argc, char** argv) {
       }
   }
 
-  // Left Operands
+  /*// Left Operands
   vector<string> or_map_left_types; or_map_left_types.push_back("type bool");
   vector<string> add_ass_left_types; add_ass_left_types.push_back("type int");
 
@@ -765,15 +765,10 @@ int main(int argc, char** argv) {
 
   map<string, map<string, vector<string> > > types_map;
   types_map["or"] = or_map;
-  types_map["+="] = add_ass_map;
+  types_map["+="] = add_ass_map;*/
 
   map<string, map<string, vector<string> > > & types_map2 = getTypesDataStructure();
   /*cout << "AAAAAAA: " << types_map2["+="]["left"].front() << endl;*/
-
-
-  vector<string> vec = types_map["or"]["left"];
-
-
 
 
 

@@ -1,4 +1,7 @@
 Operator, | LeftOperandType, | RightOperandType, | ResultOperandType,
 +=, | type int, | type int, | type int,
 -=, | type int, | type int, | type int,
-or, | type bool, | type bool | type bool,
+or, | type bool, | type bool, | type bool,
++, | type int, | type int, | type int,
+*, | type int, | type int, | type int,
+not, | type bool, | type bool, | type bool,

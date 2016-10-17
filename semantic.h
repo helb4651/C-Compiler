@@ -15,6 +15,7 @@ using namespace std;
 
 void scopeAndType(TreeNode *tree, int numOfSibs, map<string, map<string, vector<string> > > & type_map, bool FuncKRecurse);
 bool is_in_vector(vector<string> vec, string str);
+map<string, string> check_operands_types_same(TreeNode* t);
 TreeNode *newStmtNode(StmtKind);
 TreeNode *newExprNode(ExprKind);
 TreeNode *newDeclNode(DeclKind);

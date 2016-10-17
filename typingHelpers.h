@@ -9,5 +9,10 @@
 #include <string>
 using namespace std;
 
-map<string, map<string, vector<string> > > & getTypesDataStructure();
+
+map<string, map<string, vector<string> > > &getTypesDataStructure();
+
+extern map<string, map<string, vector<string> > > types_map;
+
+
 #endif //COMPILER_TYPINGHELPERS_H
