@@ -12,18 +12,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="590abc02-347a-430b-9aef-664f663a1496" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/typingHelpers.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/typingHelpers.h" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.#semanticErrors" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-" afterPath="$PROJECT_DIR$/c-" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/#semanticErrors#" afterPath="$PROJECT_DIR$/#semanticErrors#" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-.tab.c" afterPath="$PROJECT_DIR$/c-.tab.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-.tab.h" afterPath="$PROJECT_DIR$/c-.tab.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-.y" afterPath="$PROJECT_DIR$/c-.y" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/makefile" afterPath="$PROJECT_DIR$/makefile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/semantic.cpp" afterPath="$PROJECT_DIR$/semantic.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/semantic.h" afterPath="$PROJECT_DIR$/semantic.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/semanticErrors" afterPath="$PROJECT_DIR$/semanticErrors" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/types.csv" afterPath="$PROJECT_DIR$/types.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typingHelpers.cpp" afterPath="$PROJECT_DIR$/typingHelpers.cpp" />
     </list>
     <ignored path="Compiler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,86 +38,48 @@
     <favorites_list name="Compiler" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.82521945">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="semantic.cpp" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/semantic.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
-                  <caret line="59" column="90" selection-start-line="59" selection-start-column="90" selection-end-line="59" selection-end-column="90" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="typingHelpers.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/typingHelpers.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="495">
-                  <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="symbolTable.cpp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/symbolTable.cpp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="typingHelpers.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/typingHelpers.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="78">
-                  <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="c-.y" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/c-.y">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="362">
-                  <caret line="766" column="27" selection-start-line="766" selection-start-column="27" selection-end-line="766" selection-end-column="27" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="types.csv" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/types.csv">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="13">
-                  <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="makefile" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/makefile">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="325">
-                  <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="semantic.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/semantic.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-543">
+              <caret line="464" column="16" selection-start-line="464" selection-start-column="16" selection-end-line="464" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="c-.y" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/c-.y">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="759" column="27" selection-start-line="759" selection-start-column="27" selection-end-line="759" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="types.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/types.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="377">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="makefile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/makefile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -153,11 +111,11 @@
         <option value="$PROJECT_DIR$/globals.h" />
         <option value="$PROJECT_DIR$/typeingHelpers.h" />
         <option value="$PROJECT_DIR$/typeingHelpers.cpp" />
-        <option value="$PROJECT_DIR$/c-.y" />
         <option value="$PROJECT_DIR$/makefile" />
         <option value="$PROJECT_DIR$/types.csv" />
         <option value="$PROJECT_DIR$/typingHelpers.cpp" />
         <option value="$PROJECT_DIR$/semantic.cpp" />
+        <option value="$PROJECT_DIR$/c-.y" />
       </list>
     </option>
   </component>
@@ -397,7 +355,16 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -443,6 +410,19 @@
       <scripts />
       <node-interpreter value="project" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Attests">
@@ -588,6 +568,7 @@
       <workItem from="1476558307136" duration="1586000" />
       <workItem from="1476559988737" duration="6385000" />
       <workItem from="1476568072277" duration="42000" />
+      <workItem from="1476766849178" duration="141000" />
     </task>
     <task id="LOCAL-00001" summary="Added some test code.">
       <created>1473213501269</created>
@@ -621,7 +602,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47887000" />
+    <option name="totallyTimeSpent" value="48028000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="822" extended-state="6" />
@@ -629,19 +610,19 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11698379" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25205478" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25205478" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23226951" sideWeight="0.504" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31232876" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25068492" sideWeight="0.496" order="7" side_tool="false" content_ui="tabs" x="0" y="307" width="1033" height="244" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24931507" sideWeight="0.496" order="7" side_tool="false" content_ui="tabs" x="0" y="307" width="1033" height="244" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31267217" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19509704" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -897,26 +878,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/typingHelpers.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c-.y">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="766" column="27" selection-start-line="766" selection-start-column="27" selection-end-line="766" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/types.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
-          <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+        <state relative-caret-position="377">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -932,7 +897,7 @@
     <entry file="file://$PROJECT_DIR$/typingHelpers.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
-          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+          <caret line="168" column="0" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -945,10 +910,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/typingHelpers.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c-.y">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="759" column="27" selection-start-line="759" selection-start-column="27" selection-end-line="759" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/semantic.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="59" column="90" selection-start-line="59" selection-start-column="90" selection-end-line="59" selection-end-column="90" />
+        <state relative-caret-position="-543">
+          <caret line="464" column="16" selection-start-line="464" selection-start-column="16" selection-end-line="464" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -970,6 +951,6 @@
     </states>
   </component>
   <component name="webServersAuthStorage">
-    <data>AAAAsMXJEAX72WYVHSg8u/tsJHQXJm9p7Q6Tz7cJnjGNx/qZHh/w5ttku47W4nPjKGccRhk/uqpUox3JdyJBn4DUtO7JF8N7HuXjQMBnhEzyH3EuP6FVU21oq8DGxGB67ptxs7xhwP/3EnXAyFzCTf9dVP0Eptlc4qArBvnPhagRf+q7pzBhyp51qbS5AjggYAPbzaaa4yixQKop0J8NH+uVkVY4EUzxAaFuohm/FpBF+kV6HP0jsbrQDo0y97MmPCxa/w==</data>
+    <data>AAAAsMTEoIKtTo6IuMBnk1/oOuRIi0vvAyIePefBY8tM2R8vOJmr3fFGY82DHkSmnPN4lpfKAuivDD6td6K0ca2/J5EeMY6vI/dlHKZiPr+OEse0EohVAo2GZ0SoRmHZUXFqJDfPV6KZelOl/aNspgrG9xyphAzWXKARFLkXh1om9WGpEpGyPc9l57e2DvbWu1lpjW7lvi/agPWJV8u5Om/f80YXbvrk0ojwH2a68+kNLsQ71zCocKOsLfjL8dyXbs5hbQ==</data>
   </component>
 </project>

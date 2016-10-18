@@ -23,6 +23,9 @@ map<string, map<string, vector<string> > > & getTypesDataStructure(){
         vector<string> left_Operands;
         vector<string> right_Operands;
         vector<string> result_Operands;
+        vector<string> left_right_type_match;
+        vector<string> works_with_arrays;
+        vector<string> type_is_left_node;
         map<string, vector<string> > Operator_Map;
 
 
@@ -33,19 +36,19 @@ map<string, map<string, vector<string> > > & getTypesDataStructure(){
         {
                 while (getline( myfile, line) )
                 {
-                        //cout << line << endl;
+                        // cout << line << endl;
                         istringstream istr1(line);
                         int x=0;
 
                         // Operator
                         getline(istr1, bar_cell, '|');
                         istringstream istr2(bar_cell);
-//            cout << "Operator: " << bar_cell << endl;
+                        // cout << "Operator: " << bar_cell << endl;
                         while (istr2.peek() == ' ') // skip spaces
                                 istr2.get();
                         while (getline(istr2, comma_cell, ',')) {
                                 if(comma_cell != " ") {
-                                        cout << "Operator: " << comma_cell << endl;
+                                        // cout << "Operator: " << comma_cell << endl;
                                         Operator = comma_cell;
                                 }
                         };
@@ -97,10 +100,56 @@ map<string, map<string, vector<string> > > & getTypesDataStructure(){
                         while (istr5.peek() == ' ') // skip spaces
                                 istr5.get();
 
+                        getline(istr1, bar_cell, '|');
+                        istringstream istr6(bar_cell);
+                        // cout << "Result: " << bar_cell << endl;
+                        while (istr6.peek() == ' ')         // skip spaces
+                                istr6.get();
+                        while (getline(istr6, comma_cell, ',')) {
+                                if(comma_cell != " ") {
+                                        //                    cout << "result type: " << comma_cell << endl;
+                                        left_right_type_match.push_back(comma_cell);
+                                }
+                        };
+                        while (istr6.peek() == ' ')         // skip spaces
+                                istr6.get();
+
+
+                        getline(istr1, bar_cell, '|');
+                        istringstream istr7(bar_cell);
+                        // cout << "Result: " << bar_cell << endl;
+                        while (istr7.peek() == ' ')                 // skip spaces
+                                istr7.get();
+                        while (getline(istr7, comma_cell, ',')) {
+                                if(comma_cell != " ") {
+                                        //                    cout << "result type: " << comma_cell << endl;
+                                        works_with_arrays.push_back(comma_cell);
+                                }
+                        };
+                        while (istr7.peek() == ' ')                 // skip spaces
+                                istr7.get();
+
+                        getline(istr1, bar_cell, '|');
+                        istringstream istr8(bar_cell);
+                        // cout << "Result: " << bar_cell << endl;
+                        while (istr8.peek() == ' ')                         // skip spaces
+                                istr8.get();
+                        while (getline(istr8, comma_cell, ',')) {
+                                if(comma_cell != " ") {
+                                        //                    cout << "result type: " << comma_cell << endl;
+                                        type_is_left_node.push_back(comma_cell);
+                                }
+                        };
+                        while (istr8.peek() == ' ')                         // skip spaces
+                                istr8.get();
+
                         // Add operator operand types to Operator_Map
                         Operator_Map["left"]=left_Operands;
                         Operator_Map["right"]=right_Operands;
                         Operator_Map["result"]=result_Operands;
+                        Operator_Map["LRMatch"]=left_right_type_match;
+                        Operator_Map["WithArrays"]=works_with_arrays;
+                        Operator_Map["OpIsTypeLeftNode"]=type_is_left_node;
 
                         // Add Operator Map to types operator map
                         types_map[Operator]=Operator_Map;
@@ -109,6 +158,9 @@ map<string, map<string, vector<string> > > & getTypesDataStructure(){
                         left_Operands.clear();
                         right_Operands.clear();
                         result_Operands.clear();
+                        left_right_type_match.clear();
+                        works_with_arrays.clear();
+                        type_is_left_node.clear();
                         Operator_Map.clear();
 
                 }
@@ -119,7 +171,7 @@ map<string, map<string, vector<string> > > & getTypesDataStructure(){
         map<string, map<string, vector<string> > >& types = types_map;
         // cout << "ZZZZZZZ: " << types_map["+="]["left"].front() << endl;
         types = types_map;
-        cout << "XXXXXXX: " << types["not"]["left"].front() << endl;
+        // cout << "XXXXXXX: " << types["not"]["WithArrays"].front() << endl;
 
         return types;
 }

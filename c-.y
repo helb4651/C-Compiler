@@ -736,7 +736,10 @@ constant            : NUMCONST {
 %%
 int main(int argc, char** argv) {
   int c;
-  while((c = getopt(argc, argv, "d")) != EOF) {
+  bool print_tree = false;
+  bool print_semantic_tree = false;
+
+  while((c = getopt(argc, argv, "dpP")) != EOF) {
       switch(c) {
           default:
               abort();
@@ -744,40 +747,32 @@ int main(int argc, char** argv) {
           case 'd':
               yydebug = 1;
               break;
+          case 'p':
+              print_tree=true;
+              break;
+          case 'P':
+              print_semantic_tree=true;
+              break;
       }
   }
 
-  /*// Left Operands
-  vector<string> or_map_left_types; or_map_left_types.push_back("type bool");
-  vector<string> add_ass_left_types; add_ass_left_types.push_back("type int");
-
-  // Right Operands
-  vector<string> or_map_right_types; or_map_right_types.push_back("type bool");
-  vector<string> add_ass_right_types; add_ass_right_types.push_back("type int");
-
-  // Result Types
-  vector<string> or_map_result_types; or_map_result_types.push_back("type bool");
-  vector<string> add_ass_result_types; add_ass_result_types.push_back("type int");
-
-  // Operator Maps
-  map<string, vector<string> > or_map; or_map["left"] = or_map_left_types; or_map["right"] = or_map_right_types; or_map["result"] = or_map_result_types;
-  map<string, vector<string> > add_ass_map; add_ass_map["left"] = add_ass_left_types; add_ass_map["right"] = add_ass_right_types; add_ass_map["result"] = add_ass_result_types;
-
-  map<string, map<string, vector<string> > > types_map;
-  types_map["or"] = or_map;
-  types_map["+="] = add_ass_map;*/
-
-  map<string, map<string, vector<string> > > & types_map2 = getTypesDataStructure();
-  /*cout << "AAAAAAA: " << types_map2["+="]["left"].front() << endl;*/
-
-
 
   extern FILE *yyin;
-  yyin = fopen(argv[1], "r");
+  if(print_tree==false && print_semantic_tree==false && yydebug==0){
+    yyin = fopen(argv[1], "r");
+  } else {
+    yyin = fopen(argv[2], "r");
+  }
   yyparse();
-  /*printTree(syntaxTree, -1);*/
-  scopeAndType(syntaxTree, -1, types_map2, false);
-  printf("Number of warnings: 0\n");
-  printf("Number of errors: 0\n");
+
+
+  if(print_tree) { printTree(syntaxTree, -1); }
+  if(print_semantic_tree) {
+    getTypesDataStructure();
+    scopeAndType(syntaxTree, -1, false);
+    printf("Number of warnings: 0\n");
+    printf("Number of errors: 0\n");
+  }
+
   return 0;
 }
