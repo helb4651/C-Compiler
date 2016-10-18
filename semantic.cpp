@@ -52,14 +52,14 @@ string node_type(TreeNode* node){
                         if(DEBUG==true) cout << "       Recursing in node_type." << endl;
                         //scopeAndType(node, 0, true);
                         recurse_through_children(node);
-                        // return "not_defined";
+                        return "not_defined";
                 }
                 else{
                         if(DEBUG==true) cout << "   node name: " << node->attr.name << endl;
                         TreeNode* def_node = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)node->attr.name));
 
                         if(def_node==NULL) { printf("ERROR(%d): Symbol '%s' is not defined.\n", node->linenum, node->attr.name); return "not_defined"; }
-                        // cout << "node_type2: " << Types[def_node->declType] << endl;
+                        if(DEBUG==true) cout << "   node_type2: " << Types[def_node->declType] << endl;
                         return Types[def_node->declType];
                 }
         } else{
@@ -85,7 +85,7 @@ bool is_array_node(TreeNode* node){
                 return Types[def_node->isArray];
         }
         else{
-                cout << "is_array function failed in semantic.cpp." << endl;
+                cout << "is_array_node function failed in semantic.cpp." << endl;
                 return false;
         }
 }
@@ -95,7 +95,7 @@ void process_node(TreeNode* t){
 
         // If Node Has a Sibling..
         if(t->sibling!=NULL) {
-                cout << "   Recursing Through Sibling Node." << endl;
+                if(DEBUG==true) cout << "   Recursing Through Sibling Node." << endl;
                 recurse_through_children(t->sibling);
         }
 
@@ -142,15 +142,15 @@ void process_node(TreeNode* t){
                         if(info["identical_types"] == "false") {
                                 printf("ERROR(%s): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", info["linenum"].c_str(), info["name"].c_str(), info["left_type"].c_str(), info["right_type"].c_str());
                         }
-                        else if(is_array_node(t->child[0])==true || is_array_node(t->child[1])==true) {
-                                printf("ERROR(%d): The operation '%s' does not work with arrays.\n", t->linenum, t->attr.name);
-                        }
+                        // if(is_array_node(t->child[0])==true || is_array_node(t->child[1])==true) {
+                        //         printf("ERROR(%d): The operation '%s' does not work with arrays.\n", t->linenum, t->attr.name);
+                        // }
                 }
+
 
 
                 // TODO: Note that it is assumed if these get executed there is only one correct type? This may need more logic....
                 // Is the left operand of the correct type?
-                if(DEBUG==true) cout << "left_types_vec.front(): " << left_types_vec.front() << "left_node_type: " << left_node_type << endl;
                 else if(is_in_vector(left_types_vec, left_node_type)==false) {
                         if(DEBUG==true) cout << "    Left Node Incorrect Type: " << NodeName << endl;
                         printf("ERROR(%d): '%s' requires operands of %s but lhs is of %s.\n", LineNumber, NodeName.c_str(), left_types_vec.front().c_str(), left_node_type.c_str());
@@ -158,14 +158,17 @@ void process_node(TreeNode* t){
 
                 // TODO: Note that it is assumed if these get executed there is only one correct type? This may need more logic....
                 // Is the right operand of the correct type?
-                if(DEBUG==true) cout << "right_types_vec.front(): " << right_types_vec.front() << "right_node_type: " << right_node_type << endl;
                 else if(is_in_vector(right_types_vec, right_node_type)==false) {
                         if(DEBUG==true) cout << "    Right Node Incorrect Type: " << NodeName << endl;
                         printf("ERROR(%d): '%s' requires operands of %s but rhs is of %s.\n", LineNumber, NodeName.c_str(), right_types_vec.front().c_str(), right_node_type.c_str());
                 }
-                else{
-                        cout << "   Node processing failed." << endl;
+                // Does the operator work with arrays?
+                else if((is_array_node(t->child[0])==true || is_array_node(t->child[1])==true) && types_map[NodeName]["WithArrays"].front()=="false") {
+                        printf("ERROR(%d): The operation '%s' does not work with arrays.\n", t->linenum, t->attr.name);
                 }
+
+
+
 
 
         }
@@ -443,13 +446,14 @@ void scopeAndType(TreeNode *tree, int numOfSibs,  bool FuncKRecurse) {
                                         // printf("nodey->declType: %s\n", Types[node_right->declType]);
                                         // TreeNode* node_left = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)t->child[0]->attr.name));
                                         // printf("nodey->declType: %s\n", Types[node_left->declType]);
-                                        // process_node(t);
 
-                                        string node_right = node_type(t->child[0]);
-                                        string node_left = node_type(t->child[1]);
-                                        if(node_left != node_right) {
-                                                printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, node_left.c_str(), node_right.c_str());
-                                        }
+
+                                        process_node(t);
+//                                        string node_right = node_type(t->child[1]);
+//                                        string node_left = node_type(t->child[0]);
+//                                        if(node_left != node_right) {
+//                                                printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, node_left.c_str(), node_right.c_str());
+//                                        }
                                 }
                                 else if(strcmp(t->attr.name, "+=")==0 || strcmp(t->attr.name, "-=")==0) {
                                         // TreeNode* node_right = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)t->child[1]->attr.name));
@@ -499,7 +503,7 @@ void scopeAndType(TreeNode *tree, int numOfSibs,  bool FuncKRecurse) {
                                 break;
                         case VarK:
                                 if(t->isArray == true) {
-                                        // printf("Var %s is array of ", t->attr.name); // TODO:
+
                                 } else {
                                         // printf("Var %s of ", t->attr.name);
                                 }
