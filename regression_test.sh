@@ -219,14 +219,14 @@ fi
 # fi
 
 
-# rm regression_report
-# rm temp.Pout
-# ./c- -P < TestFiles/a3/overkill.c- > temp.Pout
-# sdiff -s temp.Pout TestFiles/a3/overkill.Pout
-# sdiff temp.Pout TestFiles/a3/overkill.Pout >> regression_report
-#
-# if [ -s ]; then
-#     echo "  Passed: overkill.Pout"
-# else
-#     echo "  Failed: overkill.Pout"
-# fi
+rm regression_report
+rm temp.Pout
+./c- -P < TestFiles/a3/overkill.c- > temp.Pout
+sdiff -s temp.Pout TestFiles/a3/overkill.Pout
+sdiff temp.Pout TestFiles/a3/overkill.Pout >> regression_report
+
+if [ -s ]; then
+    echo "  Passed: overkill.Pout"
+else
+    echo "  Failed: overkill.Pout"
+fi

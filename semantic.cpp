@@ -13,6 +13,7 @@ static int sibIndex = 0;
 
 bool main_function_exists=false;
 
+// static bool DEBUG=true;
 static bool DEBUG=false;
 static bool SCOPE_DEBUG=false;
 
@@ -54,13 +55,16 @@ bool is_in_vector(vector<string> vec, string str){
         }
 }
 
-void semantics(TreeNode* t){
-        if( t->child[0]->declType != t->child[1]->declType && t->child[1]->declType!=UndefinedType && t->child[0]->declType!=UndefinedType) {
-                //if(DEBUG==true) printf("Right: %s, Left: %s\n", Types[t->child[1]->declType], Types[t->child[0]->declType]);
-                printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, Types[t->child[0]->declType], Types[t->child[1]->declType]);
-                number_of_errors++;
-        }
-}
+//void semantics(TreeNode* t){
+//        if(DEBUG) printf("    Beginning Assignment Semantics...\n");
+//        if( t->child[0]->declType != t->child[1]->declType && t->child[1]->declType!=UndefinedType && t->child[0]->declType!=UndefinedType) {
+//                //if(DEBUG==true) printf("Right: %s, Left: %s\n", Types[t->child[1]->declType], Types[t->child[0]->declType]);
+//                printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, Types[t->child[0]->declType], Types[t->child[1]->declType]);
+//                number_of_errors++;
+//        }
+//        if(DEBUG) printf("    Completed Assignment Semantics...\n");
+//
+//}
 
 string node_type(TreeNode* node){
         if(DEBUG==true) cout << "   node_type" << endl;
@@ -113,7 +117,7 @@ void scopeAndType(TreeNode *tree, int numOfSibs,  bool FuncKRecurse) {
         for(TreeNode *t = tree; t != NULL; t = t->sibling) {
                 recurse_already=false;
 
-                if(DEBUG==true) printf("\n---- line: %d ----\n", t->linenum );
+                // if(DEBUG==false) printf("%d\n", t->linenum );
                 // if(t->nodekind == ExprK && t->kind.expr==IdK) {
                 //         // if(DEBUG==true) { printf("Expression Statement: ID\n"); }
                 //         // TreeNode* node = static_cast<TreeNode*>(semanticsSymbolTable.lookup((char *)t->attr.name));
@@ -211,15 +215,12 @@ void scopeAndType(TreeNode *tree, int numOfSibs,  bool FuncKRecurse) {
                                         // Assign Type to ID Node
 
                                         if(nodeIdK->child[0]!=NULL && nodeIdK->child[0]->nodekind==ExprK && nodeIdK->child[0]->kind.expr==IdK) {
-                                                // if(nodeIdK->child[0]->nodekind==ExprK && nodeIdK->child[0]->kind.expr==IdK) {
-                                                if(strcmp(nodeIdK->child[0]->attr.name, t->attr.name)==0) {
-                                                        // cout << "ADSFDSADFDAS" << endl;
-                                                        printf("ERROR(%d): Symbol '%s' is not defined.\n", t->linenum, t->attr.name);
-                                                        number_of_errors++;
-                                                        t->declType=UndefinedType;
-                                                }
-
+                                                printf("ERROR(%d): Symbol '%s' is not defined.\n", t->linenum, t->attr.name);
+                                                number_of_errors++;
+                                                t->declType=UndefinedType;
                                         }
+
+
                                         else {
                                                 // cout << "line: " << t->linenum << endl;
                                                 t->declType = nodeIdK->declType;
@@ -240,7 +241,7 @@ void scopeAndType(TreeNode *tree, int numOfSibs,  bool FuncKRecurse) {
                                         }
 
                                 }
-
+                                if(DEBUG) printf("    Leaving IdK\n");
                                 break;
                         }
                         case OpK:
@@ -349,12 +350,12 @@ void scopeAndType(TreeNode *tree, int numOfSibs,  bool FuncKRecurse) {
                                                                 number_of_errors++;
                                                         }
                                                 }
-                                                else if(t->child[0]->isArray==false && strcmp(t->attr.name, "*")==0 && t->child[1]==NULL && t->child[0]->declType!=UndefinedType) {
+                                                else if(t->child[0]->isArray==false && strcmp(t->attr.name, "*")==0 && t->child[1]==NULL && t->child[0]->declType!=UndefinedType ) {
                                                         printf("ERROR(%d): The operation '%s' only works with arrays.\n", t->linenum, t->attr.name );
                                                         number_of_errors++;
                                                 }
                                                 else if(types_map[t->attr.name]["Unary"].front()=="true" && t->child[1]==NULL && Types[t->child[0]->declType]!=types_map[t->attr.name]["result"].front() && t->child[0]->declType!=UndefinedType) {
-                                                        if(DEBUG) cout << "Checking Unary stuff: " << t->linenum << endl;
+                                                        if(DEBUG) cout << "   Checking Unary stuff: " << t->linenum << endl;
                                                         printf("ERROR(%d): Unary '%s' requires an operand of type %s but was given %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["result"].front().c_str(), Types[t->child[0]->declType]);
                                                         number_of_errors++;
                                                 }
@@ -367,48 +368,58 @@ void scopeAndType(TreeNode *tree, int numOfSibs,  bool FuncKRecurse) {
                                                         // Line below seg faults
                                                         // if(DEBUG==false) printf("    Processing Ops: child[1]= %s line: %d isArray: %d\n", t->child[1]->attr.name, t->linenum, t->child[1]->isArray);
                                                         // cout << "here " << t->linenum << "att " << t->attr.name<< endl;
-                                                        if(t->child[0]->isArray==true || t->child[1]->isArray==true) {
-                                                                if(DEBUG) cout << "   Checking if op: " << t->attr.name << " works with arrays. line :" << t->linenum << endl;
-                                                                if(types_map[t->attr.name]["WithArrays"].front()=="false") {
-                                                                        printf("ERROR(%d): The operation '%s' does not work with arrays.\n", t->linenum, t->attr.name);
+
+                                                        if(DEBUG) printf("    Checking lhs and rhs types...\n");
+                                                        vector <string> allowed_left_ops = types_map[t->attr.name]["left"];
+                                                        vector <string> allowed_right_ops = types_map[t->attr.name]["right"];
+                                                        // if(types_map[t->attr.name]["WithArrays"].front()=="true" && strcmp(t->attr.name, "*")!=0) {
+                                                        //         if(t->child[0]->declType!=t->child[1]->declType) {
+                                                        //                 printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, Types[t->child[0]->declType], Types[t->child[1]->declType]);
+                                                        //                 number_of_errors++;
+                                                        //         }
+                                                        // }
+                                                        if ((allowed_left_ops.size()==1 && allowed_right_ops.size()==1) ) {
+                                                                if(is_in_vector(allowed_left_ops, Types[t->child[0]->declType])==false && t->child[0]->declType!=UndefinedType) {
+                                                                        printf("ERROR(%d): '%s' requires operands of %s but lhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["left"].front().c_str(), Types[t->child[0]->declType]);
+                                                                        number_of_errors++;
+                                                                }
+                                                                if(is_in_vector(allowed_right_ops, Types[t->child[1]->declType])==false && t->child[1]->declType!=UndefinedType) {
+                                                                        printf("ERROR(%d): '%s' requires operands of %s but rhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["right"].front().c_str(), Types[t->child[1]->declType]);
+                                                                        number_of_errors++;
+                                                                }
+
+                                                                if(t->child[0]->declType!=t->child[1]->declType && is_in_vector(allowed_right_ops, Types[t->child[1]->declType])==true && is_in_vector(allowed_left_ops, Types[t->child[0]->declType])==true) {
+                                                                        printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, Types[t->child[0]->declType], Types[t->child[1]->declType]);
+                                                                        number_of_errors++;
+                                                                }
+
+                                                        } else if(allowed_left_ops.size()==2 && allowed_right_ops.size()==2 ) {
+
+                                                                if(is_in_vector(allowed_left_ops, Types[t->child[0]->declType])==false && t->child[0]->declType!=UndefinedType) {
+                                                                        printf("ERROR(%d): '%s' requires operands of %s or %s but lhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["left"][1].c_str(), types_map[t->attr.name]["left"][0].c_str(), Types[t->child[0]->declType]);
+                                                                        number_of_errors++;
+                                                                }
+                                                                if(is_in_vector(allowed_right_ops, Types[t->child[1]->declType])==false && t->child[1]->declType!=UndefinedType) {
+                                                                        printf("ERROR(%d): '%s' requires operands of %s or %s but rhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["right"][1].c_str(), types_map[t->attr.name]["left"][0].c_str(), Types[t->child[1]->declType]);
+                                                                        number_of_errors++;
+                                                                }
+                                                                if(t->child[0]->declType!=t->child[1]->declType && is_in_vector(allowed_right_ops, Types[t->child[1]->declType])==true && is_in_vector(allowed_left_ops, Types[t->child[0]->declType])==true) {
+                                                                        printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, Types[t->child[0]->declType], Types[t->child[1]->declType]);
                                                                         number_of_errors++;
                                                                 }
                                                         }
-                                                        else {
-                                                                if(DEBUG) printf("    Checking lhs and rhs types...\n");
-                                                                vector <string> allowed_left_ops = types_map[t->attr.name]["left"];
-                                                                vector <string> allowed_right_ops = types_map[t->attr.name]["right"];
-                                                                if(types_map[t->attr.name]["WithArrays"].front()=="true" && strcmp(t->attr.name, "*")!=0) {
-                                                                        if(t->child[0]->declType!=t->child[1]->declType) {
-                                                                                printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, Types[t->child[0]->declType], Types[t->child[1]->declType]);
-                                                                                number_of_errors++;
-                                                                        }
-                                                                }
-                                                                else if ((allowed_left_ops.size()==1 && allowed_right_ops.size()==1) || strcmp(t->attr.name, "<")!=0) {
-                                                                        if(is_in_vector(allowed_left_ops, Types[t->child[0]->declType])==false && t->child[0]->declType!=UndefinedType) {
-                                                                                printf("ERROR(%d): '%s' requires operands of %s but lhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["left"].front().c_str(), Types[t->child[0]->declType]);
-                                                                                number_of_errors++;
-                                                                        }
-                                                                        if(is_in_vector(allowed_right_ops, Types[t->child[1]->declType])==false && t->child[1]->declType!=UndefinedType) {
-                                                                                printf("ERROR(%d): '%s' requires operands of %s but rhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["right"].front().c_str(), Types[t->child[1]->declType]);
-                                                                                number_of_errors++;
-                                                                        }
-                                                                } else if(allowed_left_ops.size()==2 && allowed_right_ops.size()==2 && strcmp(t->attr.name, "<")==0) {
-
-                                                                        if(is_in_vector(allowed_left_ops, Types[t->child[0]->declType])==false && t->child[0]->declType!=UndefinedType) {
-                                                                                printf("ERROR(%d): '%s' requires operands of%s or %s but lhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["left"][1].c_str(), types_map[t->attr.name]["left"][0].c_str(), Types[t->child[0]->declType]);
-                                                                                number_of_errors++;
-                                                                        }
-                                                                        if(is_in_vector(allowed_right_ops, Types[t->child[1]->declType])==false && t->child[1]->declType!=UndefinedType) {
-                                                                                printf("ERROR(%d): '%s' requires operands of%s or %s but rhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["right"][1].c_str(), types_map[t->attr.name]["left"][0].c_str(), Types[t->child[1]->declType]);
-                                                                                number_of_errors++;
-                                                                        }
-                                                                }
-
-
-
-
+                                                        if(t->child[0]->isArray==true || t->child[1]->isArray==true) {
+                                                            if(DEBUG) cout << "   Checking if op: " << t->attr.name << " works with arrays. line :" << t->linenum << endl;
+                                                            if(types_map[t->attr.name]["WithArrays"].front()=="false") {
+                                                                printf("ERROR(%d): The operation '%s' does not work with arrays.\n", t->linenum, t->attr.name);
+                                                                number_of_errors++;
+                                                            }
+                                                            if(strcmp(t->attr.name,"*")==0 && t->child[0]->declType!=UndefinedType && t->child[1]->declType!=UndefinedType) {
+                                                                printf("ERROR(%d): The operation '%s' does not work with arrays.\n", t->linenum, t->attr.name);
+                                                                number_of_errors++;
+                                                            }
                                                         }
+
                                                 }
                                         }
 
@@ -430,17 +441,106 @@ void scopeAndType(TreeNode *tree, int numOfSibs,  bool FuncKRecurse) {
                                 recurse_already = true;
                                 recurse_through_children(t, false);
                                 t->declType=t->child[0]->declType;
-                                if(DEBUG==true) cout << "=" << endl;
-                                if(DEBUG==true) printf("ExprK1: %s, line: %d, child[0]: %s, type: %s\n", t->attr.name, t->linenum, t->child[0]->attr.name, Types[t->child[0]->declType]);
-                                if(DEBUG==true) printf("ExprKA: %s, line: %d, t: %s, type: %s\n", t->attr.name, t->linenum, t->attr.name, Types[t->declType]);
+                                if(DEBUG==true) cout << "   AssignK After Recursion" << endl;
+                                // if(DEBUG==true) printf("ExprK1: %s, line: %d, child[0]: %s, type: %s\n", t->attr.name, t->linenum, t->child[0]->attr.name, Types[t->child[0]->declType]);
+                                // if(DEBUG==true) printf("ExprKA: %s, line: %d, t: %s, type: %s\n", t->attr.name, t->linenum, t->attr.name, Types[t->declType]);
 
-                                semantics(t);
+//                                if(t->child[1]!=NULL)
+//                                        semantics(t);
 
-                                if(strcmp(t->attr.name, "=")==0 || strcmp(t->attr.name, ">")==0) {
+                                if(strcmp(t->attr.name, "+=")==0 || strcmp(t->attr.name, "-=")==0 ||
+                                   strcmp(t->attr.name, "*=")==0 || strcmp(t->attr.name, "/=")==0 ||
+                                   strcmp(t->attr.name, "++")==0 || strcmp(t->attr.name, "--")==0 ||
+                                                                    strcmp(t->attr.name, "=")==0
+                                   ) {
 
-                                }
-                                else if(strcmp(t->attr.name, "+=")==0 || strcmp(t->attr.name, "-=")==0) {
-                                        t->declType=Int;
+                                    if(strcmp(t->attr.name, "=")!=0) t->declType=Int;
+
+
+                                    if(t->child[0]!=NULL && t->child[1]==NULL) {
+                                        if(types_map[t->attr.name]["Unary"].front()=="true" && t->child[1]==NULL && Types[t->child[0]->declType]!=types_map[t->attr.name]["result"].front() && t->child[0]->declType!=UndefinedType) {
+                                            if(DEBUG) cout << "   Checking Unary stuff: " << t->linenum << endl;
+                                            printf("ERROR(%d): Unary '%s' requires an operand of type %s but was given %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["result"].front().c_str(), Types[t->child[0]->declType]);
+                                            number_of_errors++;
+                                        }
+
+                                        if(t->child[0]->isArray==true) {
+                                            if(DEBUG) cout << "   Checking if op: " << t->attr.name << " works with arrays. line :" << t->linenum << endl;
+                                            if(types_map[t->attr.name]["WithArrays"].front()=="false") {
+                                                printf("ERROR(%d): The operation '%s' does not work with arrays.\n", t->linenum, t->attr.name);
+                                                number_of_errors++;
+                                            }
+                                        }
+                                        else if(t->child[0]->isArray==false && strcmp(t->attr.name, "*")==0 && t->child[1]==NULL && t->child[0]->declType!=UndefinedType) {
+                                            printf("ERROR(%d): The operation '%s' only works with arrays.\n", t->linenum, t->attr.name );
+                                            number_of_errors++;
+                                        }
+
+
+                                    }
+
+                                    // Not Unary
+                                    if(t->child[0]!=NULL && t->child[1]!=NULL) {
+                                        if(t->child[1]!=NULL) {
+                                            // Line below seg faults
+                                            // if(DEBUG==false) printf("    Processing Ops: child[1]= %s line: %d isArray: %d\n", t->child[1]->attr.name, t->linenum, t->child[1]->isArray);
+                                            // cout << "here " << t->linenum << "att " << t->attr.name<< endl;
+
+
+                                            if(DEBUG) printf("    Checking lhs and rhs types...\n");
+                                            vector <string> allowed_left_ops = types_map[t->attr.name]["left"];
+                                            vector <string> allowed_right_ops = types_map[t->attr.name]["right"];
+
+                                            if( t->child[0]->declType != t->child[1]->declType && t->child[1]->declType!=UndefinedType && t->child[0]->declType!=UndefinedType && strcmp(t->attr.name, "=")==0) {
+                                                    //if(DEBUG==true) printf("Right: %s, Left: %s\n", Types[t->child[1]->declType], Types[t->child[0]->declType]);
+                                                    printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, Types[t->child[0]->declType], Types[t->child[1]->declType]);
+                                                    number_of_errors++;
+                                            }
+                                            else if (((allowed_left_ops.size()==1 && allowed_right_ops.size()==1)) ) {
+                                                if(is_in_vector(allowed_left_ops, Types[t->child[0]->declType])!=true && t->child[0]->declType!=UndefinedType) {
+                                                    printf("ERROR(%d): '%s' requires operands of %s but lhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["left"].front().c_str(), Types[t->child[0]->declType]);
+                                                    number_of_errors++;
+                                                }
+                                                if(is_in_vector(allowed_right_ops, Types[t->child[1]->declType])!=true && t->child[1]->declType!=UndefinedType) {
+                                                    printf("ERROR(%d): '%s' requires operands of %s but rhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["right"].front().c_str(), Types[t->child[1]->declType]);
+                                                    number_of_errors++;
+                                                }
+
+                                                if(t->child[0]->declType!=t->child[1]->declType &&
+                                                        is_in_vector(allowed_right_ops, Types[t->child[1]->declType])==true &&
+                                                        is_in_vector(allowed_left_ops, Types[t->child[0]->declType])==true)
+                                                {
+                                                    printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, Types[t->child[0]->declType], Types[t->child[1]->declType]);
+                                                    number_of_errors++;
+                                                }
+
+                                            } else if(allowed_left_ops.size()==2 && allowed_right_ops.size()==2 ) {
+
+                                                if(is_in_vector(allowed_left_ops, Types[t->child[0]->declType])==false && t->child[0]->declType!=UndefinedType) {
+                                                    printf("ERROR(%d): '%s' requires operands of %s or %s but lhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["left"][1].c_str(), types_map[t->attr.name]["left"][0].c_str(), Types[t->child[0]->declType]);
+                                                    number_of_errors++;
+                                                }
+                                                if(is_in_vector(allowed_right_ops, Types[t->child[1]->declType])==false && t->child[1]->declType!=UndefinedType) {
+                                                    printf("ERROR(%d): '%s' requires operands of %s or %s but rhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["right"][1].c_str(), types_map[t->attr.name]["left"][0].c_str(), Types[t->child[1]->declType]);
+                                                    number_of_errors++;
+                                                }
+                                                if(t->child[0]->declType!=t->child[1]->declType && is_in_vector(allowed_right_ops, Types[t->child[1]->declType])==true && is_in_vector(allowed_left_ops, Types[t->child[0]->declType])==true) {
+                                                    printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, Types[t->child[0]->declType], Types[t->child[1]->declType]);
+                                                    number_of_errors++;
+                                                }
+                                            }
+                                            if(t->child[0]->isArray==true || t->child[1]->isArray==true) {
+                                                if(DEBUG) cout << "   Checking if op: " << t->attr.name << " works with arrays. line :" << t->linenum << endl;
+                                                if(types_map[t->attr.name]["WithArrays"].front()=="false") {
+                                                    printf("ERROR(%d): The operation '%s' does not work with arrays.\n", t->linenum, t->attr.name);
+                                                    number_of_errors++;
+                                                }
+
+                                            }
+                                        }
+                                    }
+
+
                                 }
                                 break;
                         }
