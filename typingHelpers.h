@@ -13,6 +13,6 @@ using namespace std;
 map<string, map<string, vector<string> > > &getTypesDataStructure();
 
 extern map<string, map<string, vector<string> > > types_map;
-
+extern int number_of_errors;
 
 #endif //COMPILER_TYPINGHELPERS_H

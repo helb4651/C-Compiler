@@ -23,6 +23,7 @@
 
 
 
+
 extern int yylex();
 extern FILE *yyin;
 static TreeNode *syntaxTree;
@@ -151,6 +152,7 @@ recDeclaration      : RECORD ID '{' localDeclarations '}' {
                      $$ = newDeclNode(RecordK);
                      $$->declType = Record;
                      $$->attr.name = $2.sval;
+                     $$->attrType = Name;
                      $$->child[0] = $4;
                      $$->linenum = $3.linenum;
                      $$->isRecord=true;
@@ -217,11 +219,13 @@ varDeclInitialize   : varDeclId                        { $$ = $1; }
 varDeclId           : ID    {
                                 $$ = newDeclNode(VarK);
                                 $$->attr.name = $1.sval;
+                                $$->attrType = Name;
                                 $$->linenum = $1.linenum;
                             }
                     | ID '[' NUMCONST ']'  {
                             $$ = newDeclNode(VarK);
                             $$->attr.name = $1.sval;
+                            $$->attrType = Name;
                             $$->isArray = true;
                             $$->arrayLen = $3.ival;
                             $$->linenum = $1.linenum;
@@ -271,6 +275,7 @@ funDeclaration      : typeSpecifier ID '(' params ')' statement {
                                 $$ = newDeclNode(FuncK);
                                 $$->declType = $1;
                                 $$->attr.name = $2.sval;
+                                $$->attrType = Name;
                                 $$->child[0] = $4;
                                 $$->child[1] = $6;
                                 $$->linenum = $3.linenum; // Allows for correct line no
@@ -279,6 +284,7 @@ funDeclaration      : typeSpecifier ID '(' params ')' statement {
                            $$ = newDeclNode(FuncK);
                            $$->declType = Void;
                            $$->attr.name = $1.sval;
+                           $$->attrType = Name;
                            $$->child[0] = $3;
                            $$->child[1] = $5;
                            $$->linenum = $2.linenum;
@@ -337,10 +343,12 @@ paramIdList         : paramIdList ',' paramId {
 paramId             : ID    {
                                $$ = newDeclNode(ParamK);
                                $$->attr.name = $1.sval;
+                               $$->attrType = Name;
                             }
                     | ID '[' ']' {
                                 $$ = newDeclNode(ParamK);
                                 $$->attr.name = $1.sval;
+                                $$->attrType = Name;
                                 $$->isArray = true;
                               }
                     ;
@@ -379,6 +387,7 @@ unmatched           : unmatched_selection { $$ = $1; }
 matchedIteration   : WHILE '(' simpleExpression ')' matched {
                                 $$ = newStmtNode(WhileK);
                                 $$->attr.name = $1.tokenstring;
+                                $$->attrType = Name;
                                 $$->child[0] = $3;
                                 $$->child[1] = $5;
                                 $$->linenum = $1.linenum;
@@ -388,6 +397,7 @@ matchedIteration   : WHILE '(' simpleExpression ')' matched {
 unmatchedIteration : WHILE '(' simpleExpression ')' unmatched {
                                 $$ = newStmtNode(WhileK);
                                 $$->attr.name = $1.tokenstring;
+                                $$->attrType = Name;
                                 $$->child[0] = $3;
                                 $$->child[1] = $5;
                                 $$->linenum = $1.linenum;
@@ -448,6 +458,7 @@ selectionStmt       : IF '(' simpleExpression ')' statement
 matched_selection   : IF '(' simpleExpression ')' matched ELSE matched {
                                 $$ = newStmtNode(IfK);
                                 $$->attr.name = $1.tokenstring;
+                                $$->attrType = Name;
                                 $$->child[0] = $3;
                                 $$->child[1] = $5;
                                 $$->child[2] = $7;
@@ -458,6 +469,7 @@ matched_selection   : IF '(' simpleExpression ')' matched ELSE matched {
 unmatched_selection : IF '(' simpleExpression ')' matched ELSE unmatched {
                                 $$ = newStmtNode(IfK);
                                 $$->attr.name = $1.tokenstring;
+                                $$->attrType = Name;
                                 $$->child[0] = $3;
                                 $$->child[1] = $5;
                                 $$->child[2] = $7;
@@ -466,6 +478,7 @@ unmatched_selection : IF '(' simpleExpression ')' matched ELSE unmatched {
                     | IF '(' simpleExpression ')' statement {
                             $$ = newStmtNode(IfK);
                             $$->attr.name = $1.tokenstring;
+                            $$->attrType = Name;
                             $$->child[0] = $3;
                             $$->child[1] = $5;
                             $$->linenum = $1.linenum;
@@ -483,11 +496,13 @@ iterationStmt       : WHILE '(' simpleExpression ')' statement
 returnStmt          : RETURN ';' {
                                 $$ = newStmtNode(ReturnK);
                                 $$->attr.name = $1.tokenstring;
+                                $$->attrType = Name;
                                 $$->linenum = $1.linenum;
                             }
                     | RETURN expression ';' {
                             $$ = newStmtNode(ReturnK);
                             $$->attr.name = $1.tokenstring;
+                            $$->attrType = Name;
                             $$->child[0] = $2;
                             $$->linenum = $1.linenum;
                         }
@@ -497,6 +512,7 @@ returnStmt          : RETURN ';' {
 breakStmt           : BREAK ';' {
                                 $$ = newStmtNode(BreakK);
                                 $$->attr.name = $1.tokenstring;
+                                $$->attrType = Name;
                             }
 
 
@@ -506,6 +522,7 @@ breakStmt           : BREAK ';' {
 expression          : mutable EQ  expression {
                                 $$ = newExprNode(AssignK);
                                 $$->attr.name = $2.tokenstring;
+                                $$->attrType = Name;
                                 $$->child[0] = $1;
                                 $$->child[1] = $3;
                                 $$->linenum = $2.linenum;
@@ -513,6 +530,7 @@ expression          : mutable EQ  expression {
                     | mutable ADDASS expression {
                             $$ = newExprNode(AssignK);
                             $$->attr.name = $2.tokenstring;
+                            $$->attrType = Name;
                             $$->child[0] = $1;
                             $$->child[1] = $3;
                             $$->linenum = $2.linenum;
@@ -520,6 +538,7 @@ expression          : mutable EQ  expression {
                     | mutable SUBASS expression {
                             $$ = newExprNode(AssignK);
                             $$->attr.name = $2.tokenstring;
+                            $$->attrType = Name;
                             $$->child[0] = $1;
                             $$->child[1] = $3;
                             $$->linenum = $2.linenum;
@@ -527,6 +546,7 @@ expression          : mutable EQ  expression {
                     | mutable MULASS expression {
                             $$ = newExprNode(AssignK);
                             $$->attr.name = $2.tokenstring;
+                            $$->attrType = Name;
                             $$->child[0] = $1;
                             $$->child[1] = $3;
                             $$->linenum = $2.linenum;
@@ -534,6 +554,7 @@ expression          : mutable EQ  expression {
                     | mutable DIVASS expression {
                             $$ = newExprNode(AssignK);
                             $$->attr.name = $2.tokenstring;
+                            $$->attrType = Name;
                             $$->child[0] = $1;
                             $$->child[1] = $3;
                             $$->linenum = $2.linenum;
@@ -541,6 +562,7 @@ expression          : mutable EQ  expression {
                     | mutable INC {
                             $$ = newExprNode(AssignK);
                             $$->attr.name = $2.tokenstring;
+                            $$->attrType = Name;
                             $$->child[0] = $1;
                             //$$->child[1] = $3;
                             $$->linenum = $2.linenum;
@@ -548,6 +570,7 @@ expression          : mutable EQ  expression {
                     | mutable DEC{
                             $$ = newExprNode(AssignK);
                             $$->attr.name = $2.tokenstring;
+                            $$->attrType = Name;
                             $$->child[0] = $1;
                             //$$->child[1] = $3;
                             $$->linenum = $2.linenum;
@@ -559,6 +582,7 @@ expression          : mutable EQ  expression {
 simpleExpression    : simpleExpression OR andExpression {
                                 $$ = newExprNode(OpK);
                                 $$->attr.name = $2.tokenstring;
+                                $$->attrType = Name;
                                 $$->child[0] = $1;
                                 $$->child[1] = $3;
                             }
@@ -570,6 +594,7 @@ simpleExpression    : simpleExpression OR andExpression {
 andExpression       : andExpression AND unaryRelExpression {
                                 $$ = newExprNode(OpK);
                                 $$->attr.name = $2.tokenstring;
+                                $$->attrType = Name;
                                 $$->child[0] = $1;
                                 $$->child[1] = $3;
                             }
@@ -581,6 +606,7 @@ andExpression       : andExpression AND unaryRelExpression {
 unaryRelExpression  : NOT unaryRelExpression {
                                 $$ = newExprNode(OpK);
                                 $$->attr.name = $1.tokenstring;
+                                $$->attrType = Name;
                                 $$->child[0] = $2;
                             }
                     | relExpression { $$ = $1; }
@@ -590,6 +616,7 @@ unaryRelExpression  : NOT unaryRelExpression {
 relExpression       : sumExpression relop sumExpression {
                                $$ = newExprNode(OpK);
                                $$->attr.name = $2.tokenstring;
+                               $$->attrType = Name;
                                $$->child[0] = $1;
                                $$->child[1] = $3;
                             }
@@ -609,6 +636,7 @@ relop               : LESSEQ { $$ = $1; }
 sumExpression       : sumExpression sumop term {
                                 $$ = newExprNode(OpK);
                                 $$->attr.name = $2.tokenstring;
+                                $$->attrType = Name;
                                 $$->child[0] = $1;
                                 $$->child[1] = $3;
                             }
@@ -624,6 +652,7 @@ sumop               : PLUS { $$ = $1; }
 term                : term mulop unaryExpression {
                                 $$ = newExprNode(OpK);
                                 $$->attr.name = $2.tokenstring;
+                                $$->attrType = Name;
                                 $$->child[0] = $1;
                                 $$->child[1] = $3;
                                 $$->linenum = $2.linenum;
@@ -641,6 +670,7 @@ mulop               : STAR { $$ = $1; }
 unaryExpression     : unaryop unaryExpression {
                                 $$ = newExprNode(OpK);
                                 $$->attr.name = $1.tokenstring;
+                                $$->attrType = Name;
                                 $$->child[0] = $2;
                             }
                     | factor { $$ = $1; }
@@ -662,16 +692,19 @@ factor              : immutable { $$ = $1; }
 mutable             : ID {
                                $$ = newExprNode(IdK);
                                $$->attr.name = $1.sval;
+                               $$->attrType = Name;
                             }
                     | mutable '[' expression ']' {
                            $$ = newExprNode(OpK);
                            $$->attr.name = $2.tokenstring;
+                           $$->attrType = Name;
                            $$->child[0] = $1;
                            $$->child[1] = $3;
                         }
                     | mutable '.' monkey {
                             $$ = newExprNode(OpK);
                             $$->attr.name = $2.tokenstring;
+                            $$->attrType = Name;
                             $$->child[0] = $1;
                             $$->child[1] = $3;
                                     }
@@ -679,6 +712,7 @@ mutable             : ID {
 monkey              : ID {
                             $$ = newExprNode(IdK);
                             $$->attr.name = $1.sval;
+                            $$->attrType = Name;
                           }
 
 /* 42 */
@@ -691,6 +725,7 @@ immutable           : '(' expression ')' { $$ = $2; }
 call                : ID '(' args ')' {
                                $$ = newExprNode(CallK);
                                $$->attr.name = $1.sval;
+                               $$->attrType = Name;
                                $$->child[0] = $3;
                             }
                     ;
@@ -718,16 +753,19 @@ argList             : argList ',' expression {
 constant            : NUMCONST {
                                 $$ = newExprNode(ConstK);
                                 $$->attr.value = $1.ival;
+                                $$->attrType = Value;
                                 $$->declType = Int;
                             }
                     | CHARCONST {
                             $$ = newExprNode(ConstK);
                             $$->attr.cvalue = $1.cval;
+                            $$->attrType = CValue;
                             $$->declType = Char;
                         }
                     | BOOLCONST {
                             $$ = newExprNode(ConstK);
                             $$->attr.value = $1.ival;
+                            $$->attrType = Value;
                             $$->declType = Bool;
                         }
                     ;
@@ -736,8 +774,8 @@ constant            : NUMCONST {
 %%
 int main(int argc, char** argv) {
   int c;
-  bool print_tree = false;
-  bool print_semantic_tree = false;
+  bool print_ast_no_types  = false;
+  bool print_ast_types = false;
 
   while((c = getopt(argc, argv, "dpP")) != EOF) {
       switch(c) {
@@ -748,17 +786,17 @@ int main(int argc, char** argv) {
               yydebug = 1;
               break;
           case 'p':
-              print_tree=true;
+              print_ast_no_types=true;
               break;
           case 'P':
-              print_semantic_tree=true;
+              print_ast_types=true;
               break;
       }
   }
 
 
   extern FILE *yyin;
-  if(print_tree==false && print_semantic_tree==false && yydebug==0){
+  if(print_ast_no_types==false && print_ast_types==false && yydebug==0){
     yyin = fopen(argv[1], "r");
   } else {
     yyin = fopen(argv[2], "r");
@@ -766,12 +804,31 @@ int main(int argc, char** argv) {
   yyparse();
 
 
-  if(print_tree) { printTree(syntaxTree, -1); }
-  if(print_semantic_tree) {
+  if(print_ast_no_types) {
+    printTree(syntaxTree, -1, false);
+    getTypesDataStructure();
+    scopeAndType(syntaxTree, -1, false);
+  }
+
+  if(print_ast_types) {
+    getTypesDataStructure();
+    scopeAndType(syntaxTree, -1, false);
+
+        TreeNode* n = static_cast<TreeNode*>(semanticsSymbolTable.lookup("main"));
+        if(main_function_exists==false && n==NULL) {
+            number_of_errors++;
+            printf("ERROR(LINKER): Procedure main is not defined.\n");
+        }
+    printTree(syntaxTree, -1, true);
+    printf("Number of warnings: 0\n");
+    printf("Number of errors: %d\n", number_of_errors);
+  }
+
+  else {
     getTypesDataStructure();
     scopeAndType(syntaxTree, -1, false);
     printf("Number of warnings: 0\n");
-    printf("Number of errors: 0\n");
+    printf("Number of errors: %d\n", number_of_errors);
   }
 
   return 0;

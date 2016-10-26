@@ -42,7 +42,7 @@
  42     return true;
  43 }
  44 
- 45 ox(char y)
+ 45 ox(char y)       // no return value therefore type is void
  46 {
  47     return 666;  // Expecting no return value, but got one.
  48 }
@@ -145,23 +145,27 @@
 145     aa[zz[1]]; 
 146     aa[zz];       // Array index is the unindexed array %s
 147     aa[ox(true)]; // two errors
-148 
-149     x = ox(28);  // '=' requires things of the same type but lhs is char and rhs is  
-150     x = x + ox(6);  // '+' requires things of type char but rhs is of type  .
-151     cat(ox(492));   // Expecting type char in parameter 1 of call to 'cat' defined on line 20 but got type  .
-152     cat(true);      // Expecting type char in parameter 1 of call to 'cat' defined on line 20 but got type int.
-153     cat(cat(492));
-154 
-155     x = x = true;   // '=' requires things of the same type but lhs is char and rhs is int.
-156     b = b = 666;    // '=' requires things of the same type but lhs is int and rhs is char.
-157     x = b = x = b;
-158         
-159     x*b and b*x;
-160 
-161     emu(x+b, parrot, b and x);
-162     emu(false, true and emu(x+b, parrot, b and x), true, x*b);
-163 
-164     bb;
-165 
-166     return aa;  // Cannot return an array
-167 }
+148     aa['x']; 
+149     aa[false]; 
+150     aa[ox];
+151     aa[ibex];
+152 
+153     x = ox(28);  // '=' requires things of the same type but lhs is char and rhs is  
+154     x = x + ox(6);  // '+' requires things of type char but rhs is of type  .
+155     cat(ox(492));   // Expecting type char in parameter 1 of call to 'cat' defined on line 20 but got type  .
+156     cat(true);      // Expecting type char in parameter 1 of call to 'cat' defined on line 20 but got type int.
+157     cat(cat(492));
+158 
+159     x = x = true;   // '=' requires things of the same type but lhs is char and rhs is int.
+160     b = b = 666;    // '=' requires things of the same type but lhs is int and rhs is char.
+161     x = b = x = b;
+162         
+163     x*b and b*x;
+164 
+165     emu(x+b, parrot, b and x);
+166     emu(false, true and emu(x+b, parrot, b and x), true, x*b);
+167 
+168     bb;
+169 
+170     return aa;  // Cannot return an array
+171 }

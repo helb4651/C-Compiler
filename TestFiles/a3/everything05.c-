@@ -33,6 +33,8 @@ wallace(int wrong, trousers)
         static int were, rabbit;
         static int sheep[10];
 
+        sheep = sheep;
+        sheep == sheep;
         sheep[2] = 1618;
         if (sheep[2]<496) break;
         wallace(gromit--, were-rabbit);

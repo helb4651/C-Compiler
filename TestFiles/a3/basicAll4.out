@@ -74,18 +74,32 @@ ERROR(145): Array 'aa' should be indexed by type int but got type char.
 ERROR(146): Array 'aa' should be indexed by type int but got type char.
 ERROR(146): Array index is the unindexed array 'zz'.
 ERROR(147): Array 'aa' should be indexed by type int but got type void.
-ERROR(149): '=' requires operands of non-void type but rhs is of type void.
-ERROR(150): '+' requires operands of type int but lhs is of type char.
-ERROR(150): '+' requires operands of type int but rhs is of type void.
-ERROR(150): '=' requires operands of the same type but lhs is type char and rhs is type int.
-ERROR(155): '=' requires operands of the same type but lhs is type char and rhs is type bool.
-ERROR(157): '=' requires operands of the same type but lhs is type char and rhs is type int.
-ERROR(157): '=' requires operands of the same type but lhs is type int and rhs is type char.
-ERROR(157): '=' requires operands of the same type but lhs is type char and rhs is type int.
-ERROR(159): '*' requires operands of type int but lhs is of type char.
-ERROR(159): '*' requires operands of type int but rhs is of type char.
-ERROR(159): 'and' requires operands of type bool but lhs is of type int.
-ERROR(159): 'and' requires operands of type bool but rhs is of type int.
-ERROR(166): Cannot return an array.
+ERROR(148): Array 'aa' should be indexed by type int but got type char.
+ERROR(149): Array 'aa' should be indexed by type int but got type bool.
+ERROR(150): Cannot use function 'ox' as a variable.
+ERROR(151): Cannot use function 'ibex' as a variable.
+ERROR(153): '=' requires operands of NONVOID but rhs is of type void.
+ERROR(154): '+' requires operands of type int but lhs is of type char.
+ERROR(154): '+' requires operands of type int but rhs is of type void.
+ERROR(154): '=' requires operands of the same type but lhs is type char and rhs is type int.
+ERROR(159): '=' requires operands of the same type but lhs is type char and rhs is type bool.
+ERROR(161): '=' requires operands of the same type but lhs is type char and rhs is type int.
+ERROR(161): '=' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(161): '=' requires operands of the same type but lhs is type char and rhs is type int.
+ERROR(163): '*' requires operands of type int but lhs is of type char.
+ERROR(163): '*' requires operands of type int but rhs is of type char.
+ERROR(163): 'and' requires operands of type bool but lhs is of type int.
+ERROR(163): 'and' requires operands of type bool but rhs is of type int.
+ERROR(165): '+' requires operands of type int but lhs is of type char.
+ERROR(165): Symbol 'parrot' is not defined.
+ERROR(165): 'and' requires operands of type bool but lhs is of type int.
+ERROR(165): 'and' requires operands of type bool but rhs is of type char.
+ERROR(166): '+' requires operands of type int but lhs is of type char.
+ERROR(166): Symbol 'parrot' is not defined.
+ERROR(166): 'and' requires operands of type bool but lhs is of type int.
+ERROR(166): 'and' requires operands of type bool but rhs is of type char.
+ERROR(166): 'and' requires operands of type bool but rhs is of type char.
+ERROR(166): '*' requires operands of type int but lhs is of type char.
+ERROR(170): Cannot return an array.
 Number of warnings: 0
-Number of errors: 89
+Number of errors: 103

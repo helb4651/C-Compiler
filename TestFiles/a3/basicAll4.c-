@@ -42,7 +42,7 @@ int ibex(char x[])
     return true;
 }
 
-ox(char y)
+ox(char y)       // no return value therefore type is void
 {
     return 666;  // Expecting no return value, but got one.
 }
@@ -145,6 +145,10 @@ char main()
     aa[zz[1]]; 
     aa[zz];       // Array index is the unindexed array %s
     aa[ox(true)]; // two errors
+    aa['x']; 
+    aa[false]; 
+    aa[ox];
+    aa[ibex];
 
     x = ox(28);  // '=' requires things of the same type but lhs is char and rhs is  
     x = x + ox(6);  // '+' requires things of type char but rhs is of type  .

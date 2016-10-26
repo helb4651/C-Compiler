@@ -1,4 +1,5 @@
 #include "printtree.h"
+#include "semantic.h"
 
 static int spaces = 0;
 static int chiIndex = 0;
@@ -17,7 +18,7 @@ void addSpacesAndExMark() {
         }
 }
 
-void printTree(TreeNode *tree, int numOfSibs) {
+void printTree(TreeNode *tree, int numOfSibs, bool printTypes) {
         bool recursivePrint = false;
         if(numOfSibs == -1) {
                 numOfSibs++;
@@ -32,6 +33,7 @@ void printTree(TreeNode *tree, int numOfSibs) {
                 } else if(numOfSibs == 0 && recursivePrint == false) {
                         printf("Child: %i  ", chiIndex);
                 }
+                // printf("HEY: %u", t->declType);
                 numOfSibs++;
 
                 if(t->nodekind == StmtK) {
@@ -98,14 +100,14 @@ void printTree(TreeNode *tree, int numOfSibs) {
                                 break;
                         case VarK:
                                 if(t->isArray == true) {
-                                        printf("Var %s is array of ", t->attr.name); // TODO:
+                                        printf("Var %s is array of ", t->attr.name);
                                 } else {
                                         printf("Var %s of ", t->attr.name);
                                 }
                                 break;
                         case ParamK:
                                 if(t->isArray == true) {
-                                        printf("Param %s is array of ", t->attr.name); // TODO:
+                                        printf("Param %s is array of ", t->attr.name);
                                 } else {
                                         printf("Param %s of ", t->attr.name);
                                 }
@@ -115,6 +117,7 @@ void printTree(TreeNode *tree, int numOfSibs) {
                         default:
                                 break;
                         }
+
                         switch(t->declType) {
                         case Void:
                                 printf("type void ");
@@ -139,10 +142,14 @@ void printTree(TreeNode *tree, int numOfSibs) {
                 } else {
                         printf("Failed printing tree nodekind index: %u\n", t->nodekind);
                 }
+                if(printTypes) {
+                        printf("[%s] ", Types[t->declType]);
+                }
                 printf("[line: %d]\n", t->linenum);
+
                 for(int i = 0; i < MAXCHILDREN; i++) {
                         chiIndex = i;
-                        printTree(t->child[i], 0);
+                        printTree(t->child[i], 0, printTypes);
                         chiIndex = 0;
                 }
         }
@@ -158,6 +165,7 @@ TreeNode *newStmtNode(StmtKind kind) {
         t->nodekind = StmtK;
         t->kind.stmt = kind;
         t->linenum = yylineno;
+        t->attrType = UndefinedAttrType;
         return t;
 }
 
@@ -168,6 +176,7 @@ TreeNode *newExprNode(ExprKind kind) {
         t->nodekind = ExprK;
         t->kind.expr = kind;
         t->linenum = yylineno;
+        t->attrType = UndefinedAttrType;
         return t;
 }
 
@@ -178,5 +187,6 @@ TreeNode *newDeclNode(DeclKind kind) {
         t->nodekind = DeclK;
         t->kind.decl = kind;
         t->linenum = yylineno;
+        t->attrType = UndefinedAttrType;
         return t;
 }

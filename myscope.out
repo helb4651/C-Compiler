@@ -7,16 +7,20 @@ ERROR(25): Symbol 'c' is not defined.
 ERROR(29): Symbol 'b' is not defined.
 ERROR(30): Symbol 'c' is not defined.
 ERROR(40): Symbol 'x' is not defined.
-ERROR(44): Symbol 'v' is not defined.
-ERROR(45): Symbol 'u' is not defined.
-ERROR(45): Symbol 'cow' is not defined.
-ERROR(45): Symbol 'v' is not defined.
-ERROR(46): Symbol 'abraxsis' is not defined.
-ERROR(47): Symbol 'a' is not defined.
-ERROR(52): Symbol 'g' is already defined at line 2.
+ERROR(44): Symbol 'p' is not defined.
+ERROR(45): Symbol 'q' is not defined.
+ERROR(45): Symbol 'r' is not defined.
+ERROR(46): Symbol 's' is not defined.
+ERROR(46): Symbol 't' is not defined.
+ERROR(47): Symbol 'u' is not defined.
+ERROR(47): Symbol 'cow' is not defined.
+ERROR(47): Symbol 'v' is not defined.
+ERROR(48): Symbol 'abraxsis' is not defined.
+ERROR(49): Symbol 'a' is not defined.
 ERROR(54): Symbol 'g' is already defined at line 2.
-ERROR(56): Symbol 'x' is not defined.
-ERROR(59): Symbol 'g' is already defined at line 2.
-ERROR(60): Symbol 'ant' is already defined at line 3.
+ERROR(56): Symbol 'g' is already defined at line 2.
+ERROR(58): Symbol 'x' is not defined.
+ERROR(61): Symbol 'g' is already defined at line 2.
+ERROR(62): Symbol 'ant' is already defined at line 3.
 Number of warnings: 0
-Number of errors: 0
+Number of errors: 24

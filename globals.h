@@ -25,7 +25,8 @@ typedef enum {DeclK, StmtK, ExprK} NodeKind;
 typedef enum {FuncK, VarK, ParamK, RecordK} DeclKind;
 typedef enum {IfK, WhileK, CompK, ReturnK, BreakK} StmtKind;
 typedef enum {ConstK, IdK, OpK, AssignK, CallK} ExprKind;
-typedef enum {Void, Int, Bool, Char, String, Record} DeclType;
+typedef enum {Void, Int, Bool, Char, String, Record, UndefinedType} DeclType;
+typedef enum {Value, CValue, Str, Name, UndefinedAttrType} AttrType;
 
 #define MAXCHILDREN 3
 
@@ -48,6 +49,7 @@ typedef struct treeNode {
                 char *name;
         } attr;
 
+        AttrType attrType;
         DeclType declType;
         bool isStatic;
         bool isArray;

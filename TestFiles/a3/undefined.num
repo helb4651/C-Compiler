@@ -1,0 +1,43 @@
+  1 // C-F16
+  2 main()
+  3 {
+  4     *y;
+  5     x=3;
+  6     false or true and x < 222 + y*444;
+  7     444*y + 222 > x and true or false;
+  8     (444*((x) + 222) > 111) and (y or false);
+  9     x = true or not - ? * array * - - 42 / 13 % 5 + 31 - 331 == 12 and 7 < 9;
+ 10 }
+ 11 
+ 12 int cat()
+ 13 {
+ 14     dog();
+ 15     dog = 3;
+ 16     dog = dog * dog;
+ 17 
+ 18     mouse = 7;
+ 19 
+ 20     {
+ 21         int mouse;
+ 22 
+ 23         mouse = 8;
+ 24     }
+ 25     mouse = 9;
+ 26     {
+ 27         mouse = 10;
+ 28     }
+ 29     mouse = 11;
+ 30 
+ 31     return mouse;
+ 32 }
+ 33          
+ 34 int dog()
+ 35 {
+ 36     mouse and mouse;
+ 37     mouse > mouse;
+ 38     mouse == mouse;
+ 39     mouse += mouse;
+ 40 
+ 41     if (mouse) 666;
+ 42     while (mouse) 666;
+ 43 }

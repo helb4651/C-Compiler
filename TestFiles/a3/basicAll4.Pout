@@ -74,19 +74,33 @@ ERROR(145): Array 'aa' should be indexed by type int but got type char.
 ERROR(146): Array 'aa' should be indexed by type int but got type char.
 ERROR(146): Array index is the unindexed array 'zz'.
 ERROR(147): Array 'aa' should be indexed by type int but got type void.
-ERROR(149): '=' requires operands of non-void type but rhs is of type void.
-ERROR(150): '+' requires operands of type int but lhs is of type char.
-ERROR(150): '+' requires operands of type int but rhs is of type void.
-ERROR(150): '=' requires operands of the same type but lhs is type char and rhs is type int.
-ERROR(155): '=' requires operands of the same type but lhs is type char and rhs is type bool.
-ERROR(157): '=' requires operands of the same type but lhs is type char and rhs is type int.
-ERROR(157): '=' requires operands of the same type but lhs is type int and rhs is type char.
-ERROR(157): '=' requires operands of the same type but lhs is type char and rhs is type int.
-ERROR(159): '*' requires operands of type int but lhs is of type char.
-ERROR(159): '*' requires operands of type int but rhs is of type char.
-ERROR(159): 'and' requires operands of type bool but lhs is of type int.
-ERROR(159): 'and' requires operands of type bool but rhs is of type int.
-ERROR(166): Cannot return an array.
+ERROR(148): Array 'aa' should be indexed by type int but got type char.
+ERROR(149): Array 'aa' should be indexed by type int but got type bool.
+ERROR(150): Cannot use function 'ox' as a variable.
+ERROR(151): Cannot use function 'ibex' as a variable.
+ERROR(153): '=' requires operands of NONVOID but rhs is of type void.
+ERROR(154): '+' requires operands of type int but lhs is of type char.
+ERROR(154): '+' requires operands of type int but rhs is of type void.
+ERROR(154): '=' requires operands of the same type but lhs is type char and rhs is type int.
+ERROR(159): '=' requires operands of the same type but lhs is type char and rhs is type bool.
+ERROR(161): '=' requires operands of the same type but lhs is type char and rhs is type int.
+ERROR(161): '=' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(161): '=' requires operands of the same type but lhs is type char and rhs is type int.
+ERROR(163): '*' requires operands of type int but lhs is of type char.
+ERROR(163): '*' requires operands of type int but rhs is of type char.
+ERROR(163): 'and' requires operands of type bool but lhs is of type int.
+ERROR(163): 'and' requires operands of type bool but rhs is of type int.
+ERROR(165): '+' requires operands of type int but lhs is of type char.
+ERROR(165): Symbol 'parrot' is not defined.
+ERROR(165): 'and' requires operands of type bool but lhs is of type int.
+ERROR(165): 'and' requires operands of type bool but rhs is of type char.
+ERROR(166): '+' requires operands of type int but lhs is of type char.
+ERROR(166): Symbol 'parrot' is not defined.
+ERROR(166): 'and' requires operands of type bool but lhs is of type int.
+ERROR(166): 'and' requires operands of type bool but rhs is of type char.
+ERROR(166): 'and' requires operands of type bool but rhs is of type char.
+ERROR(166): '*' requires operands of type int but lhs is of type char.
+ERROR(170): Cannot return an array.
 Func dog returns type char [type char] [line: 11]
 !   Child: 0  Param x of type char [type char] [line: 11]
 !   Child: 1  Compound [type void] [line: 12]
@@ -299,13 +313,13 @@ Sibling: 7  Func main returns type char [type char] [line: 54]
 !   !   Sibling: 44  Call: dog [type char] [line: 133]
 !   !   !   Child: 0  Const: true [type bool] [line: 133]
 !   !   Sibling: 45  Call: cat [type char] [line: 135]
-!   !   !   Child: 0  Id: aa [undefined type] [line: 135]
+!   !   !   Child: 0  Id: aa [type char] [line: 135]
 !   !   Sibling: 46  Call: cat [type char] [line: 136]
-!   !   !   Child: 0  Id: ba [undefined type] [line: 136]
+!   !   !   Child: 0  Id: ba [type bool] [line: 136]
 !   !   Sibling: 47  Call: ibex [type int] [line: 138]
-!   !   !   Child: 0  Id: x [undefined type] [line: 138]
+!   !   !   Child: 0  Id: x [type char] [line: 138]
 !   !   Sibling: 48  Call: ibex [type int] [line: 139]
-!   !   !   Child: 0  Id: bb [undefined type] [line: 139]
+!   !   !   Child: 0  Id: bb [type int] [line: 139]
 !   !   Sibling: 49  Op: [ [undefined type] [line: 140]
 !   !   !   Child: 0  Id: ibex [undefined type] [line: 140]
 !   !   !   Child: 1  Const: 3 [type int] [line: 140]
@@ -325,74 +339,86 @@ Sibling: 7  Func main returns type char [type char] [line: 54]
 !   !   !   Child: 0  Id: aa [type char] [line: 147]
 !   !   !   Child: 1  Call: ox [type void] [line: 147]
 !   !   !   !   Child: 0  Const: true [type bool] [line: 147]
-!   !   Sibling: 55  Assign: = [type char] [line: 149]
-!   !   !   Child: 0  Id: x [type char] [line: 149]
-!   !   !   Child: 1  Call: ox [type void] [line: 149]
-!   !   !   !   Child: 0  Const: 28 [type int] [line: 149]
-!   !   Sibling: 56  Assign: = [type char] [line: 150]
-!   !   !   Child: 0  Id: x [type char] [line: 150]
-!   !   !   Child: 1  Op: + [type int] [line: 150]
-!   !   !   !   Child: 0  Id: x [type char] [line: 150]
-!   !   !   !   Child: 1  Call: ox [type void] [line: 150]
-!   !   !   !   !   Child: 0  Const: 6 [type int] [line: 150]
-!   !   Sibling: 57  Call: cat [type char] [line: 151]
-!   !   !   Child: 0  Call: ox [undefined type] [line: 151]
-!   !   !   !   Child: 0  Const: 492 [type int] [line: 151]
-!   !   Sibling: 58  Call: cat [type char] [line: 152]
-!   !   !   Child: 0  Const: true [type bool] [line: 152]
-!   !   Sibling: 59  Call: cat [type char] [line: 153]
-!   !   !   Child: 0  Call: cat [undefined type] [line: 153]
-!   !   !   !   Child: 0  Const: 492 [type int] [line: 153]
-!   !   Sibling: 60  Assign: = [type char] [line: 155]
-!   !   !   Child: 0  Id: x [type char] [line: 155]
-!   !   !   Child: 1  Assign: = [type char] [line: 155]
-!   !   !   !   Child: 0  Id: x [type char] [line: 155]
-!   !   !   !   Child: 1  Const: true [type bool] [line: 155]
-!   !   Sibling: 61  Assign: = [type int] [line: 156]
-!   !   !   Child: 0  Id: b [type int] [line: 156]
-!   !   !   Child: 1  Assign: = [type int] [line: 156]
-!   !   !   !   Child: 0  Id: b [type int] [line: 156]
-!   !   !   !   Child: 1  Const: 666 [type int] [line: 156]
-!   !   Sibling: 62  Assign: = [type char] [line: 157]
-!   !   !   Child: 0  Id: x [type char] [line: 157]
-!   !   !   Child: 1  Assign: = [type int] [line: 157]
-!   !   !   !   Child: 0  Id: b [type int] [line: 157]
-!   !   !   !   Child: 1  Assign: = [type char] [line: 157]
-!   !   !   !   !   Child: 0  Id: x [type char] [line: 157]
-!   !   !   !   !   Child: 1  Id: b [type int] [line: 157]
-!   !   Sibling: 63  Op: and [type bool] [line: 159]
-!   !   !   Child: 0  Op: * [type int] [line: 159]
+!   !   Sibling: 55  Op: [ [type char] [line: 148]
+!   !   !   Child: 0  Id: aa [type char] [line: 148]
+!   !   !   Child: 1  Const: 'x' [type char] [line: 148]
+!   !   Sibling: 56  Op: [ [type char] [line: 149]
+!   !   !   Child: 0  Id: aa [type char] [line: 149]
+!   !   !   Child: 1  Const: false [type bool] [line: 149]
+!   !   Sibling: 57  Op: [ [type char] [line: 150]
+!   !   !   Child: 0  Id: aa [type char] [line: 150]
+!   !   !   Child: 1  Id: ox [undefined type] [line: 150]
+!   !   Sibling: 58  Op: [ [type char] [line: 151]
+!   !   !   Child: 0  Id: aa [type char] [line: 151]
+!   !   !   Child: 1  Id: ibex [undefined type] [line: 151]
+!   !   Sibling: 59  Assign: = [type char] [line: 153]
+!   !   !   Child: 0  Id: x [type char] [line: 153]
+!   !   !   Child: 1  Call: ox [type void] [line: 153]
+!   !   !   !   Child: 0  Const: 28 [type int] [line: 153]
+!   !   Sibling: 60  Assign: = [type char] [line: 154]
+!   !   !   Child: 0  Id: x [type char] [line: 154]
+!   !   !   Child: 1  Op: + [type int] [line: 154]
+!   !   !   !   Child: 0  Id: x [type char] [line: 154]
+!   !   !   !   Child: 1  Call: ox [type void] [line: 154]
+!   !   !   !   !   Child: 0  Const: 6 [type int] [line: 154]
+!   !   Sibling: 61  Call: cat [type char] [line: 155]
+!   !   !   Child: 0  Call: ox [type void] [line: 155]
+!   !   !   !   Child: 0  Const: 492 [type int] [line: 155]
+!   !   Sibling: 62  Call: cat [type char] [line: 156]
+!   !   !   Child: 0  Const: true [type bool] [line: 156]
+!   !   Sibling: 63  Call: cat [type char] [line: 157]
+!   !   !   Child: 0  Call: cat [type char] [line: 157]
+!   !   !   !   Child: 0  Const: 492 [type int] [line: 157]
+!   !   Sibling: 64  Assign: = [type char] [line: 159]
+!   !   !   Child: 0  Id: x [type char] [line: 159]
+!   !   !   Child: 1  Assign: = [type char] [line: 159]
 !   !   !   !   Child: 0  Id: x [type char] [line: 159]
-!   !   !   !   Child: 1  Id: b [type int] [line: 159]
-!   !   !   Child: 1  Op: * [type int] [line: 159]
-!   !   !   !   Child: 0  Id: b [type int] [line: 159]
-!   !   !   !   Child: 1  Id: x [type char] [line: 159]
-!   !   Sibling: 64  Call: emu [type char] [line: 161]
-!   !   !   Child: 0  Op: + [undefined type] [line: 161]
-!   !   !   !   Child: 0  Id: x [undefined type] [line: 161]
-!   !   !   !   Child: 1  Id: b [undefined type] [line: 161]
-!   !   !   Sibling: 0  Id: parrot [undefined type] [line: 161]
-!   !   !   Sibling: 1  Op: and [undefined type] [line: 161]
-!   !   !   !   Child: 0  Id: b [undefined type] [line: 161]
-!   !   !   !   Child: 1  Id: x [undefined type] [line: 161]
-!   !   Sibling: 65  Call: emu [type char] [line: 162]
-!   !   !   Child: 0  Const: false [type bool] [line: 162]
-!   !   !   Sibling: 0  Op: and [undefined type] [line: 162]
-!   !   !   !   Child: 0  Const: true [type bool] [line: 162]
-!   !   !   !   Child: 1  Call: emu [undefined type] [line: 162]
-!   !   !   !   !   Child: 0  Op: + [undefined type] [line: 162]
-!   !   !   !   !   !   Child: 0  Id: x [undefined type] [line: 162]
-!   !   !   !   !   !   Child: 1  Id: b [undefined type] [line: 162]
-!   !   !   !   !   Sibling: 0  Id: parrot [undefined type] [line: 162]
-!   !   !   !   !   Sibling: 1  Op: and [undefined type] [line: 162]
-!   !   !   !   !   !   Child: 0  Id: b [undefined type] [line: 162]
-!   !   !   !   !   !   Child: 1  Id: x [undefined type] [line: 162]
-!   !   !   Sibling: 1  Const: true [type bool] [line: 162]
-!   !   !   Sibling: 2  Op: * [undefined type] [line: 162]
-!   !   !   !   Child: 0  Id: x [undefined type] [line: 162]
-!   !   !   !   Child: 1  Id: b [undefined type] [line: 162]
-!   !   Sibling: 66  Id: bb [type int] [line: 164]
-!   !   Sibling: 67  Return [type void] [line: 166]
-!   !   !   Child: 0  Id: aa [type char] [line: 166]
+!   !   !   !   Child: 1  Const: true [type bool] [line: 159]
+!   !   Sibling: 65  Assign: = [type int] [line: 160]
+!   !   !   Child: 0  Id: b [type int] [line: 160]
+!   !   !   Child: 1  Assign: = [type int] [line: 160]
+!   !   !   !   Child: 0  Id: b [type int] [line: 160]
+!   !   !   !   Child: 1  Const: 666 [type int] [line: 160]
+!   !   Sibling: 66  Assign: = [type char] [line: 161]
+!   !   !   Child: 0  Id: x [type char] [line: 161]
+!   !   !   Child: 1  Assign: = [type int] [line: 161]
+!   !   !   !   Child: 0  Id: b [type int] [line: 161]
+!   !   !   !   Child: 1  Assign: = [type char] [line: 161]
+!   !   !   !   !   Child: 0  Id: x [type char] [line: 161]
+!   !   !   !   !   Child: 1  Id: b [type int] [line: 161]
+!   !   Sibling: 67  Op: and [type bool] [line: 163]
+!   !   !   Child: 0  Op: * [type int] [line: 163]
+!   !   !   !   Child: 0  Id: x [type char] [line: 163]
+!   !   !   !   Child: 1  Id: b [type int] [line: 163]
+!   !   !   Child: 1  Op: * [type int] [line: 163]
+!   !   !   !   Child: 0  Id: b [type int] [line: 163]
+!   !   !   !   Child: 1  Id: x [type char] [line: 163]
+!   !   Sibling: 68  Call: emu [type char] [line: 165]
+!   !   !   Child: 0  Op: + [type int] [line: 165]
+!   !   !   !   Child: 0  Id: x [type char] [line: 165]
+!   !   !   !   Child: 1  Id: b [type int] [line: 165]
+!   !   !   Sibling: 0  Id: parrot [undefined type] [line: 165]
+!   !   !   Sibling: 1  Op: and [type bool] [line: 165]
+!   !   !   !   Child: 0  Id: b [type int] [line: 165]
+!   !   !   !   Child: 1  Id: x [type char] [line: 165]
+!   !   Sibling: 69  Call: emu [type char] [line: 166]
+!   !   !   Child: 0  Const: false [type bool] [line: 166]
+!   !   !   Sibling: 0  Op: and [type bool] [line: 166]
+!   !   !   !   Child: 0  Const: true [type bool] [line: 166]
+!   !   !   !   Child: 1  Call: emu [type char] [line: 166]
+!   !   !   !   !   Child: 0  Op: + [type int] [line: 166]
+!   !   !   !   !   !   Child: 0  Id: x [type char] [line: 166]
+!   !   !   !   !   !   Child: 1  Id: b [type int] [line: 166]
+!   !   !   !   !   Sibling: 0  Id: parrot [undefined type] [line: 166]
+!   !   !   !   !   Sibling: 1  Op: and [type bool] [line: 166]
+!   !   !   !   !   !   Child: 0  Id: b [type int] [line: 166]
+!   !   !   !   !   !   Child: 1  Id: x [type char] [line: 166]
+!   !   !   Sibling: 1  Const: true [type bool] [line: 166]
+!   !   !   Sibling: 2  Op: * [type int] [line: 166]
+!   !   !   !   Child: 0  Id: x [type char] [line: 166]
+!   !   !   !   Child: 1  Id: b [type int] [line: 166]
+!   !   Sibling: 70  Id: bb [type int] [line: 168]
+!   !   Sibling: 71  Return [type void] [line: 170]
+!   !   !   Child: 0  Id: aa [type char] [line: 170]
 Number of warnings: 0
-Number of errors: 89
+Number of errors: 103

@@ -1,0 +1,37 @@
+  1 int g;
+  2 
+  3 main()
+  4 {
+  5     int x, x;
+  6     bool x, x;
+  7     char x, x;
+  8 
+  9     int y, y[10];
+ 10 
+ 11     int main;
+ 12     bool main;
+ 13     char main;
+ 14 
+ 15     int g;
+ 16 }
+ 17 
+ 18 main(int a; bool b; char c; int a; bool b; char c) {
+ 19     int a; bool b; char c;
+ 20     int g;    
+ 21     {
+ 22         int g;    
+ 23         int a; bool b; char c;
+ 24         int a; bool b; char c;
+ 25         {
+ 26             int a; bool b; char c;
+ 27             int main, g;
+ 28         }
+ 29     }
+ 30 }
+ 31 
+ 32 cat(int cat, g) {
+ 33     int cat;
+ 34 }
+ 35 
+ 36 int cat, g;
+ 37 

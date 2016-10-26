@@ -33,72 +33,74 @@
  33         static int were, rabbit;
  34         static int sheep[10];
  35 
- 36         sheep[2] = 1618;
- 37         if (sheep[2]<496) break;
- 38         wallace(gromit--, were-rabbit);
- 39         { 
- 40             int the, wrong, trousers;
- 41 
- 42             the = wrong += trousers++;
- 43             if (were == rabbit) were = wrong--;  // assignment is in test
- 44         }
- 45     }
- 46     return;
- 47 }       
- 48 
- 49 
- 50 bool penguin(char Feathers, McGraw[]; bool moon, cheese; int launch) 
- 51 {
- 52     static char tottington:'x';
- 53     char  Wensleydale[17];
- 54     char c;
- 55     int i;         
- 56 
- 57     tottington = Feathers;
- 58     McGraw[3] = Feathers;
- 59     Wensleydale = McGraw;
- 60     Wensleydale[*McGraw] = '*';
- 61 }        
- 62 
- 63 int Wendolene(int wool; bool shaun; int yarn[]; bool preston[])
- 64 {
- 65     int void;
- 66     return wool + yarn[0] + *yarn + yarn[7*wool];
- 67 }
- 68 
- 69 
- 70 bool ramsBottom()
- 71 {
- 72     int chicken[2];
- 73     bool run[3];
- 74     int wallace[2], gromit[3];
- 75 
- 76     42 * Wendolene(1+2+3, not true or true and false, chicken, run);
- 77     run[*run-1];
- 78 
- 79     return not wallace[1]>=-gromit[2]*3;
- 80 }
- 81 
- 82 int cheese(int x, y) while (x>0) if (y>3) x--; else return x*x%y;
+ 36         sheep = sheep;
+ 37         sheep == sheep;
+ 38         sheep[2] = 1618;
+ 39         if (sheep[2]<496) break;
+ 40         wallace(gromit--, were-rabbit);
+ 41         { 
+ 42             int the, wrong, trousers;
+ 43 
+ 44             the = wrong += trousers++;
+ 45             if (were == rabbit) were = wrong--;  // assignment is in test
+ 46         }
+ 47     }
+ 48     return;
+ 49 }       
+ 50 
+ 51 
+ 52 bool penguin(char Feathers, McGraw[]; bool moon, cheese; int launch) 
+ 53 {
+ 54     static char tottington:'x';
+ 55     char  Wensleydale[17];
+ 56     char c;
+ 57     int i;         
+ 58 
+ 59     tottington = Feathers;
+ 60     McGraw[3] = Feathers;
+ 61     Wensleydale = McGraw;
+ 62     Wensleydale[*McGraw] = '*';
+ 63 }        
+ 64 
+ 65 int Wendolene(int wool; bool shaun; int yarn[]; bool preston[])
+ 66 {
+ 67     int void;
+ 68     return wool + yarn[0] + *yarn + yarn[7*wool];
+ 69 }
+ 70 
+ 71 
+ 72 bool ramsBottom()
+ 73 {
+ 74     int chicken[2];
+ 75     bool run[3];
+ 76     int wallace[2], gromit[3];
+ 77 
+ 78     42 * Wendolene(1+2+3, not true or true and false, chicken, run);
+ 79     run[*run-1];
+ 80 
+ 81     return not wallace[1]>=-gromit[2]*3;
+ 82 }
  83 
- 84 int Wensleydale(int x; int y) return cheese(x, gromit);  // weird parm list
+ 84 int cheese(int x, y) while (x>0) if (y>3) x--; else return x*x%y;
  85 
- 86 int main()
- 87 {
- 88     int wool, yarn[113];
- 89     bool shaun, preston[22];
- 90 
- 91     wallace(cheese(62, -311), gromit);
- 92     yarn[?*yarn];
- 93     return Wendolene(*preston**yarn, shaun, yarn, preston);
- 94 }
- 95 
- 96 null();
- 97 MrNobody(int shaun, the, sheep);
- 98 
- 99 bool aBigLongVariableName6;
-100 int    odd  ,	separation 		,of,
-101 stuff ;
-102 
-103 char bat:'\'';
-104 char dog:'\t';
+ 86 int Wensleydale(int x; int y) return cheese(x, gromit);  // weird parm list
+ 87 
+ 88 int main()
+ 89 {
+ 90     int wool, yarn[113];
+ 91     bool shaun, preston[22];
+ 92 
+ 93     wallace(cheese(62, -311), gromit);
+ 94     yarn[?*yarn];
+ 95     return Wendolene(*preston**yarn, shaun, yarn, preston);
+ 96 }
+ 97 
+ 98 null();
+ 99 MrNobody(int shaun, the, sheep);
+100 
+101 bool aBigLongVariableName6;
+102 int    odd  ,	separation 		,of,
+103 stuff ;
+104 
+105 char bat:'\'';
+106 char dog:'\t';

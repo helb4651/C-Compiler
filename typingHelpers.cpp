@@ -13,6 +13,7 @@ using namespace std;
 
 
 map<string, map<string, vector<string> > > types_map;
+int number_of_errors=0;
 
 map<string, map<string, vector<string> > > & getTypesDataStructure(){
         string line;
@@ -26,6 +27,7 @@ map<string, map<string, vector<string> > > & getTypesDataStructure(){
         vector<string> left_right_type_match;
         vector<string> works_with_arrays;
         vector<string> type_is_left_node;
+        vector<string> is_unary;
         map<string, vector<string> > Operator_Map;
 
 
@@ -143,13 +145,28 @@ map<string, map<string, vector<string> > > & getTypesDataStructure(){
                         while (istr8.peek() == ' ')                         // skip spaces
                                 istr8.get();
 
+                        getline(istr1, bar_cell, '|');
+                        istringstream istr9(bar_cell);
+                        // cout << "Result: " << bar_cell << endl;
+                        while (istr9.peek() == ' ')                                 // skip spaces
+                                istr9.get();
+                        while (getline(istr9, comma_cell, ',')) {
+                                if(comma_cell != " ") {
+                                        //                    cout << "result type: " << comma_cell << endl;
+                                        is_unary.push_back(comma_cell);
+                                }
+                        };
+                        while (istr9.peek() == ' ')                                 // skip spaces
+                                istr9.get();
+
                         // Add operator operand types to Operator_Map
                         Operator_Map["left"]=left_Operands;
                         Operator_Map["right"]=right_Operands;
                         Operator_Map["result"]=result_Operands;
                         Operator_Map["LRMatch"]=left_right_type_match;
                         Operator_Map["WithArrays"]=works_with_arrays;
-                        Operator_Map["OpIsTypeLeftNode"]=type_is_left_node;
+                        Operator_Map["ResultEnumIndex"]=type_is_left_node;
+                        Operator_Map["Unary"]=is_unary;
 
                         // Add Operator Map to types operator map
                         types_map[Operator]=Operator_Map;
@@ -161,6 +178,7 @@ map<string, map<string, vector<string> > > & getTypesDataStructure(){
                         left_right_type_match.clear();
                         works_with_arrays.clear();
                         type_is_left_node.clear();
+                        is_unary.clear();
                         Operator_Map.clear();
 
                 }

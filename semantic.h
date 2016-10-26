@@ -19,4 +19,7 @@ map<string, string> check_operands_types_same(TreeNode* t);
 TreeNode *newStmtNode(StmtKind);
 TreeNode *newExprNode(ExprKind);
 TreeNode *newDeclNode(DeclKind);
+extern const char *Types[];
+extern SymbolTable semanticsSymbolTable;
+extern bool main_function_exists;
 #endif

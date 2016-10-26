@@ -1,0 +1,50 @@
+  1 main()
+  2 {
+  3     int x;
+  4     char c;
+  5     bool b;
+  6     int xa[5];
+  7     char ca[6];
+  8     bool ba[7];
+  9     int y, ya[10];
+ 10 
+ 11     xa = xa;
+ 12     ca = ca;
+ 13     ba = ba;
+ 14     xa = ca;
+ 15     xa = ba;
+ 16     ca = 'z';
+ 17 
+ 18     xa = x;
+ 19     ca = c;
+ 20     ba = b;
+ 21     xa = c;
+ 22     xa = b;
+ 23 
+ 24     x = xa;
+ 25     c = ca;
+ 26     b = ba;
+ 27     x = ca;
+ 28     x = ba;
+ 29 
+ 30     xa > xa;
+ 31     xa < xa;
+ 32     xa >= xa;
+ 33     xa <= xa;
+ 34     xa == xa;
+ 35     xa != xa;
+ 36 
+ 37     xa > x;
+ 38     x > xa;
+ 39 
+ 40     ?xa;
+ 41     *xa;
+ 42     *ba;
+ 43     **ba;
+ 44     x[2];
+ 45     *x[2];
+ 46     xa[2];
+ 47     *(xa[2]);
+ 48 
+ 49 }
+ 50 
