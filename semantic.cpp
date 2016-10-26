@@ -343,6 +343,13 @@ void scopeAndType(TreeNode *tree, int numOfSibs,  bool FuncKRecurse) {
                                         // cout << "here: " << t->attr.name << endl;
 
                                         if(t->child[0]!=NULL && t->child[1]==NULL) {
+                                                if(types_map[t->attr.name]["Unary"].front()=="true" && t->child[1]==NULL
+                                                   && Types[t->child[0]->declType]!=types_map[t->attr.name]["result"].front()
+                                                   && t->child[0]->declType!=UndefinedType && strcmp(t->attr.name, "*")!=0) {
+                                                        if(DEBUG) cout << "   Checking Unary stuff: " << t->linenum << endl;
+                                                        printf("ERROR(%d): Unary '%s' requires an operand of type %s but was given %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["result"].front().c_str(), Types[t->child[0]->declType]);
+                                                        number_of_errors++;
+                                                }
                                                 if(t->child[0]->isArray==true) {
                                                         if(DEBUG) cout << "   Checking if op: " << t->attr.name << " works with arrays. line :" << t->linenum << endl;
                                                         if(types_map[t->attr.name]["WithArrays"].front()=="false") {
@@ -354,11 +361,7 @@ void scopeAndType(TreeNode *tree, int numOfSibs,  bool FuncKRecurse) {
                                                         printf("ERROR(%d): The operation '%s' only works with arrays.\n", t->linenum, t->attr.name );
                                                         number_of_errors++;
                                                 }
-                                                else if(types_map[t->attr.name]["Unary"].front()=="true" && t->child[1]==NULL && Types[t->child[0]->declType]!=types_map[t->attr.name]["result"].front() && t->child[0]->declType!=UndefinedType) {
-                                                        if(DEBUG) cout << "   Checking Unary stuff: " << t->linenum << endl;
-                                                        printf("ERROR(%d): Unary '%s' requires an operand of type %s but was given %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["result"].front().c_str(), Types[t->child[0]->declType]);
-                                                        number_of_errors++;
-                                                }
+
 
                                         }
 
@@ -378,13 +381,24 @@ void scopeAndType(TreeNode *tree, int numOfSibs,  bool FuncKRecurse) {
                                                         //                 number_of_errors++;
                                                         //         }
                                                         // }
-                                                        if ((allowed_left_ops.size()==1 && allowed_right_ops.size()==1) ) {
+//                                                        if(types_map[t->attr.name]["LRMatch"].front() == "true"){
+//
+//                                                        }
+                                                        if ((allowed_left_ops.size()==1 && allowed_right_ops.size()==1) || strcmp(t->attr.name, "!=")==0 || strcmp(t->attr.name, "==")==0) {
                                                                 if(is_in_vector(allowed_left_ops, Types[t->child[0]->declType])==false && t->child[0]->declType!=UndefinedType) {
+                                                                        if(t->child[0]->declType==Void && (strcmp(t->attr.name, "!=")==0 || strcmp(t->attr.name, "==")==0)) {
+                                                                                printf("ERROR(%d): '%s' requires operands of NONVOID but lhs is of %s.\n", t->linenum, t->attr.name, Types[t->child[0]->declType]);
+
+                                                                        } else
                                                                         printf("ERROR(%d): '%s' requires operands of %s but lhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["left"].front().c_str(), Types[t->child[0]->declType]);
                                                                         number_of_errors++;
                                                                 }
                                                                 if(is_in_vector(allowed_right_ops, Types[t->child[1]->declType])==false && t->child[1]->declType!=UndefinedType) {
-                                                                        printf("ERROR(%d): '%s' requires operands of %s but rhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["right"].front().c_str(), Types[t->child[1]->declType]);
+                                                                        if(t->child[1]->declType==Void&& (strcmp(t->attr.name, "!=")==0 || strcmp(t->attr.name, "==")==0)) {
+                                                                                printf("ERROR(%d): '%s' requires operands of NONVOID but rhs is of %s.\n", t->linenum, t->attr.name, Types[t->child[1]->declType]);
+
+                                                                        } else
+                                                                                printf("ERROR(%d): '%s' requires operands of %s but rhs is of %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["right"].front().c_str(), Types[t->child[1]->declType]);
                                                                         number_of_errors++;
                                                                 }
 
@@ -458,7 +472,9 @@ void scopeAndType(TreeNode *tree, int numOfSibs,  bool FuncKRecurse) {
 
 
                                     if(t->child[0]!=NULL && t->child[1]==NULL) {
-                                        if(types_map[t->attr.name]["Unary"].front()=="true" && t->child[1]==NULL && Types[t->child[0]->declType]!=types_map[t->attr.name]["result"].front() && t->child[0]->declType!=UndefinedType) {
+                                        if(types_map[t->attr.name]["Unary"].front()=="true" && t->child[1]==NULL
+                                           && Types[t->child[0]->declType]!=types_map[t->attr.name]["result"].front()
+                                           && t->child[0]->declType!=UndefinedType) {
                                             if(DEBUG) cout << "   Checking Unary stuff: " << t->linenum << endl;
                                             printf("ERROR(%d): Unary '%s' requires an operand of type %s but was given %s.\n", t->linenum, t->attr.name, types_map[t->attr.name]["result"].front().c_str(), Types[t->child[0]->declType]);
                                             number_of_errors++;
@@ -491,8 +507,12 @@ void scopeAndType(TreeNode *tree, int numOfSibs,  bool FuncKRecurse) {
                                             vector <string> allowed_left_ops = types_map[t->attr.name]["left"];
                                             vector <string> allowed_right_ops = types_map[t->attr.name]["right"];
 
-                                            if( t->child[0]->declType != t->child[1]->declType && t->child[1]->declType!=UndefinedType && t->child[0]->declType!=UndefinedType && strcmp(t->attr.name, "=")==0) {
-                                                    //if(DEBUG==true) printf("Right: %s, Left: %s\n", Types[t->child[1]->declType], Types[t->child[0]->declType]);
+                                            if( t->child[0]->declType != t->child[1]->declType && t->child[1]->declType!=UndefinedType && t->child[0]->declType!=UndefinedType
+                                                && (strcmp(t->attr.name, "=")==0 ) ) {
+                                                    if(t->child[1]->declType==Void && (strcmp(t->attr.name, "=")==0)) {
+                                                            printf("ERROR(%d): '%s' requires operands of NONVOID but rhs is of %s.\n", t->linenum, t->attr.name, Types[t->child[1]->declType]);
+
+                                                    } else
                                                     printf("ERROR(%d): '%s' requires operands of the same type but lhs is %s and rhs is %s.\n", t->linenum, t->attr.name, Types[t->child[0]->declType], Types[t->child[1]->declType]);
                                                     number_of_errors++;
                                             }

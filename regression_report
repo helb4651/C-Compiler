@@ -21,9 +21,9 @@ ERROR(42): The operation 'and' does not work with arrays.	ERROR(42): The operati
 ERROR(43): 'or' requires operands of type bool but lhs is of 	ERROR(43): 'or' requires operands of type bool but lhs is of 
 ERROR(43): 'or' requires operands of type bool but rhs is of 	ERROR(43): 'or' requires operands of type bool but rhs is of 
 ERROR(43): The operation 'or' does not work with arrays.	ERROR(43): The operation 'or' does not work with arrays.
-							      >	ERROR(45): '!=' requires operands of the same type but lhs is
+ERROR(45): '!=' requires operands of the same type but lhs is	ERROR(45): '!=' requires operands of the same type but lhs is
 ERROR(46): '<=' requires operands of the same type but lhs is	ERROR(46): '<=' requires operands of the same type but lhs is
-							      >	ERROR(47): '==' requires operands of the same type but lhs is
+ERROR(47): '==' requires operands of the same type but lhs is	ERROR(47): '==' requires operands of the same type but lhs is
 ERROR(48): '>=' requires operands of the same type but lhs is	ERROR(48): '>=' requires operands of the same type but lhs is
 ERROR(49): '<' requires operands of the same type but lhs is 	ERROR(49): '<' requires operands of the same type but lhs is 
 ERROR(50): '>' requires operands of the same type but lhs is 	ERROR(50): '>' requires operands of the same type but lhs is 
@@ -41,10 +41,10 @@ ERROR(60): 'and' requires operands of type bool but rhs is of	ERROR(60): 'and' r
 ERROR(61): 'or' requires operands of type bool but lhs is of 	ERROR(61): 'or' requires operands of type bool but lhs is of 
 ERROR(61): 'or' requires operands of type bool but rhs is of 	ERROR(61): 'or' requires operands of type bool but rhs is of 
 ERROR(62): '=' requires operands of the same type but lhs is 	ERROR(62): '=' requires operands of the same type but lhs is 
-							      >	ERROR(63): '!=' requires operands of the same type but lhs is
+ERROR(63): '!=' requires operands of the same type but lhs is	ERROR(63): '!=' requires operands of the same type but lhs is
 ERROR(64): '<=' requires operands of the same type but lhs is	ERROR(64): '<=' requires operands of the same type but lhs is
 ERROR(64): The operation '<=' does not work with arrays.	ERROR(64): The operation '<=' does not work with arrays.
-							      >	ERROR(65): '==' requires operands of the same type but lhs is
+ERROR(65): '==' requires operands of the same type but lhs is	ERROR(65): '==' requires operands of the same type but lhs is
 ERROR(66): '>=' requires operands of the same type but lhs is	ERROR(66): '>=' requires operands of the same type but lhs is
 ERROR(66): The operation '>=' does not work with arrays.	ERROR(66): The operation '>=' does not work with arrays.
 ERROR(67): '<' requires operands of the same type but lhs is 	ERROR(67): '<' requires operands of the same type but lhs is 
@@ -76,9 +76,9 @@ ERROR(79): 'or' requires operands of type bool but lhs is of 	ERROR(79): 'or' re
 ERROR(79): 'or' requires operands of type bool but rhs is of 	ERROR(79): 'or' requires operands of type bool but rhs is of 
 ERROR(79): The operation 'or' does not work with arrays.	ERROR(79): The operation 'or' does not work with arrays.
 ERROR(80): '=' requires operands of the same type but lhs is 	ERROR(80): '=' requires operands of the same type but lhs is 
-							      >	ERROR(81): '!=' requires operands of the same type but lhs is
+ERROR(81): '!=' requires operands of the same type but lhs is	ERROR(81): '!=' requires operands of the same type but lhs is
 ERROR(82): '<=' requires operands of type char or type int bu	ERROR(82): '<=' requires operands of type char or type int bu
-							      >	ERROR(83): '==' requires operands of the same type but lhs is
+ERROR(83): '==' requires operands of the same type but lhs is	ERROR(83): '==' requires operands of the same type but lhs is
 ERROR(84): '>=' requires operands of type char or type int bu	ERROR(84): '>=' requires operands of type char or type int bu
 ERROR(85): '<' requires operands of type char or type int but	ERROR(85): '<' requires operands of type char or type int but
 ERROR(86): '>' requires operands of type char or type int but	ERROR(86): '>' requires operands of type char or type int but
@@ -94,10 +94,10 @@ ERROR(95): '%' requires operands of type int but rhs is of ty	ERROR(95): '%' req
 ERROR(96): 'and' requires operands of type bool but lhs is of	ERROR(96): 'and' requires operands of type bool but lhs is of
 ERROR(97): 'or' requires operands of type bool but lhs is of 	ERROR(97): 'or' requires operands of type bool but lhs is of 
 ERROR(98): '=' requires operands of the same type but lhs is 	ERROR(98): '=' requires operands of the same type but lhs is 
-							      >	ERROR(99): '!=' requires operands of the same type but lhs is
+ERROR(99): '!=' requires operands of the same type but lhs is	ERROR(99): '!=' requires operands of the same type but lhs is
 ERROR(100): '<=' requires operands of type char or type int b	ERROR(100): '<=' requires operands of type char or type int b
 ERROR(100): The operation '<=' does not work with arrays.	ERROR(100): The operation '<=' does not work with arrays.
-							      >	ERROR(101): '==' requires operands of the same type but lhs i
+ERROR(101): '==' requires operands of the same type but lhs i	ERROR(101): '==' requires operands of the same type but lhs i
 ERROR(102): '>=' requires operands of type char or type int b	ERROR(102): '>=' requires operands of type char or type int b
 ERROR(102): The operation '>=' does not work with arrays.	ERROR(102): The operation '>=' does not work with arrays.
 ERROR(103): '<' requires operands of type char or type int bu	ERROR(103): '<' requires operands of type char or type int bu
@@ -127,9 +127,9 @@ ERROR(114): The operation 'and' does not work with arrays.	ERROR(114): The opera
 ERROR(115): 'or' requires operands of type bool but lhs is of	ERROR(115): 'or' requires operands of type bool but lhs is of
 ERROR(115): The operation 'or' does not work with arrays.	ERROR(115): The operation 'or' does not work with arrays.
 ERROR(116): '=' requires operands of the same type but lhs is	ERROR(116): '=' requires operands of the same type but lhs is
-							      >	ERROR(117): '!=' requires operands of NONVOID but rhs is of t
+ERROR(117): '!=' requires operands of NONVOID but rhs is of t	ERROR(117): '!=' requires operands of NONVOID but rhs is of t
 ERROR(118): '<=' requires operands of type char or type int b	ERROR(118): '<=' requires operands of type char or type int b
-							      >	ERROR(119): '==' requires operands of NONVOID but rhs is of t
+ERROR(119): '==' requires operands of NONVOID but rhs is of t	ERROR(119): '==' requires operands of NONVOID but rhs is of t
 ERROR(120): '>=' requires operands of type char or type int b	ERROR(120): '>=' requires operands of type char or type int b
 ERROR(121): '<' requires operands of type char or type int bu	ERROR(121): '<' requires operands of type char or type int bu
 ERROR(122): '>' requires operands of type char or type int bu	ERROR(122): '>' requires operands of type char or type int bu
@@ -146,7 +146,7 @@ ERROR(132): 'and' requires operands of type bool but lhs is o	ERROR(132): 'and' 
 ERROR(132): 'and' requires operands of type bool but rhs is o	ERROR(132): 'and' requires operands of type bool but rhs is o
 ERROR(133): 'or' requires operands of type bool but lhs is of	ERROR(133): 'or' requires operands of type bool but lhs is of
 ERROR(133): 'or' requires operands of type bool but rhs is of	ERROR(133): 'or' requires operands of type bool but rhs is of
-ERROR(134): '=' requires operands of the same type but lhs is |	ERROR(134): '=' requires operands of NONVOID but rhs is of ty
+ERROR(134): '=' requires operands of NONVOID but rhs is of ty	ERROR(134): '=' requires operands of NONVOID but rhs is of ty
 ERROR(136): The operation '<=' does not work with arrays.	ERROR(136): The operation '<=' does not work with arrays.
 ERROR(138): The operation '>=' does not work with arrays.	ERROR(138): The operation '>=' does not work with arrays.
 ERROR(139): The operation '<' does not work with arrays.	ERROR(139): The operation '<' does not work with arrays.
@@ -185,10 +185,10 @@ ERROR(168): The operation 'and' does not work with arrays.	ERROR(168): The opera
 ERROR(169): 'or' requires operands of type bool but lhs is of	ERROR(169): 'or' requires operands of type bool but lhs is of
 ERROR(169): 'or' requires operands of type bool but rhs is of	ERROR(169): 'or' requires operands of type bool but rhs is of
 ERROR(169): The operation 'or' does not work with arrays.	ERROR(169): The operation 'or' does not work with arrays.
-							      >	ERROR(171): '!=' requires operands of the same type but lhs i
+ERROR(171): '!=' requires operands of the same type but lhs i	ERROR(171): '!=' requires operands of the same type but lhs i
 ERROR(172): '<=' requires operands of the same type but lhs i	ERROR(172): '<=' requires operands of the same type but lhs i
 ERROR(172): The operation '<=' does not work with arrays.	ERROR(172): The operation '<=' does not work with arrays.
-							      >	ERROR(173): '==' requires operands of the same type but lhs i
+ERROR(173): '==' requires operands of the same type but lhs i	ERROR(173): '==' requires operands of the same type but lhs i
 ERROR(174): '>=' requires operands of the same type but lhs i	ERROR(174): '>=' requires operands of the same type but lhs i
 ERROR(174): The operation '>=' does not work with arrays.	ERROR(174): The operation '>=' does not work with arrays.
 ERROR(175): '<' requires operands of the same type but lhs is	ERROR(175): '<' requires operands of the same type but lhs is
@@ -220,10 +220,10 @@ ERROR(187): 'or' requires operands of type bool but lhs is of	ERROR(187): 'or' r
 ERROR(187): 'or' requires operands of type bool but rhs is of	ERROR(187): 'or' requires operands of type bool but rhs is of
 ERROR(187): The operation 'or' does not work with arrays.	ERROR(187): The operation 'or' does not work with arrays.
 ERROR(188): '=' requires operands of the same type but lhs is	ERROR(188): '=' requires operands of the same type but lhs is
-							      >	ERROR(189): '!=' requires operands of the same type but lhs i
+ERROR(189): '!=' requires operands of the same type but lhs i	ERROR(189): '!=' requires operands of the same type but lhs i
 ERROR(190): '<=' requires operands of the same type but lhs i	ERROR(190): '<=' requires operands of the same type but lhs i
 ERROR(190): The operation '<=' does not work with arrays.	ERROR(190): The operation '<=' does not work with arrays.
-							      >	ERROR(191): '==' requires operands of the same type but lhs i
+ERROR(191): '==' requires operands of the same type but lhs i	ERROR(191): '==' requires operands of the same type but lhs i
 ERROR(192): '>=' requires operands of the same type but lhs i	ERROR(192): '>=' requires operands of the same type but lhs i
 ERROR(192): The operation '>=' does not work with arrays.	ERROR(192): The operation '>=' does not work with arrays.
 ERROR(193): '<' requires operands of the same type but lhs is	ERROR(193): '<' requires operands of the same type but lhs is
@@ -255,10 +255,10 @@ ERROR(205): 'or' requires operands of type bool but lhs is of	ERROR(205): 'or' r
 ERROR(205): 'or' requires operands of type bool but rhs is of	ERROR(205): 'or' requires operands of type bool but rhs is of
 ERROR(205): The operation 'or' does not work with arrays.	ERROR(205): The operation 'or' does not work with arrays.
 ERROR(206): '=' requires operands of the same type but lhs is	ERROR(206): '=' requires operands of the same type but lhs is
-							      >	ERROR(207): '!=' requires operands of the same type but lhs i
+ERROR(207): '!=' requires operands of the same type but lhs i	ERROR(207): '!=' requires operands of the same type but lhs i
 ERROR(208): '<=' requires operands of type char or type int b	ERROR(208): '<=' requires operands of type char or type int b
 ERROR(208): The operation '<=' does not work with arrays.	ERROR(208): The operation '<=' does not work with arrays.
-							      >	ERROR(209): '==' requires operands of the same type but lhs i
+ERROR(209): '==' requires operands of the same type but lhs i	ERROR(209): '==' requires operands of the same type but lhs i
 ERROR(210): '>=' requires operands of type char or type int b	ERROR(210): '>=' requires operands of type char or type int b
 ERROR(210): The operation '>=' does not work with arrays.	ERROR(210): The operation '>=' does not work with arrays.
 ERROR(211): '<' requires operands of type char or type int bu	ERROR(211): '<' requires operands of type char or type int bu
@@ -288,10 +288,10 @@ ERROR(222): The operation 'and' does not work with arrays.	ERROR(222): The opera
 ERROR(223): 'or' requires operands of type bool but lhs is of	ERROR(223): 'or' requires operands of type bool but lhs is of
 ERROR(223): The operation 'or' does not work with arrays.	ERROR(223): The operation 'or' does not work with arrays.
 ERROR(224): '=' requires operands of the same type but lhs is	ERROR(224): '=' requires operands of the same type but lhs is
-							      >	ERROR(225): '!=' requires operands of the same type but lhs i
+ERROR(225): '!=' requires operands of the same type but lhs i	ERROR(225): '!=' requires operands of the same type but lhs i
 ERROR(226): '<=' requires operands of type char or type int b	ERROR(226): '<=' requires operands of type char or type int b
 ERROR(226): The operation '<=' does not work with arrays.	ERROR(226): The operation '<=' does not work with arrays.
-							      >	ERROR(227): '==' requires operands of the same type but lhs i
+ERROR(227): '==' requires operands of the same type but lhs i	ERROR(227): '==' requires operands of the same type but lhs i
 ERROR(228): '>=' requires operands of type char or type int b	ERROR(228): '>=' requires operands of type char or type int b
 ERROR(228): The operation '>=' does not work with arrays.	ERROR(228): The operation '>=' does not work with arrays.
 ERROR(229): '<' requires operands of type char or type int bu	ERROR(229): '<' requires operands of type char or type int bu
@@ -321,10 +321,10 @@ ERROR(240): The operation 'and' does not work with arrays.	ERROR(240): The opera
 ERROR(241): 'or' requires operands of type bool but lhs is of	ERROR(241): 'or' requires operands of type bool but lhs is of
 ERROR(241): The operation 'or' does not work with arrays.	ERROR(241): The operation 'or' does not work with arrays.
 ERROR(242): '=' requires operands of the same type but lhs is	ERROR(242): '=' requires operands of the same type but lhs is
-							      >	ERROR(243): '!=' requires operands of NONVOID but rhs is of t
+ERROR(243): '!=' requires operands of NONVOID but rhs is of t	ERROR(243): '!=' requires operands of NONVOID but rhs is of t
 ERROR(244): '<=' requires operands of type char or type int b	ERROR(244): '<=' requires operands of type char or type int b
 ERROR(244): The operation '<=' does not work with arrays.	ERROR(244): The operation '<=' does not work with arrays.
-							      >	ERROR(245): '==' requires operands of NONVOID but rhs is of t
+ERROR(245): '==' requires operands of NONVOID but rhs is of t	ERROR(245): '==' requires operands of NONVOID but rhs is of t
 ERROR(246): '>=' requires operands of type char or type int b	ERROR(246): '>=' requires operands of type char or type int b
 ERROR(246): The operation '>=' does not work with arrays.	ERROR(246): The operation '>=' does not work with arrays.
 ERROR(247): '<' requires operands of type char or type int bu	ERROR(247): '<' requires operands of type char or type int bu
@@ -355,10 +355,10 @@ ERROR(258): The operation 'and' does not work with arrays.	ERROR(258): The opera
 ERROR(259): 'or' requires operands of type bool but lhs is of	ERROR(259): 'or' requires operands of type bool but lhs is of
 ERROR(259): 'or' requires operands of type bool but rhs is of	ERROR(259): 'or' requires operands of type bool but rhs is of
 ERROR(259): The operation 'or' does not work with arrays.	ERROR(259): The operation 'or' does not work with arrays.
-ERROR(260): '=' requires operands of the same type but lhs is |	ERROR(260): '=' requires operands of NONVOID but rhs is of ty
-							      >	ERROR(261): '!=' requires operands of the same type but lhs i
+ERROR(260): '=' requires operands of NONVOID but rhs is of ty	ERROR(260): '=' requires operands of NONVOID but rhs is of ty
+ERROR(261): '!=' requires operands of the same type but lhs i	ERROR(261): '!=' requires operands of the same type but lhs i
 ERROR(262): '<=' requires operands of the same type but lhs i	ERROR(262): '<=' requires operands of the same type but lhs i
-							      >	ERROR(263): '==' requires operands of the same type but lhs i
+ERROR(263): '==' requires operands of the same type but lhs i	ERROR(263): '==' requires operands of the same type but lhs i
 ERROR(264): '>=' requires operands of the same type but lhs i	ERROR(264): '>=' requires operands of the same type but lhs i
 ERROR(265): '<' requires operands of the same type but lhs is	ERROR(265): '<' requires operands of the same type but lhs is
 ERROR(266): '>' requires operands of the same type but lhs is	ERROR(266): '>' requires operands of the same type but lhs is
@@ -376,10 +376,10 @@ ERROR(276): 'and' requires operands of type bool but rhs is o	ERROR(276): 'and' 
 ERROR(277): 'or' requires operands of type bool but lhs is of	ERROR(277): 'or' requires operands of type bool but lhs is of
 ERROR(277): 'or' requires operands of type bool but rhs is of	ERROR(277): 'or' requires operands of type bool but rhs is of
 ERROR(278): '=' requires operands of the same type but lhs is	ERROR(278): '=' requires operands of the same type but lhs is
-							      >	ERROR(279): '!=' requires operands of the same type but lhs i
+ERROR(279): '!=' requires operands of the same type but lhs i	ERROR(279): '!=' requires operands of the same type but lhs i
 ERROR(280): '<=' requires operands of the same type but lhs i	ERROR(280): '<=' requires operands of the same type but lhs i
 ERROR(280): The operation '<=' does not work with arrays.	ERROR(280): The operation '<=' does not work with arrays.
-							      >	ERROR(281): '==' requires operands of the same type but lhs i
+ERROR(281): '==' requires operands of the same type but lhs i	ERROR(281): '==' requires operands of the same type but lhs i
 ERROR(282): '>=' requires operands of the same type but lhs i	ERROR(282): '>=' requires operands of the same type but lhs i
 ERROR(282): The operation '>=' does not work with arrays.	ERROR(282): The operation '>=' does not work with arrays.
 ERROR(283): '<' requires operands of the same type but lhs is	ERROR(283): '<' requires operands of the same type but lhs is
@@ -470,9 +470,9 @@ ERROR(330): The operation 'and' does not work with arrays.	ERROR(330): The opera
 ERROR(331): 'or' requires operands of type bool but lhs is of	ERROR(331): 'or' requires operands of type bool but lhs is of
 ERROR(331): 'or' requires operands of type bool but rhs is of	ERROR(331): 'or' requires operands of type bool but rhs is of
 ERROR(331): The operation 'or' does not work with arrays.	ERROR(331): The operation 'or' does not work with arrays.
-							      >	ERROR(333): '!=' requires operands of the same type but lhs i
+ERROR(333): '!=' requires operands of the same type but lhs i	ERROR(333): '!=' requires operands of the same type but lhs i
 ERROR(334): '<=' requires operands of type char or type int b	ERROR(334): '<=' requires operands of type char or type int b
-							      >	ERROR(335): '==' requires operands of the same type but lhs i
+ERROR(335): '==' requires operands of the same type but lhs i	ERROR(335): '==' requires operands of the same type but lhs i
 ERROR(336): '>=' requires operands of type char or type int b	ERROR(336): '>=' requires operands of type char or type int b
 ERROR(337): '<' requires operands of type char or type int bu	ERROR(337): '<' requires operands of type char or type int bu
 ERROR(338): '>' requires operands of type char or type int bu	ERROR(338): '>' requires operands of type char or type int bu
@@ -497,10 +497,10 @@ ERROR(347): '%' requires operands of type int but rhs is of t	ERROR(347): '%' re
 ERROR(348): 'and' requires operands of type bool but lhs is o	ERROR(348): 'and' requires operands of type bool but lhs is o
 ERROR(349): 'or' requires operands of type bool but lhs is of	ERROR(349): 'or' requires operands of type bool but lhs is of
 ERROR(350): '=' requires operands of the same type but lhs is	ERROR(350): '=' requires operands of the same type but lhs is
-							      >	ERROR(351): '!=' requires operands of the same type but lhs i
+ERROR(351): '!=' requires operands of the same type but lhs i	ERROR(351): '!=' requires operands of the same type but lhs i
 ERROR(352): '<=' requires operands of type char or type int b	ERROR(352): '<=' requires operands of type char or type int b
 ERROR(352): The operation '<=' does not work with arrays.	ERROR(352): The operation '<=' does not work with arrays.
-							      >	ERROR(353): '==' requires operands of the same type but lhs i
+ERROR(353): '==' requires operands of the same type but lhs i	ERROR(353): '==' requires operands of the same type but lhs i
 ERROR(354): '>=' requires operands of type char or type int b	ERROR(354): '>=' requires operands of type char or type int b
 ERROR(354): The operation '>=' does not work with arrays.	ERROR(354): The operation '>=' does not work with arrays.
 ERROR(355): '<' requires operands of type char or type int bu	ERROR(355): '<' requires operands of type char or type int bu
@@ -539,9 +539,9 @@ ERROR(366): The operation 'and' does not work with arrays.	ERROR(366): The opera
 ERROR(367): 'or' requires operands of type bool but lhs is of	ERROR(367): 'or' requires operands of type bool but lhs is of
 ERROR(367): The operation 'or' does not work with arrays.	ERROR(367): The operation 'or' does not work with arrays.
 ERROR(368): '=' requires operands of the same type but lhs is	ERROR(368): '=' requires operands of the same type but lhs is
-							      >	ERROR(369): '!=' requires operands of NONVOID but rhs is of t
+ERROR(369): '!=' requires operands of NONVOID but rhs is of t	ERROR(369): '!=' requires operands of NONVOID but rhs is of t
 ERROR(370): '<=' requires operands of type char or type int b	ERROR(370): '<=' requires operands of type char or type int b
-							      >	ERROR(371): '==' requires operands of NONVOID but rhs is of t
+ERROR(371): '==' requires operands of NONVOID but rhs is of t	ERROR(371): '==' requires operands of NONVOID but rhs is of t
 ERROR(372): '>=' requires operands of type char or type int b	ERROR(372): '>=' requires operands of type char or type int b
 ERROR(373): '<' requires operands of type char or type int bu	ERROR(373): '<' requires operands of type char or type int bu
 ERROR(374): '>' requires operands of type char or type int bu	ERROR(374): '>' requires operands of type char or type int bu
@@ -567,11 +567,11 @@ ERROR(384): 'and' requires operands of type bool but lhs is o	ERROR(384): 'and' 
 ERROR(384): 'and' requires operands of type bool but rhs is o	ERROR(384): 'and' requires operands of type bool but rhs is o
 ERROR(385): 'or' requires operands of type bool but lhs is of	ERROR(385): 'or' requires operands of type bool but lhs is of
 ERROR(385): 'or' requires operands of type bool but rhs is of	ERROR(385): 'or' requires operands of type bool but rhs is of
-ERROR(386): '=' requires operands of the same type but lhs is |	ERROR(386): '=' requires operands of NONVOID but rhs is of ty
-							      >	ERROR(387): '!=' requires operands of the same type but lhs i
+ERROR(386): '=' requires operands of NONVOID but rhs is of ty	ERROR(386): '=' requires operands of NONVOID but rhs is of ty
+ERROR(387): '!=' requires operands of the same type but lhs i	ERROR(387): '!=' requires operands of the same type but lhs i
 ERROR(388): '<=' requires operands of the same type but lhs i	ERROR(388): '<=' requires operands of the same type but lhs i
 ERROR(388): The operation '<=' does not work with arrays.	ERROR(388): The operation '<=' does not work with arrays.
-							      >	ERROR(389): '==' requires operands of the same type but lhs i
+ERROR(389): '==' requires operands of the same type but lhs i	ERROR(389): '==' requires operands of the same type but lhs i
 ERROR(390): '>=' requires operands of the same type but lhs i	ERROR(390): '>=' requires operands of the same type but lhs i
 ERROR(390): The operation '>=' does not work with arrays.	ERROR(390): The operation '>=' does not work with arrays.
 ERROR(391): '<' requires operands of the same type but lhs is	ERROR(391): '<' requires operands of the same type but lhs is
@@ -603,10 +603,10 @@ ERROR(403): 'or' requires operands of type bool but lhs is of	ERROR(403): 'or' r
 ERROR(403): 'or' requires operands of type bool but rhs is of	ERROR(403): 'or' requires operands of type bool but rhs is of
 ERROR(403): The operation 'or' does not work with arrays.	ERROR(403): The operation 'or' does not work with arrays.
 ERROR(404): '=' requires operands of the same type but lhs is	ERROR(404): '=' requires operands of the same type but lhs is
-							      >	ERROR(405): '!=' requires operands of the same type but lhs i
+ERROR(405): '!=' requires operands of the same type but lhs i	ERROR(405): '!=' requires operands of the same type but lhs i
 ERROR(406): '<=' requires operands of the same type but lhs i	ERROR(406): '<=' requires operands of the same type but lhs i
 ERROR(406): The operation '<=' does not work with arrays.	ERROR(406): The operation '<=' does not work with arrays.
-							      >	ERROR(407): '==' requires operands of the same type but lhs i
+ERROR(407): '==' requires operands of the same type but lhs i	ERROR(407): '==' requires operands of the same type but lhs i
 ERROR(408): '>=' requires operands of the same type but lhs i	ERROR(408): '>=' requires operands of the same type but lhs i
 ERROR(408): The operation '>=' does not work with arrays.	ERROR(408): The operation '>=' does not work with arrays.
 ERROR(409): '<' requires operands of the same type but lhs is	ERROR(409): '<' requires operands of the same type but lhs is
@@ -712,10 +712,10 @@ ERROR(456): The operation 'and' does not work with arrays.	ERROR(456): The opera
 ERROR(457): 'or' requires operands of type bool but lhs is of	ERROR(457): 'or' requires operands of type bool but lhs is of
 ERROR(457): 'or' requires operands of type bool but rhs is of	ERROR(457): 'or' requires operands of type bool but rhs is of
 ERROR(457): The operation 'or' does not work with arrays.	ERROR(457): The operation 'or' does not work with arrays.
-							      >	ERROR(459): '!=' requires operands of the same type but lhs i
+ERROR(459): '!=' requires operands of the same type but lhs i	ERROR(459): '!=' requires operands of the same type but lhs i
 ERROR(460): '<=' requires operands of type char or type int b	ERROR(460): '<=' requires operands of type char or type int b
 ERROR(460): The operation '<=' does not work with arrays.	ERROR(460): The operation '<=' does not work with arrays.
-							      >	ERROR(461): '==' requires operands of the same type but lhs i
+ERROR(461): '==' requires operands of the same type but lhs i	ERROR(461): '==' requires operands of the same type but lhs i
 ERROR(462): '>=' requires operands of type char or type int b	ERROR(462): '>=' requires operands of type char or type int b
 ERROR(462): The operation '>=' does not work with arrays.	ERROR(462): The operation '>=' does not work with arrays.
 ERROR(463): '<' requires operands of type char or type int bu	ERROR(463): '<' requires operands of type char or type int bu
@@ -754,10 +754,10 @@ ERROR(474): The operation 'and' does not work with arrays.	ERROR(474): The opera
 ERROR(475): 'or' requires operands of type bool but lhs is of	ERROR(475): 'or' requires operands of type bool but lhs is of
 ERROR(475): The operation 'or' does not work with arrays.	ERROR(475): The operation 'or' does not work with arrays.
 ERROR(476): '=' requires operands of the same type but lhs is	ERROR(476): '=' requires operands of the same type but lhs is
-							      >	ERROR(477): '!=' requires operands of the same type but lhs i
+ERROR(477): '!=' requires operands of the same type but lhs i	ERROR(477): '!=' requires operands of the same type but lhs i
 ERROR(478): '<=' requires operands of type char or type int b	ERROR(478): '<=' requires operands of type char or type int b
 ERROR(478): The operation '<=' does not work with arrays.	ERROR(478): The operation '<=' does not work with arrays.
-							      >	ERROR(479): '==' requires operands of the same type but lhs i
+ERROR(479): '==' requires operands of the same type but lhs i	ERROR(479): '==' requires operands of the same type but lhs i
 ERROR(480): '>=' requires operands of type char or type int b	ERROR(480): '>=' requires operands of type char or type int b
 ERROR(480): The operation '>=' does not work with arrays.	ERROR(480): The operation '>=' does not work with arrays.
 ERROR(481): '<' requires operands of type char or type int bu	ERROR(481): '<' requires operands of type char or type int bu
@@ -796,10 +796,10 @@ ERROR(492): The operation 'and' does not work with arrays.	ERROR(492): The opera
 ERROR(493): 'or' requires operands of type bool but lhs is of	ERROR(493): 'or' requires operands of type bool but lhs is of
 ERROR(493): The operation 'or' does not work with arrays.	ERROR(493): The operation 'or' does not work with arrays.
 ERROR(494): '=' requires operands of the same type but lhs is	ERROR(494): '=' requires operands of the same type but lhs is
-							      >	ERROR(495): '!=' requires operands of NONVOID but rhs is of t
+ERROR(495): '!=' requires operands of NONVOID but rhs is of t	ERROR(495): '!=' requires operands of NONVOID but rhs is of t
 ERROR(496): '<=' requires operands of type char or type int b	ERROR(496): '<=' requires operands of type char or type int b
 ERROR(496): The operation '<=' does not work with arrays.	ERROR(496): The operation '<=' does not work with arrays.
-							      >	ERROR(497): '==' requires operands of NONVOID but rhs is of t
+ERROR(497): '==' requires operands of NONVOID but rhs is of t	ERROR(497): '==' requires operands of NONVOID but rhs is of t
 ERROR(498): '>=' requires operands of type char or type int b	ERROR(498): '>=' requires operands of type char or type int b
 ERROR(498): The operation '>=' does not work with arrays.	ERROR(498): The operation '>=' does not work with arrays.
 ERROR(499): '<' requires operands of type char or type int bu	ERROR(499): '<' requires operands of type char or type int bu
@@ -839,10 +839,10 @@ ERROR(510): The operation 'and' does not work with arrays.	ERROR(510): The opera
 ERROR(511): 'or' requires operands of type bool but lhs is of	ERROR(511): 'or' requires operands of type bool but lhs is of
 ERROR(511): 'or' requires operands of type bool but rhs is of	ERROR(511): 'or' requires operands of type bool but rhs is of
 ERROR(511): The operation 'or' does not work with arrays.	ERROR(511): The operation 'or' does not work with arrays.
-ERROR(512): '=' requires operands of the same type but lhs is |	ERROR(512): '=' requires operands of NONVOID but rhs is of ty
-							      >	ERROR(513): '!=' requires operands of the same type but lhs i
+ERROR(512): '=' requires operands of NONVOID but rhs is of ty	ERROR(512): '=' requires operands of NONVOID but rhs is of ty
+ERROR(513): '!=' requires operands of the same type but lhs i	ERROR(513): '!=' requires operands of the same type but lhs i
 ERROR(514): '<=' requires operands of type char or type int b	ERROR(514): '<=' requires operands of type char or type int b
-							      >	ERROR(515): '==' requires operands of the same type but lhs i
+ERROR(515): '==' requires operands of the same type but lhs i	ERROR(515): '==' requires operands of the same type but lhs i
 ERROR(516): '>=' requires operands of type char or type int b	ERROR(516): '>=' requires operands of type char or type int b
 ERROR(517): '<' requires operands of type char or type int bu	ERROR(517): '<' requires operands of type char or type int bu
 ERROR(518): '>' requires operands of type char or type int bu	ERROR(518): '>' requires operands of type char or type int bu
@@ -858,10 +858,10 @@ ERROR(527): '%' requires operands of type int but lhs is of t	ERROR(527): '%' re
 ERROR(528): 'and' requires operands of type bool but rhs is o	ERROR(528): 'and' requires operands of type bool but rhs is o
 ERROR(529): 'or' requires operands of type bool but rhs is of	ERROR(529): 'or' requires operands of type bool but rhs is of
 ERROR(530): '=' requires operands of the same type but lhs is	ERROR(530): '=' requires operands of the same type but lhs is
-							      >	ERROR(531): '!=' requires operands of the same type but lhs i
+ERROR(531): '!=' requires operands of the same type but lhs i	ERROR(531): '!=' requires operands of the same type but lhs i
 ERROR(532): '<=' requires operands of type char or type int b	ERROR(532): '<=' requires operands of type char or type int b
 ERROR(532): The operation '<=' does not work with arrays.	ERROR(532): The operation '<=' does not work with arrays.
-							      >	ERROR(533): '==' requires operands of the same type but lhs i
+ERROR(533): '==' requires operands of the same type but lhs i	ERROR(533): '==' requires operands of the same type but lhs i
 ERROR(534): '>=' requires operands of type char or type int b	ERROR(534): '>=' requires operands of type char or type int b
 ERROR(534): The operation '>=' does not work with arrays.	ERROR(534): The operation '>=' does not work with arrays.
 ERROR(535): '<' requires operands of type char or type int bu	ERROR(535): '<' requires operands of type char or type int bu
@@ -891,9 +891,9 @@ ERROR(546): The operation 'and' does not work with arrays.	ERROR(546): The opera
 ERROR(547): 'or' requires operands of type bool but rhs is of	ERROR(547): 'or' requires operands of type bool but rhs is of
 ERROR(547): The operation 'or' does not work with arrays.	ERROR(547): The operation 'or' does not work with arrays.
 ERROR(548): '=' requires operands of the same type but lhs is	ERROR(548): '=' requires operands of the same type but lhs is
-							      >	ERROR(549): '!=' requires operands of the same type but lhs i
+ERROR(549): '!=' requires operands of the same type but lhs i	ERROR(549): '!=' requires operands of the same type but lhs i
 ERROR(550): '<=' requires operands of type char or type int b	ERROR(550): '<=' requires operands of type char or type int b
-							      >	ERROR(551): '==' requires operands of the same type but lhs i
+ERROR(551): '==' requires operands of the same type but lhs i	ERROR(551): '==' requires operands of the same type but lhs i
 ERROR(552): '>=' requires operands of type char or type int b	ERROR(552): '>=' requires operands of type char or type int b
 ERROR(553): '<' requires operands of type char or type int bu	ERROR(553): '<' requires operands of type char or type int bu
 ERROR(554): '>' requires operands of type char or type int bu	ERROR(554): '>' requires operands of type char or type int bu
@@ -918,10 +918,10 @@ ERROR(563): '%' requires operands of type int but rhs is of t	ERROR(563): '%' re
 ERROR(564): 'and' requires operands of type bool but rhs is o	ERROR(564): 'and' requires operands of type bool but rhs is o
 ERROR(565): 'or' requires operands of type bool but rhs is of	ERROR(565): 'or' requires operands of type bool but rhs is of
 ERROR(566): '=' requires operands of the same type but lhs is	ERROR(566): '=' requires operands of the same type but lhs is
-							      >	ERROR(567): '!=' requires operands of the same type but lhs i
+ERROR(567): '!=' requires operands of the same type but lhs i	ERROR(567): '!=' requires operands of the same type but lhs i
 ERROR(568): '<=' requires operands of type char or type int b	ERROR(568): '<=' requires operands of type char or type int b
 ERROR(568): The operation '<=' does not work with arrays.	ERROR(568): The operation '<=' does not work with arrays.
-							      >	ERROR(569): '==' requires operands of the same type but lhs i
+ERROR(569): '==' requires operands of the same type but lhs i	ERROR(569): '==' requires operands of the same type but lhs i
 ERROR(570): '>=' requires operands of type char or type int b	ERROR(570): '>=' requires operands of type char or type int b
 ERROR(570): The operation '>=' does not work with arrays.	ERROR(570): The operation '>=' does not work with arrays.
 ERROR(571): '<' requires operands of type char or type int bu	ERROR(571): '<' requires operands of type char or type int bu
@@ -1027,10 +1027,10 @@ ERROR(617): '%' requires operands of type int but rhs is of t	ERROR(617): '%' re
 ERROR(617): The operation '%' does not work with arrays.	ERROR(617): The operation '%' does not work with arrays.
 ERROR(618): The operation 'and' does not work with arrays.	ERROR(618): The operation 'and' does not work with arrays.
 ERROR(619): The operation 'or' does not work with arrays.	ERROR(619): The operation 'or' does not work with arrays.
-							      >	ERROR(621): '!=' requires operands of NONVOID but rhs is of t
+ERROR(621): '!=' requires operands of NONVOID but rhs is of t	ERROR(621): '!=' requires operands of NONVOID but rhs is of t
 ERROR(622): '<=' requires operands of type char or type int b	ERROR(622): '<=' requires operands of type char or type int b
 ERROR(622): '<=' requires operands of type char or type int b	ERROR(622): '<=' requires operands of type char or type int b
-							      >	ERROR(623): '==' requires operands of NONVOID but rhs is of t
+ERROR(623): '==' requires operands of NONVOID but rhs is of t	ERROR(623): '==' requires operands of NONVOID but rhs is of t
 ERROR(624): '>=' requires operands of type char or type int b	ERROR(624): '>=' requires operands of type char or type int b
 ERROR(624): '>=' requires operands of type char or type int b	ERROR(624): '>=' requires operands of type char or type int b
 ERROR(625): '<' requires operands of type char or type int bu	ERROR(625): '<' requires operands of type char or type int bu
@@ -1057,11 +1057,11 @@ ERROR(635): '%' requires operands of type int but lhs is of t	ERROR(635): '%' re
 ERROR(635): '%' requires operands of type int but rhs is of t	ERROR(635): '%' requires operands of type int but rhs is of t
 ERROR(636): 'and' requires operands of type bool but rhs is o	ERROR(636): 'and' requires operands of type bool but rhs is o
 ERROR(637): 'or' requires operands of type bool but rhs is of	ERROR(637): 'or' requires operands of type bool but rhs is of
-ERROR(638): '=' requires operands of the same type but lhs is |	ERROR(638): '=' requires operands of NONVOID but rhs is of ty
-							      >	ERROR(639): '!=' requires operands of the same type but lhs i
+ERROR(638): '=' requires operands of NONVOID but rhs is of ty	ERROR(638): '=' requires operands of NONVOID but rhs is of ty
+ERROR(639): '!=' requires operands of the same type but lhs i	ERROR(639): '!=' requires operands of the same type but lhs i
 ERROR(640): '<=' requires operands of type char or type int b	ERROR(640): '<=' requires operands of type char or type int b
 ERROR(640): The operation '<=' does not work with arrays.	ERROR(640): The operation '<=' does not work with arrays.
-							      >	ERROR(641): '==' requires operands of the same type but lhs i
+ERROR(641): '==' requires operands of the same type but lhs i	ERROR(641): '==' requires operands of the same type but lhs i
 ERROR(642): '>=' requires operands of type char or type int b	ERROR(642): '>=' requires operands of type char or type int b
 ERROR(642): The operation '>=' does not work with arrays.	ERROR(642): The operation '>=' does not work with arrays.
 ERROR(643): '<' requires operands of type char or type int bu	ERROR(643): '<' requires operands of type char or type int bu
@@ -1091,10 +1091,10 @@ ERROR(654): The operation 'and' does not work with arrays.	ERROR(654): The opera
 ERROR(655): 'or' requires operands of type bool but rhs is of	ERROR(655): 'or' requires operands of type bool but rhs is of
 ERROR(655): The operation 'or' does not work with arrays.	ERROR(655): The operation 'or' does not work with arrays.
 ERROR(656): '=' requires operands of the same type but lhs is	ERROR(656): '=' requires operands of the same type but lhs is
-							      >	ERROR(657): '!=' requires operands of the same type but lhs i
+ERROR(657): '!=' requires operands of the same type but lhs i	ERROR(657): '!=' requires operands of the same type but lhs i
 ERROR(658): '<=' requires operands of type char or type int b	ERROR(658): '<=' requires operands of type char or type int b
 ERROR(658): The operation '<=' does not work with arrays.	ERROR(658): The operation '<=' does not work with arrays.
-							      >	ERROR(659): '==' requires operands of the same type but lhs i
+ERROR(659): '==' requires operands of the same type but lhs i	ERROR(659): '==' requires operands of the same type but lhs i
 ERROR(660): '>=' requires operands of type char or type int b	ERROR(660): '>=' requires operands of type char or type int b
 ERROR(660): The operation '>=' does not work with arrays.	ERROR(660): The operation '>=' does not work with arrays.
 ERROR(661): '<' requires operands of type char or type int bu	ERROR(661): '<' requires operands of type char or type int bu
@@ -1124,10 +1124,10 @@ ERROR(672): The operation 'and' does not work with arrays.	ERROR(672): The opera
 ERROR(673): 'or' requires operands of type bool but rhs is of	ERROR(673): 'or' requires operands of type bool but rhs is of
 ERROR(673): The operation 'or' does not work with arrays.	ERROR(673): The operation 'or' does not work with arrays.
 ERROR(674): '=' requires operands of the same type but lhs is	ERROR(674): '=' requires operands of the same type but lhs is
-							      >	ERROR(675): '!=' requires operands of the same type but lhs i
+ERROR(675): '!=' requires operands of the same type but lhs i	ERROR(675): '!=' requires operands of the same type but lhs i
 ERROR(676): '<=' requires operands of type char or type int b	ERROR(676): '<=' requires operands of type char or type int b
 ERROR(676): The operation '<=' does not work with arrays.	ERROR(676): The operation '<=' does not work with arrays.
-							      >	ERROR(677): '==' requires operands of the same type but lhs i
+ERROR(677): '==' requires operands of the same type but lhs i	ERROR(677): '==' requires operands of the same type but lhs i
 ERROR(678): '>=' requires operands of type char or type int b	ERROR(678): '>=' requires operands of type char or type int b
 ERROR(678): The operation '>=' does not work with arrays.	ERROR(678): The operation '>=' does not work with arrays.
 ERROR(679): '<' requires operands of type char or type int bu	ERROR(679): '<' requires operands of type char or type int bu
@@ -1166,10 +1166,10 @@ ERROR(690): The operation 'and' does not work with arrays.	ERROR(690): The opera
 ERROR(691): 'or' requires operands of type bool but rhs is of	ERROR(691): 'or' requires operands of type bool but rhs is of
 ERROR(691): The operation 'or' does not work with arrays.	ERROR(691): The operation 'or' does not work with arrays.
 ERROR(692): '=' requires operands of the same type but lhs is	ERROR(692): '=' requires operands of the same type but lhs is
-							      >	ERROR(693): '!=' requires operands of the same type but lhs i
+ERROR(693): '!=' requires operands of the same type but lhs i	ERROR(693): '!=' requires operands of the same type but lhs i
 ERROR(694): '<=' requires operands of type char or type int b	ERROR(694): '<=' requires operands of type char or type int b
 ERROR(694): The operation '<=' does not work with arrays.	ERROR(694): The operation '<=' does not work with arrays.
-							      >	ERROR(695): '==' requires operands of the same type but lhs i
+ERROR(695): '==' requires operands of the same type but lhs i	ERROR(695): '==' requires operands of the same type but lhs i
 ERROR(696): '>=' requires operands of type char or type int b	ERROR(696): '>=' requires operands of type char or type int b
 ERROR(696): The operation '>=' does not work with arrays.	ERROR(696): The operation '>=' does not work with arrays.
 ERROR(697): '<' requires operands of type char or type int bu	ERROR(697): '<' requires operands of type char or type int bu
@@ -1290,11 +1290,11 @@ ERROR(743): '%' requires operands of type int but rhs is of t	ERROR(743): '%' re
 ERROR(743): The operation '%' does not work with arrays.	ERROR(743): The operation '%' does not work with arrays.
 ERROR(744): The operation 'and' does not work with arrays.	ERROR(744): The operation 'and' does not work with arrays.
 ERROR(745): The operation 'or' does not work with arrays.	ERROR(745): The operation 'or' does not work with arrays.
-							      >	ERROR(747): '!=' requires operands of NONVOID but rhs is of t
+ERROR(747): '!=' requires operands of NONVOID but rhs is of t	ERROR(747): '!=' requires operands of NONVOID but rhs is of t
 ERROR(748): '<=' requires operands of type char or type int b	ERROR(748): '<=' requires operands of type char or type int b
 ERROR(748): '<=' requires operands of type char or type int b	ERROR(748): '<=' requires operands of type char or type int b
 ERROR(748): The operation '<=' does not work with arrays.	ERROR(748): The operation '<=' does not work with arrays.
-							      >	ERROR(749): '==' requires operands of NONVOID but rhs is of t
+ERROR(749): '==' requires operands of NONVOID but rhs is of t	ERROR(749): '==' requires operands of NONVOID but rhs is of t
 ERROR(750): '>=' requires operands of type char or type int b	ERROR(750): '>=' requires operands of type char or type int b
 ERROR(750): '>=' requires operands of type char or type int b	ERROR(750): '>=' requires operands of type char or type int b
 ERROR(750): The operation '>=' does not work with arrays.	ERROR(750): The operation '>=' does not work with arrays.
@@ -1335,7 +1335,7 @@ ERROR(762): 'and' requires operands of type bool but rhs is o	ERROR(762): 'and' 
 ERROR(762): The operation 'and' does not work with arrays.	ERROR(762): The operation 'and' does not work with arrays.
 ERROR(763): 'or' requires operands of type bool but rhs is of	ERROR(763): 'or' requires operands of type bool but rhs is of
 ERROR(763): The operation 'or' does not work with arrays.	ERROR(763): The operation 'or' does not work with arrays.
-ERROR(764): '=' requires operands of the same type but lhs is |	ERROR(764): '=' requires operands of NONVOID but rhs is of ty
+ERROR(764): '=' requires operands of NONVOID but rhs is of ty	ERROR(764): '=' requires operands of NONVOID but rhs is of ty
 ERROR(765): '<' requires operands of type char or type int bu	ERROR(765): '<' requires operands of type char or type int bu
 ERROR(766): '>' requires operands of type char or type int bu	ERROR(766): '>' requires operands of type char or type int bu
 ERROR(767): '+' requires operands of type int but lhs is of t	ERROR(767): '+' requires operands of type int but lhs is of t
@@ -1469,20 +1469,20 @@ ERROR(827): 'or' requires operands of type bool but lhs is of	ERROR(827): 'or' r
 ERROR(827): 'or' requires operands of type bool but rhs is of	ERROR(827): 'or' requires operands of type bool but rhs is of
 ERROR(828): Unary 'not' requires an operand of type type bool	ERROR(828): Unary 'not' requires an operand of type type bool
 ERROR(829): The operation '*' only works with arrays.		ERROR(829): The operation '*' only works with arrays.
-							      >	ERROR(831): Unary 'not' requires an operand of type type bool
+ERROR(831): Unary 'not' requires an operand of type type bool	ERROR(831): Unary 'not' requires an operand of type type bool
 ERROR(831): The operation 'not' does not work with arrays.	ERROR(831): The operation 'not' does not work with arrays.
 ERROR(833): The operation '?' does not work with arrays.	ERROR(833): The operation '?' does not work with arrays.
 ERROR(834): Unary 'not' requires an operand of type type bool	ERROR(834): Unary 'not' requires an operand of type type bool
 ERROR(835): The operation '*' only works with arrays.		ERROR(835): The operation '*' only works with arrays.
 ERROR(836): Unary '?' requires an operand of type type int bu	ERROR(836): Unary '?' requires an operand of type type int bu
-							      >	ERROR(837): Unary 'not' requires an operand of type type bool
+ERROR(837): Unary 'not' requires an operand of type type bool	ERROR(837): Unary 'not' requires an operand of type type bool
 ERROR(837): The operation 'not' does not work with arrays.	ERROR(837): The operation 'not' does not work with arrays.
-							      >	ERROR(839): Unary '?' requires an operand of type type int bu
+ERROR(839): Unary '?' requires an operand of type type int bu	ERROR(839): Unary '?' requires an operand of type type int bu
 ERROR(839): The operation '?' does not work with arrays.	ERROR(839): The operation '?' does not work with arrays.
 ERROR(841): The operation '*' only works with arrays.		ERROR(841): The operation '*' only works with arrays.
 ERROR(842): Unary '?' requires an operand of type type int bu	ERROR(842): Unary '?' requires an operand of type type int bu
 ERROR(843): The operation 'not' does not work with arrays.	ERROR(843): The operation 'not' does not work with arrays.
-							      >	ERROR(845): Unary '?' requires an operand of type type int bu
+ERROR(845): Unary '?' requires an operand of type type int bu	ERROR(845): Unary '?' requires an operand of type type int bu
 ERROR(845): The operation '?' does not work with arrays.	ERROR(845): The operation '?' does not work with arrays.
 ERROR(846): Unary 'not' requires an operand of type type bool	ERROR(846): Unary 'not' requires an operand of type type bool
 ERROR(847): The operation '*' only works with arrays.		ERROR(847): The operation '*' only works with arrays.
@@ -4035,4 +4035,4 @@ Sibling: 6  Func main returns type void [type void] [line: 8]	Sibling: 6  Func m
 !   !   Sibling: 850  Assign: -- [type int] [line: 860]		!   !   Sibling: 850  Assign: -- [type int] [line: 860]
 !   !   !   Child: 0  Id: ba [type bool] [line: 860]		!   !   !   Child: 0  Id: ba [type bool] [line: 860]
 Number of warnings: 0						Number of warnings: 0
-Number of errors: 1439					      |	Number of errors: 1503
+Number of errors: 1503						Number of errors: 1503
