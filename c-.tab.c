@@ -2708,9 +2708,11 @@ int main(int argc, char** argv) {
     printTree(syntaxTree, -1, false);
     getTypesDataStructure();
     scopeAndType(syntaxTree, -1, false);
+    printf("Number of warnings: 0\n");
+    printf("Number of errors: %d\n", number_of_errors);
   }
 
-  if(print_ast_types) {
+  else if(print_ast_types) {
     getTypesDataStructure();
     scopeAndType(syntaxTree, -1, false);
 

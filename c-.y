@@ -808,9 +808,16 @@ int main(int argc, char** argv) {
     printTree(syntaxTree, -1, false);
     getTypesDataStructure();
     scopeAndType(syntaxTree, -1, false);
+            TreeNode* n = static_cast<TreeNode*>(semanticsSymbolTable.lookup("main"));
+            if(main_function_exists==false && n==NULL) {
+                number_of_errors++;
+                printf("ERROR(LINKER): Procedure main is not defined.\n");
+            }
+    printf("Number of warnings: 0\n");
+    printf("Number of errors: %d\n", number_of_errors);
   }
 
-  if(print_ast_types) {
+  else if(print_ast_types) {
     getTypesDataStructure();
     scopeAndType(syntaxTree, -1, false);
 
@@ -827,6 +834,11 @@ int main(int argc, char** argv) {
   else {
     getTypesDataStructure();
     scopeAndType(syntaxTree, -1, false);
+            TreeNode* n = static_cast<TreeNode*>(semanticsSymbolTable.lookup("main"));
+            if(main_function_exists==false && n==NULL) {
+                number_of_errors++;
+                printf("ERROR(LINKER): Procedure main is not defined.\n");
+            }
     printf("Number of warnings: 0\n");
     printf("Number of errors: %d\n", number_of_errors);
   }

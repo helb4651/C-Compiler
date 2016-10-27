@@ -13,9 +13,12 @@
   <component name="ChangeListManager">
     <list default="true" id="590abc02-347a-430b-9aef-664f663a1496" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-" afterPath="$PROJECT_DIR$/c-" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hw3.tar" afterPath="$PROJECT_DIR$/hw3.tar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/A-OUT" afterPath="$PROJECT_DIR$/A-OUT" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-.tab.c" afterPath="$PROJECT_DIR$/c-.tab.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/c-.y" afterPath="$PROJECT_DIR$/c-.y" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/regression_report" afterPath="$PROJECT_DIR$/regression_report" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/regression_test.sh" afterPath="$PROJECT_DIR$/regression_test.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/semantic.cpp" afterPath="$PROJECT_DIR$/semantic.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp.Pout" afterPath="$PROJECT_DIR$/temp.Pout" />
     </list>
@@ -36,108 +39,106 @@
     <favorites_list name="Compiler" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="overkill.Pout" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestFiles/a3/overkill.Pout">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="1471" column="9" selection-start-line="1471" selection-start-column="6" selection-end-line="1471" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="A-OUT" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/A-OUT">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="341" column="26" selection-start-line="341" selection-start-column="26" selection-end-line="341" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="semantic.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/semantic.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="356" column="53" selection-start-line="356" selection-start-column="53" selection-end-line="356" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="undefined.c-" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestFiles/a3/undefined.c-">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="38" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="undefined.Pout" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestFiles/a3/undefined.Pout">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="54" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="globals.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/globals.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="arrays.Pout" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestFiles/a3/arrays.Pout">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="39" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="regression_test.sh" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/regression_test.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="231" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="overkill.c-" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestFiles/a3/overkill.c-">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="830" column="4" selection-start-line="830" selection-start-column="4" selection-end-line="830" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="types.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/types.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="33" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="vertical" split-proportion="0.6476015">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="A-OUT" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/A-OUT">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="249">
+                  <caret line="341" column="26" selection-start-line="341" selection-start-column="26" selection-end-line="341" selection-end-column="26" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="semantic.cpp" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/semantic.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="23">
+                  <caret line="703" column="29" selection-start-line="703" selection-start-column="29" selection-end-line="703" selection-end-column="29" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="basicAll4.Pout" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/TestFiles/a3/basicAll4.Pout">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="138">
+                  <caret line="421" column="28" selection-start-line="421" selection-start-column="26" selection-end-line="421" selection-end-column="28" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="globals.h" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/globals.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="regression_test.sh" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/regression_test.sh">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="63">
+                  <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="244" selection-end-column="3" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="basicAll4.c-" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/TestFiles/a3/basicAll4.c-">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="220">
+                  <caret line="169" column="13" selection-start-line="169" selection-start-column="4" selection-end-line="169" selection-end-column="13" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="types.csv" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/types.csv">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="75">
+                  <caret line="5" column="33" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="33" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="c-.y" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/c-.y">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="99">
+                  <caret line="830" column="55" selection-start-line="830" selection-start-column="55" selection-end-line="830" selection-end-column="55" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="semantic.cpp" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/semantic.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="134">
+                  <caret line="394" column="65" selection-start-line="394" selection-start-column="65" selection-end-line="394" selection-end-column="65" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -174,11 +175,11 @@
         <option value="$PROJECT_DIR$/typingHelpers.cpp" />
         <option value="$PROJECT_DIR$/semanticBackup.cpp" />
         <option value="$PROJECT_DIR$/semantic.h" />
-        <option value="$PROJECT_DIR$/c-.y" />
         <option value="$PROJECT_DIR$/temp.Pout" />
-        <option value="$PROJECT_DIR$/regression_test.sh" />
         <option value="$PROJECT_DIR$/A-OUT" />
+        <option value="$PROJECT_DIR$/regression_test.sh" />
         <option value="$PROJECT_DIR$/semantic.cpp" />
+        <option value="$PROJECT_DIR$/c-.y" />
       </list>
     </option>
   </component>
@@ -691,7 +692,7 @@
       <workItem from="1477178345110" duration="2944000" />
       <workItem from="1477281603827" duration="18354000" />
       <workItem from="1477504112629" duration="2339000" />
-      <workItem from="1477506965419" duration="7711000" />
+      <workItem from="1477506965419" duration="12358000" />
     </task>
     <task id="LOCAL-00001" summary="Added some test code.">
       <created>1473213501269</created>
@@ -732,7 +733,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79914000" />
+    <option name="totallyTimeSpent" value="84561000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="818" extended-state="6" />
@@ -747,7 +748,7 @@
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30952382" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2644628" sideWeight="0.496" order="7" side_tool="false" content_ui="tabs" x="0" y="307" width="1033" height="244" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30716252" sideWeight="0.496" order="7" side_tool="false" content_ui="tabs" x="0" y="307" width="1033" height="244" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -785,22 +786,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/scanType.h" />
-    <entry file="file://$PROJECT_DIR$/makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="7" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/c-.l">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt" />
     <entry file="file://$PROJECT_DIR$/main.cpp" />
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt" />
     <entry file="file://$PROJECT_DIR$/main.cpp" />
@@ -984,14 +969,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/c-.y">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10545">
-          <caret line="703" column="33" selection-start-line="703" selection-start-column="33" selection-end-line="703" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/temp.Pout">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1024,14 +1001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TestFiles/a3/arrays.Pout">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="39" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TestFiles/a3/undefined.Pout">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -1040,34 +1009,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/regression_test.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="231" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TestFiles/a3/undefined.c-">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="38" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/A-OUT">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="341" column="26" selection-start-line="341" selection-start-column="26" selection-end-line="341" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/globals.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1090,16 +1035,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TestFiles/a3/overkill.Pout">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
+        <state relative-caret-position="144">
           <caret line="1471" column="9" selection-start-line="1471" selection-start-column="6" selection-end-line="1471" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestFiles/a3/arrays.Pout">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="39" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/globals.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestFiles/a3/everything05.Pout">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="228" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestFiles/a3/everything05.c-">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/regression_test.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="234" column="0" selection-start-line="234" selection-start-column="0" selection-end-line="244" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestFiles/a3/basicAll4.c-">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="169" column="13" selection-start-line="169" selection-start-column="4" selection-end-line="169" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/A-OUT">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="341" column="26" selection-start-line="341" selection-start-column="26" selection-end-line="341" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestFiles/a3/basicAll4.Pout">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="421" column="28" selection-start-line="421" selection-start-column="26" selection-end-line="421" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/semantic.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="356" column="53" selection-start-line="356" selection-start-column="53" selection-end-line="356" selection-end-column="53" />
+        <state relative-caret-position="23">
+          <caret line="703" column="29" selection-start-line="703" selection-start-column="29" selection-end-line="703" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/c-.y">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="830" column="55" selection-start-line="830" selection-start-column="55" selection-end-line="830" selection-end-column="55" />
           <folding />
         </state>
       </provider>

@@ -206,17 +206,17 @@ else
     echo "  Failed: op.Pout"
 fi
 
-# rm regression_report
-# rm temp.Pout
-# ./c- -P < TestFiles/a3/everything05.c- > temp.Pout
-# sdiff -s temp.Pout TestFiles/a3/everything05.Pout
-# sdiff temp.Pout TestFiles/a3/everything05.Pout >> regression_report
-#
-# if [ -s ]; then
-#     echo "  Passed: everything05.Pout"
-# else
-#     echo "  Failed: everything05.Pout"
-# fi
+ rm regression_report
+ rm temp.Pout
+ ./c- -P < TestFiles/a3/everything05.c- > temp.Pout
+ sdiff -s temp.Pout TestFiles/a3/everything05.Pout
+ sdiff temp.Pout TestFiles/a3/everything05.Pout >> regression_report
+
+ if [ -s ]; then
+     echo "  Passed: everything05.Pout"
+ else
+     echo "  Failed: everything05.Pout"
+ fi
 
 
 rm regression_report
@@ -230,3 +230,16 @@ if [ -s ]; then
 else
     echo "  Failed: overkill.Pout"
 fi
+
+
+ rm regression_report
+ rm temp.Pout
+ ./c- -P < TestFiles/a3/basicAll4.c- > temp.Pout
+ sdiff -s temp.Pout TestFiles/a3/basicAll4.Pout
+ sdiff temp.Pout TestFiles/a3/basicAll4.Pout >> regression_report
+
+ if [ -s ]; then
+     echo "  Passed: basicAll4.Pout"
+ else
+     echo "  Failed: basicAll4.Pout"
+ fi
