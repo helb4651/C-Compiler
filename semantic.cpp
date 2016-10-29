@@ -55,6 +55,13 @@ bool is_in_vector(vector <string> vec, string str) {
     }
 }
 
+void check_children_bool(TreeNode* t){
+    printf("    check_children_bool: %s", Types[t->child[0]->declType]);
+    if(t->child[0]->declType!=Bool){
+        printf("ERROR(%d): Expecting Boolean test condition in %s statement but got %s.\n", t->linenum, t->attr.name, Types[t->child[0]->declType]);
+    }
+}
+
 //void semantics(TreeNode* t){
 //        if(DEBUG) printf("    Beginning Assignment Semantics...\n");
 //        if( t->child[0]->declType != t->child[1]->declType && t->child[1]->declType!=UndefinedType && t->child[0]->declType!=UndefinedType) {
@@ -131,6 +138,7 @@ void scopeAndType(TreeNode *tree, int numOfSibs, bool FuncKRecurse) {
                     semanticsSymbolTable.enter("If");
                     recurse_through_children(t, false);
                     recurse_already = true;
+                    check_children_bool(t);
                     semanticsSymbolTable.leave();
                     break;
                 case WhileK:
@@ -138,6 +146,7 @@ void scopeAndType(TreeNode *tree, int numOfSibs, bool FuncKRecurse) {
                     semanticsSymbolTable.enter("While");
                     recurse_through_children(t, false);
                     recurse_already = true;
+                    check_children_bool(t);
                     semanticsSymbolTable.leave();
                     break;
                 case CompK: {
