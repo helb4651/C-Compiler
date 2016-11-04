@@ -2704,10 +2704,75 @@ int main(int argc, char** argv) {
   yyparse();
 
 
+    TreeNode* input = newDeclNode(FuncK);
+    input->attr.name = "input";
+    input->linenum=-1;
+    input->declType=Int;
+    //semanticsSymbolTable.insert((char *) "input", input);
+
+    TreeNode* output_child = newDeclNode(ParamK);
+    output_child->attr.name = "*dummy*";
+    output_child->linenum=-1;
+    output_child->declType=Int;
+
+    TreeNode* output = newDeclNode(FuncK);
+    output->attr.name = "output";
+    output->linenum=-1;
+    output->child[0]=output_child;
+
+    TreeNode* inputb = newDeclNode(FuncK);
+    inputb->attr.name = "inputb";
+    inputb->linenum=-1;
+    inputb->declType=Bool;
+
+    TreeNode* output_childb = newDeclNode(ParamK);
+    output_childb->attr.name = "*dummy*";
+    output_childb->linenum=-1;
+    output_childb->declType=Bool;
+
+    TreeNode* outputb = newDeclNode(FuncK);
+    outputb->attr.name = "outputb";
+    outputb->linenum=-1;
+    outputb->child[0]=output_childb;
+
+    TreeNode* inputc = newDeclNode(FuncK);
+    inputc->attr.name = "inputc";
+    inputc->linenum=-1;
+    inputc->declType=Char;
+
+    TreeNode* output_childc = newDeclNode(ParamK);
+    output_childc->attr.name = "*dummy*";
+    output_childc->linenum=-1;
+
+    TreeNode* outputc = newDeclNode(FuncK);
+    outputc->attr.name = "outputc";
+    outputc->linenum=-1;
+    outputc->child[0]=output_childc;
+
+    TreeNode* outnl = newDeclNode(FuncK);
+    outnl->attr.name = "outnl";
+    outnl->linenum=-1;
+
+    input->sibling = output;
+    output->sibling = inputb;
+    inputb->sibling = outputb;
+    outputb->sibling = inputc;
+    inputc->sibling = outputc;
+    outputc->sibling = outnl;
+    outnl->sibling = syntaxTree;
+
+    //cout << "HEY!! " << output->sibling->attr.name << endl;
+    syntaxTree = input;
+
   if(print_ast_no_types) {
     printTree(syntaxTree, -1, false);
     getTypesDataStructure();
     scopeAndType(syntaxTree, -1, false);
+            TreeNode* n = static_cast<TreeNode*>(semanticsSymbolTable.lookup("main"));
+            if(main_function_exists==false && n==NULL) {
+                number_of_errors++;
+                printf("ERROR(LINKER): Procedure main is not defined.\n");
+            }
     printf("Number of warnings: 0\n");
     printf("Number of errors: %d\n", number_of_errors);
   }
@@ -2729,6 +2794,11 @@ int main(int argc, char** argv) {
   else {
     getTypesDataStructure();
     scopeAndType(syntaxTree, -1, false);
+            TreeNode* n = static_cast<TreeNode*>(semanticsSymbolTable.lookup("main"));
+            if(main_function_exists==false && n==NULL) {
+                number_of_errors++;
+                printf("ERROR(LINKER): Procedure main is not defined.\n");
+            }
     printf("Number of warnings: 0\n");
     printf("Number of errors: %d\n", number_of_errors);
   }

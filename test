@@ -1,43 +1,24 @@
-Var a of type bool [line: 3]
-!Sibling: 1 Var b is array of type int [line: 4]
-!Sibling: 2 Func max returns type int [line: 7]
-!   Child: 0 Param x of type int [line: 7]
-!   !Sibling: 1 Param y of type int [line: 7]
-!   Child: 1 Compound [line: 8]
-!   !   Child: 0 Var z of type int [line: 9]
-!   !   !Sibling: 1 Var zz of type int [line: 9]
-!   !   !Sibling: 2 Var c of type char [line: 10]
-!   !   Child: 1 If [line: 12]
-!   !   !   Child: 0 Op: > [line: 12]
-!   !   !   !   Child: 0 Id: x [line: 12]
-!   !   !   !   Child: 1 Id: y [line: 12]
-!   !   !   Child: 1 Assign: = [line: 12]
-!   !   !   !   Child: 0 Id: z [line: 12]
-!   !   !   !   Child: 1 Id: x [line: 12]
-!   !   !   Child: 2 Assign: = [line: 13]
-!   !   !   !   Child: 0 Id: z [line: 13]
-!   !   !   !   Child: 1 Id: y [line: 13]
-!   !   !Sibling: 1 Assign: = [line: 15]
-!   !   !   Child: 0 Id: b [line: 15]
-!   !   !   Child: 1 Call: max [line: 15]
-!   !   !   !   Child: 0 Id: b [line: 15]
-!   !   !   !   !Sibling: 1 Const: 43 [line: 15]
-!   !   !Sibling: 2 While [line: 18]
-!   !   !   Child: 0 Op: > [line: 18]
-!   !   !   !   Child: 0 Const: 666 [line: 18]
-!   !   !   !   Child: 1 Const: 665 [line: 18]
-!   !   !   Child: 1 Compound [line: 18]
-!   !   !   !   Child: 0 Var in of type int [line: 19]
-!   !   !   !   !Sibling: 1 Var for of type int [line: 19]
-!   !   !   !   Child: 1 Assign: = [line: 21]
-!   !   !   !   !   Child: 0 Id: aardvark [line: 21]
-!   !   !   !   !   Child: 1 Assign: = [line: 21]
-!   !   !   !   !   !   Child: 0 Id: zz [line: 21]
-!   !   !   !   !   !   Child: 1 Id: in [line: 21]
-!   !   !   !   !Sibling: 1 Assign: = [line: 22]
-!   !   !   !   !   Child: 0 Id: z [line: 22]
-!   !   !   !   !   Child: 1 Id: zz [line: 22]
-!   !   !   !   !Sibling: 2 Break [line: 23]
-!   !   !Sibling: 3 Return [line: 25]
+ERROR(14): '=' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(15): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(21): '=' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(22): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(27): '=' requires operands of the same type but lhs is type int and rhs is type char.
+ERROR(28): '=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(30): '==' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(31): '==' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(33): '!=' requires operands of the same type but lhs is type int and rhs is type bool.
+ERROR(34): '!=' requires operands of the same type but lhs is type bool and rhs is type int.
+ERROR(36): The operation '>' does not work with arrays.
+ERROR(37): The operation '<' does not work with arrays.
+ERROR(38): The operation '>=' does not work with arrays.
+ERROR(39): The operation '<=' does not work with arrays.
+ERROR(43): The operation '>' does not work with arrays.
+ERROR(44): The operation '>' does not work with arrays.
+ERROR(46): The operation '?' does not work with arrays.
+ERROR(49): The operation '*' only works with arrays.
+ERROR(50): Cannot index nonarray 'x'.
+ERROR(51): Cannot index nonarray 'x'.
+ERROR(51): The operation '*' only works with arrays.
+ERROR(53): The operation '*' only works with arrays.
 Number of warnings: 0
-Number of errors: 0
+Number of errors: 22

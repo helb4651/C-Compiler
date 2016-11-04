@@ -808,6 +808,7 @@ int main(int argc, char** argv) {
     input->attr.name = "input";
     input->linenum=-1;
     input->declType=Int;
+    //semanticsSymbolTable.insert((char *) "input", input);
 
     TreeNode* output_child = newDeclNode(ParamK);
     output_child->attr.name = "*dummy*";
